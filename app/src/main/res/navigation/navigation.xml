@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/favorFragment">
+    <fragment
+        android:id="@+id/favorFragment"
+        android:name="com.example.goodlook.FavorFragment"
+        android:label="fragment_favor"
+        tools:layout="@layout/fragment_favor" />
+    <fragment
+        android:id="@+id/korzinFrag"
+        android:name="com.example.goodlook.KorzinFrag"
+        android:label="fragment_korzin"
+        tools:layout="@layout/fragment_korzin" />
+    <fragment
+        android:id="@+id/catFrag"
+        android:name="com.example.goodlook.CatFrag"
+        android:label="fragment_cat"
+        tools:layout="@layout/fragment_cat" />
+    <fragment
+        android:id="@+id/recomFrag"
+        android:name="com.example.goodlook.RecomFrag"
+        android:label="fragment_recom"
+        tools:layout="@layout/fragment_recom" />
+</navigation>

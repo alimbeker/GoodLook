@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "384902307721",
+    "project_id": "goodlookproj",
+    "storage_bucket": "goodlookproj.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:384902307721:android:1d70aa58802aaea4020b58",
+        "android_client_info": {
+          "package_name": "com.example.goodlook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "384902307721-od11ead990u2u203bbgcthej1gmmbd6p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.goodlook",
+            "certificate_hash": "b8598a9cc916d487416c842444977dbe4a725c0e"
+          }
+        },
+        {
+          "client_id": "384902307721-pss8g719o5nvu0a71449oojeaih1emtr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVNy5v0DEpiApYULImUFJYqRD_cL46DqM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "384902307721-pss8g719o5nvu0a71449oojeaih1emtr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
