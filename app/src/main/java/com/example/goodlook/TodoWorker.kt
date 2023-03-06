@@ -1,6 +1,9 @@
 package com.example.goodlook
 
 import android.content.Context
+import androidx.work.Worker
+import androidx.work.WorkerParameters
+
 
 
 class TodoWorker(val context: Context, val params: WorkerParameters): Worker(context,params) {
