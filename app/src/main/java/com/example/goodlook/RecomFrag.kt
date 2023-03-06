@@ -9,6 +9,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.workDataOf
 import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 import com.example.goodlook.viewmodel.VmFactory
@@ -38,6 +41,16 @@ class RecomFrag : Fragment() {
           /*  vm.onClickInsert(newCardTask,newCardDesc)*/
 
             Toast.makeText(context,"Succesfully added new $newCardTask card.", Toast.LENGTH_SHORT).show()
+            val myWorkRequest = OneTimeWorkRequestBuilder<TodoWorker>()
+                .setInitialDelay(10, TimeUnit.SECONDS)
+                .setInputData(
+                    workDataOf(
+                        "title" to "Todo Created",
+                        "message" to "A new todo has been created!")
+                )
+                .build()
+            WorkManager.getInstance(requireContext()).enqueue(myWorkRequest)
+
 
         }
 
