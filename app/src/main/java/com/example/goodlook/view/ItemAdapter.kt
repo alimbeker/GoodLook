@@ -11,31 +11,26 @@ import com.example.goodlook.databinding.ListItemBinding
 
 class ItemAdapter : ListAdapter<CardEntity, ItemAdapter.ViewHolder>(CardDiffCallback()) {
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ListItemBinding.inflate(inflater, parent, false)
+        return ViewHolder(binding)
     }
 
-    class ViewHolder private constructor(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(getItem(position))
+    }
+
+    class ViewHolder(private val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(card: CardEntity) {
             binding.listItem = card
             binding.executePendingBindings()
         }
-
-        companion object {
-            fun from(parent: ViewGroup): ViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ListItemBinding.inflate(layoutInflater, parent, false)
-                return ViewHolder(binding)
-            }
-        }
     }
 }
+
+
 
 
 class CardDiffCallback : DiffUtil.ItemCallback<CardEntity>() {
@@ -51,3 +46,5 @@ class CardDiffCallback : DiffUtil.ItemCallback<CardEntity>() {
 
 
 }
+
+
