@@ -10,7 +10,17 @@
        <!-- <variable
             name="listener"
             type="com.example.goodlook.RecomFrag.ButtonAddTodoClickListener" />
-   --> </data>
+            
+           
+   --> 
+    <variable
+        name="listener_date"
+        type="com.example.goodlook.DateClickListener" />
+        
+    <variable
+        name="listener_time"
+        type="com.example.goodlook.TimeClickListener" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -87,6 +97,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtDate"
+            android:onClick="@{listener_date::onDateClick}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -107,6 +118,8 @@
             android:layout_width="34dp"
             android:layout_height="32dp"
             android:layout_marginEnd="4dp"
+            android:onClick="@{listener_time::onTimeClick}"
+
             app:endIconDrawable="@drawable/ic_baseline_access_time_24"
             app:endIconMode="custom"
             app:hintAnimationEnabled="true"
