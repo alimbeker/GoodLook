@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.database.CardEntity
 import com.example.goodlook.databinding.FragmentFavorBinding
+import com.example.goodlook.databinding.FragmentRecomBinding
 import com.example.goodlook.view.ItemAdapter
 import com.example.goodlook.view.SwipeToDelete
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
@@ -31,7 +32,7 @@ class FavorFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
+        binding = FragmentFavorBinding.inflate(inflater, container, false)
         //implement viewModel
         val application = requireNotNull(this.activity).application
         val dataSource = CardDatabase.getInstance(application)!!.cardDao()

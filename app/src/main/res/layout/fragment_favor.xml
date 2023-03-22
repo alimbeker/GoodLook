@@ -3,7 +3,7 @@
 
     <data>
         <variable
-            name="viewModel"
+            name="favorFragment"
             type="com.example.goodlook.viewmodel.FavorFragmentViewModel" />
     </data>
 
