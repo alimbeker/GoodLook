@@ -31,7 +31,7 @@ class FavorFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentFavorBinding.inflate(inflater, container, false)
+
         //implement viewModel
         val application = requireNotNull(this.activity).application
         val dataSource = CardDatabase.getInstance(application)!!.cardDao()
@@ -45,6 +45,7 @@ class FavorFragment : Fragment() {
         recyclerView.adapter = itemAdapter
         vm.filteredCards.observe(viewLifecycleOwner) {
             itemAdapter.submitList(it)
+            itemAdapter.notifyDataSetChanged()
 
 
         }
@@ -67,7 +68,7 @@ class FavorFragment : Fragment() {
         val itemTouchHelper = ItemTouchHelper(swipeToDelete)
         itemTouchHelper.attachToRecyclerView(recyclerView)
 
-        itemAdapter.notifyDataSetChanged()
+
 
         return binding.root
     }

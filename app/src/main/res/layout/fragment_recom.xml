@@ -1,84 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/txtDate"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="card"
+            type="com.example.goodlook.database.CardEntity" />
+       <!-- <variable
+            name="listener"
+            type="com.example.goodlook.RecomFrag.ButtonAddTodoClickListener" />
+   --> </data>
 
-
-    <ImageView
-        android:id="@+id/imageView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-
-        android:layout_height="206dp"
-
-        android:clipToOutline="true"
-
-        android:src="@drawable/companylogo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.055" />
-
-    <EditText
-        android:id="@+id/newCardTask"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_margin="20dp"
-        android:layout_marginTop="92dp"
-        android:hint="Name of Task"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textAlignment="gravity"
-        android:background="@drawable/rounded_edittext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/deadline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Item Date"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.083"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newCardTask" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="301dp"
 
-    <CalendarView
-        android:id="@+id/itemDateCalendar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:maxDate="12/31/2023"
-        android:minDate="01/01/2021"
-        app:layout_constraintTop_toBottomOf="@+id/deadline"
-        tools:layout_editor_absoluteX="16dp" />
+            android:layout_height="300dp"
 
-    <Button
-        android:id="@+id/saveCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:text="Add Card"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deadline"
-        app:layout_constraintVertical_bias="0.941" />
+            android:clipToOutline="true"
+            android:src="@drawable/companylogo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.037" />
+
+        <EditText
+            android:id="@+id/newCardTask"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="92dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Name of Task"
+            android:textAlignment="gravity"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/saveCard"
+            android:layout_width="342dp"
+            android:layout_height="42dp"
+            android:layout_marginBottom="16dp"
+
+            android:text="Add Card"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            android:layout_width="80dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="8dp"
+            app:endIconCheckable="false"
+            app:endIconDrawable="@drawable/ic_baseline_calendar_today_24"
+            app:endIconMode="custom"
+            app:hintAnimationEnabled="false"
+            app:hintEnabled="true"
+            app:layout_constraintBottom_toBottomOf="@+id/txtDate"
+            app:layout_constraintEnd_toEndOf="@+id/txtDate"
+            app:layout_constraintTop_toTopOf="@+id/txtDate"
+            app:layout_constraintVertical_bias="0.0">
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:enabled="true"
+            android:focusable="false"
+            android:hint="@string/pickadate"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.567" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="4dp"
+            app:endIconDrawable="@drawable/ic_baseline_access_time_24"
+            app:endIconMode="custom"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:layout_constraintBottom_toBottomOf="@+id/txtTime"
+            app:layout_constraintEnd_toEndOf="@+id/txtTime"
+            app:layout_constraintTop_toTopOf="@+id/txtTime"
+            app:layout_constraintVertical_bias="0.0">
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginEnd="16dp"
+            android:enabled="true"
+            android:focusable="false"
+            android:hint="@string/pickatime"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <!-- Second textinput-->
 
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
 
+  <!--  android:onClick="@{listener::onButtonAddTodo}"-->

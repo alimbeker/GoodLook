@@ -13,19 +13,24 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.workDataOf
 import com.example.goodlook.database.CardDatabase
+import com.example.goodlook.databinding.FragmentFavorBinding
+import com.example.goodlook.databinding.FragmentRecomBinding
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 import com.example.goodlook.viewmodel.VmFactory
 import java.util.concurrent.TimeUnit
 
 
 class RecomFrag : Fragment() {
-
+      private lateinit var dataBinding: FragmentRecomBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+/*
         var rootView:View = inflater.inflate(R.layout.fragment_recom,container,false)
+*/
+        dataBinding = FragmentRecomBinding.inflate(inflater, container, false)
 
 
         //implement viewModel
@@ -33,12 +38,12 @@ class RecomFrag : Fragment() {
         val dataSource = CardDatabase.getInstance(application)!!.cardDao()
         val vmFactory = VmFactory(dataSource,application)
         val vm = ViewModelProvider(this,vmFactory).get(FavorFragmentViewModel::class.java)
-        rootView.findViewById<Button>(R.id.saveCard).setOnClickListener {
-            val newCardTask = rootView.findViewById<EditText>(R.id.newCardTask).text.toString()
+        dataBinding.saveCard.setOnClickListener {
+            val newCardTask = dataBinding.newCardTask.text.toString()
 
             vm.onClickInsert(newCardTask,15)
 
-          /*  vm.onClickInsert(newCardTask,newCardDesc)*/
+       /*     vm.onClickInsert(newCardTask,newCardDesc)*/
 
             Toast.makeText(context,"Succesfully added new $newCardTask card.", Toast.LENGTH_SHORT).show()
             val myWorkRequest = OneTimeWorkRequestBuilder<TodoWorker>()
@@ -54,13 +59,14 @@ class RecomFrag : Fragment() {
 
         }
 
-        /*rootView.findViewById<ImageView>(R.id.more).setOnClickListener {
-            vm.onClickDelete()
-        }*/
 
 
-        return  rootView
+        return  dataBinding.root
     }
+
+    /*override fun onButtonAddTodo(v: View) {
+     return
+    }*/
 
     companion object{
         @JvmStatic val TAG = RecomFrag::class.java.simpleName
