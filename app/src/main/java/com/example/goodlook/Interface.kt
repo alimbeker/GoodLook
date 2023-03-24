@@ -11,7 +11,6 @@ interface DateClickListener {
 interface TimeClickListener {
     fun onTimeClick(v:View) {
 
-
     }
 }
 

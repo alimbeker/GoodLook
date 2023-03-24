@@ -17,7 +17,7 @@ data class CardEntity(
    /* val image:ImageView,*/
 
     @ColumnInfo(name="deadline")
-    val deadline: Int
+    var deadline: Int
 
 
 )
