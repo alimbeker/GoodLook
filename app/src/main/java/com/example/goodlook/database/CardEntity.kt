@@ -17,7 +17,7 @@ data class CardEntity(
    /* val image:ImageView,*/
 
     @ColumnInfo(name="deadline")
-    var deadline: Int
+    var deadline: String
 
 
 )
@@ -25,6 +25,6 @@ data class CardEntity(
 {
     // for add card like this
 
-    constructor(cardName:String,deadline: Int):this(0,cardName,deadline)
+    constructor(cardName:String,deadline: String):this(0,cardName,deadline)
 }
 

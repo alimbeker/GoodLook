@@ -25,7 +25,8 @@ import java.util.concurrent.TimeUnit
 
 class RecomFrag : Fragment(),
     DateClickListener, TimeClickListener,DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
-      private lateinit var dataBinding: FragmentRecomBinding
+
+    private lateinit var dataBinding: FragmentRecomBinding
 
 
       var year = 0
@@ -45,10 +46,9 @@ class RecomFrag : Fragment(),
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-/*
         var rootView:View = inflater.inflate(R.layout.fragment_recom,container,false)
-*/
-        dataBinding = FragmentRecomBinding.inflate(inflater, container, false)
+
+        dataBinding = FragmentRecomBinding.bind(rootView)
 
         //interface
         dataBinding.listenerDate = this
@@ -71,7 +71,7 @@ class RecomFrag : Fragment(),
 
             val diff = (c.timeInMillis/1000L) - (today.timeInMillis/1000L)
 
-            val deadline = (c.timeInMillis/1000L).toInt()
+            val deadline = (c.timeInMillis/1000L).toString()
 
 
 
@@ -91,11 +91,12 @@ class RecomFrag : Fragment(),
                 .build()
             WorkManager.getInstance(requireContext()).enqueue(myWorkRequest)
 
+
         }
 
 
 
-        return  dataBinding.root
+        return rootView
     }
 
 

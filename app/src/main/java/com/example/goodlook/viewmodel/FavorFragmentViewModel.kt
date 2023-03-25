@@ -20,6 +20,7 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
         repository = CardRepository(dao)
         allCards =  repository.allCards
     }
+
     private val cardsLiveData= repository.getAll()
     private val text = MutableLiveData("")
     private val _filteredCards = MediatorLiveData<List<CardEntity>>().apply {
@@ -38,7 +39,7 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
         val filteredCards = latestCards.filter { it.cardName.contains(latestText, ignoreCase = true) }
         _filteredCards.value = filteredCards
     }
-    fun onClickInsert(cardName:String,deadline: Int) {
+    fun onClickInsert(cardName:String,deadline:String) {
         viewModelScope.launch {
             insert(cardName,deadline)
         }
@@ -56,7 +57,7 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
 
 
 
-    suspend fun insert(cardName:String,deadline: Int) {
+    suspend fun insert(cardName:String,deadline:String) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insert(CardEntity(cardName,deadline))
         }

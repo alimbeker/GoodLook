@@ -46,11 +46,13 @@ class FavorFragment : Fragment() {
         recyclerView.adapter = itemAdapter
         vm.filteredCards.observe(viewLifecycleOwner) {
             itemAdapter.submitList(it)
-            itemAdapter.notifyDataSetChanged()
+
 
 
         }
         recyclerView.layoutManager = LinearLayoutManager(this.context)
+
+        itemAdapter.notifyDataSetChanged()
 
         recyclerView.setHasFixedSize(true)
 
