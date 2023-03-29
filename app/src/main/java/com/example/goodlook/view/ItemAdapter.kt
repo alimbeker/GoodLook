@@ -15,7 +15,8 @@ class ItemAdapter:ListAdapter<CardEntity,ItemAdapter.ViewHolder>(CardDiffCallbac
     class ViewHolder(private val binding: ListItemBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(card:CardEntity)=with(binding){
             listName.text = card.cardName
-            listTime.text = card.deadline
+            //to print
+            listTime.text = card.getFormattedDeadline()
 
         }
         companion object{
@@ -36,7 +37,7 @@ class ItemAdapter:ListAdapter<CardEntity,ItemAdapter.ViewHolder>(CardDiffCallbac
 }
 class CardDiffCallback: DiffUtil.ItemCallback<CardEntity>() {
     override fun areItemsTheSame(oldItem: CardEntity, newItem: CardEntity): Boolean {
-        return oldItem.id ==newItem.id
+        return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(oldItem: CardEntity, newItem: CardEntity): Boolean {

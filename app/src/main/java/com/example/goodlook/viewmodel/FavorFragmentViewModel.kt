@@ -39,9 +39,9 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
         val filteredCards = latestCards.filter { it.cardName.contains(latestText, ignoreCase = true) }
         _filteredCards.value = filteredCards
     }
-    fun onClickInsert(cardName:String,deadline:String) {
+    fun onClickInsert(cardName:String,deadline:Long, sysdate: Long) {
         viewModelScope.launch {
-            insert(cardName,deadline)
+            insert(cardName,deadline, sysdate)
         }
     }
 
@@ -57,9 +57,9 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
 
 
 
-    suspend fun insert(cardName:String,deadline:String) {
+    suspend fun insert(cardName:String,deadline:Long, sysdate: Long) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.insert(CardEntity(cardName,deadline))
+            repository.insert(CardEntity(cardName,deadline,sysdate))
         }
     }
 
