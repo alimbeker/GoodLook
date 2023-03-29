@@ -65,9 +65,9 @@ class RecomFrag : Fragment(),
 
             val today = Calendar.getInstance()
 
-            val deadline = (c.timeInMillis/1000L)
+            val deadline = c.timeInMillis/1000L
 
-            val sysdate =  (today.timeInMillis/1000L)
+            val sysdate = today.timeInMillis/1000L
 
 
 
