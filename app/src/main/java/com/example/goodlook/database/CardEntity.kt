@@ -36,6 +36,9 @@ data class CardEntity(
 
  // in item adapter we have a function
   fun getFormattedDeadline(): String {
+     val today = Calendar.getInstance()
+
+     val sysdate = today.timeInMillis/1000L
 
      val differenceMillis = deadline - sysdate
 
