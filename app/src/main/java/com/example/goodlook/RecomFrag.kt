@@ -106,21 +106,14 @@ class RecomFrag : Fragment(),
     class DateException(message: String) : Exception(message)
 
 
-    override fun onTimeClick(v: View) {
-        val c = Calendar.getInstance()
-        hour = c.get(Calendar.HOUR_OF_DAY)
-        minute = c.get(Calendar.MINUTE)
 
-
-
-
-
-    }
     override fun onDateClick(v: View) {
         val c = Calendar.getInstance()
         var year = c.get(Calendar.YEAR)
         var month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
+        val hour = c.get(Calendar.HOUR_OF_DAY)
+        val minute = c.get(Calendar.MINUTE)
 
 
 

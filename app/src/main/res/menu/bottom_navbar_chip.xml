@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/favorFragment"
+        android:icon="@drawable/ic_baseline_favorite"
+        android:title="Favourite"
+        app:cnb_backgroundColor="@color/colorPrimary"/>
+    <item
+        android:id="@+id/catFrag"
+        android:icon="@drawable/ic_baseline_search"
+        android:title="Search"
+        app:cnb_backgroundColor="@color/colorPrimary"/>
+    <item
+        android:id="@+id/recomFrag"
+        android:icon="@drawable/ic_baseline_add_card"
+        android:title="Cards"
+        app:cnb_backgroundColor="@color/colorPrimary"/>
+    <item
+        android:id="@+id/korzinFrag"
+        android:icon="@drawable/ic_baseline_shopping_basket"
+        android:title="Basket"
+        app:cnb_backgroundColor="@color/colorPrimary"/>
+</menu>
