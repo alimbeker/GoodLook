@@ -70,22 +70,31 @@ class RecomFrag : Fragment(),
             val sysdate = today.timeInMillis/1000L
 
 
+            try {
+                // some code that might throw an exception
+                if (deadline < sysdate) {
+                    throw DateException("Something went wrong with date")
+                } else {
+                    vm.onClickInsert(newCardTask, deadline, sysdate)
 
-            vm.onClickInsert(newCardTask, deadline, sysdate)
+                    Toast.makeText(context,"Succesfully added new $newCardTask card.", Toast.LENGTH_SHORT).show()
+                    val myWorkRequest = OneTimeWorkRequestBuilder<TodoWorker>()
+                        .setInitialDelay(15, TimeUnit.SECONDS)
+                        .setInputData(
+                            workDataOf(
+                                "title" to "Todo Created",
+                                "message" to "A new todo has been created!")
+                        )
+                        .build()
+                    WorkManager.getInstance(requireContext()).enqueue(myWorkRequest)
+                }
+            } catch (e: DateException) {
+                // handle the error gracefully
+                Toast.makeText(context,"${e.message}", Toast.LENGTH_SHORT).show()
+
+            }
 
 
-
-
-            Toast.makeText(context,"Succesfully added new $newCardTask card.", Toast.LENGTH_SHORT).show()
-            val myWorkRequest = OneTimeWorkRequestBuilder<TodoWorker>()
-                .setInitialDelay(15, TimeUnit.SECONDS)
-                .setInputData(
-                    workDataOf(
-                        "title" to "Todo Created",
-                        "message" to "A new todo has been created!")
-                )
-                .build()
-            WorkManager.getInstance(requireContext()).enqueue(myWorkRequest)
 
 
         }
@@ -94,6 +103,7 @@ class RecomFrag : Fragment(),
 
         return dataBinding.root
     }
+    class DateException(message: String) : Exception(message)
 
 
     override fun onTimeClick(v: View) {
