@@ -22,6 +22,12 @@
         android:gravity="center"
         android:orientation="vertical">
 
+      <!--  <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_detail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />-->
 
         <ImageView
             android:id="@+id/imageView"
@@ -37,6 +43,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.037" />
 
+        <soup.neumorphism.NeumorphCardView
         <EditText
             android:id="@+id/newCardTask"
             android:layout_width="match_parent"

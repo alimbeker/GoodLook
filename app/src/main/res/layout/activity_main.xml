@@ -33,7 +33,7 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/round_corners"
         android:elevation="8dp"
-        app:cnb_iconSize="15dp"
+        app:cnb_iconSize="20dp"
         app:cnb_menuResource="@menu/bottom_navbar_chip"
         app:cnb_orientationMode="horizontal"
         app:cnb_radius="4dp"
