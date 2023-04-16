@@ -24,22 +24,20 @@
 
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:id="@+id/bottom_nav_bar"
-        android:layout_width="0dp"
+        android:layout_width="391dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/round_corners"
         android:elevation="8dp"
-        app:cnb_iconSize="20dp"
+        app:cnb_iconSize="15dp"
         app:cnb_menuResource="@menu/bottom_navbar_chip"
         app:cnb_orientationMode="horizontal"
         app:cnb_radius="4dp"
-        app:cnb_unselectedColor="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/mainContainer"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:cnb_unselectedColor="@android:color/black" />
 
     <!-- <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

@@ -6,20 +6,20 @@
         android:id="@+id/favorFragment"
         android:icon="@drawable/ic_baseline_favorite"
         android:title="Favourite"
-        app:cnb_backgroundColor="@color/colorPrimary"/>
+        app:cnb_backgroundColor="@color/lavender"/>
     <item
         android:id="@+id/catFrag"
         android:icon="@drawable/ic_baseline_search"
         android:title="Search"
-        app:cnb_backgroundColor="@color/colorPrimary"/>
+        app:cnb_backgroundColor="@color/lavender"/>
     <item
         android:id="@+id/recomFrag"
         android:icon="@drawable/ic_baseline_add_card"
         android:title="Cards"
-        app:cnb_backgroundColor="@color/colorPrimary"/>
+        app:cnb_backgroundColor="@color/lavender"/>
     <item
         android:id="@+id/korzinFrag"
         android:icon="@drawable/ic_baseline_shopping_basket"
         android:title="Basket"
-        app:cnb_backgroundColor="@color/colorPrimary"/>
+        app:cnb_backgroundColor="@color/lavender"/>
 </menu>
