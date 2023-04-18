@@ -152,5 +152,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.10"
     //CardView fornewid:neumorphism
     implementation 'com.github.fornewid:neumorphism:0.3.0'
+    def multidex_version = "2.0.1"
+    implementation "androidx.multidex:multidex:$multidex_version"
 
 }
