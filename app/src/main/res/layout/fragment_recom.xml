@@ -24,41 +24,24 @@
 
 
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="301dp"
 
-            android:layout_height="300dp"
-
-            android:clipToOutline="true"
-            android:src="@drawable/companylogo"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <EditText
+            android:id="@+id/newCardTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="88dp"
+            android:background="@drawable/shapeemail"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:drawablePadding="10dp"
+            android:hint="New Task"
+            android:textAlignment="gravity"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.037" />
-
-
-            <EditText
-                android:id="@+id/newCardTask"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_margin="20dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="92dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/rounded_edittext"
-                android:hint="Name of Task"
-                android:textAlignment="gravity"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.4"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
+            app:layout_constraintHorizontal_bias="0.157"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/saveCard"
@@ -148,7 +131,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txtDate"
             app:layout_constraintVertical_bias="1.0" />
 
-        <!-- Second textinput-->
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
