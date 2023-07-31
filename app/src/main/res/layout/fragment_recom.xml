@@ -19,43 +19,44 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/lavender"
         android:gravity="center"
         android:orientation="vertical">
 
 
-
-
         <EditText
             android:id="@+id/newCardTask"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="363dp"
+            android:layout_height="54dp"
             android:layout_margin="10dp"
-            android:layout_marginBottom="88dp"
+            android:layout_marginBottom="36dp"
             android:background="@drawable/shapeemail"
-            android:drawableLeft="@drawable/ic_baseline_person_24"
-            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/ic_baseline_add_task_24"
+            android:drawablePadding="15dp"
             android:hint="New Task"
             android:textAlignment="gravity"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.157"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.946" />
 
         <Button
             android:id="@+id/saveCard"
-            android:layout_width="336dp"
-            android:layout_height="45dp"
+            android:layout_width="141dp"
+            android:layout_height="54dp"
             android:layout_marginBottom="16dp"
-
+            android:backgroundTint="@color/turkish_rose"
             android:text="Add Card"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.555"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtDate"
-            app:layout_constraintVertical_bias="0.739" />
+            app:layout_constraintVertical_bias="0.656" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
@@ -63,7 +64,6 @@
             android:layout_height="34dp"
             android:layout_marginEnd="8dp"
             app:endIconCheckable="false"
-            app:endIconDrawable="@drawable/ic_baseline_calendar_today_24"
             app:endIconMode="custom"
             app:hintAnimationEnabled="false"
             app:hintEnabled="true"
@@ -82,16 +82,19 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="16dp"
+            android:background="@drawable/shapeemail"
+            android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
+            android:drawablePadding="10dp"
             android:enabled="true"
             android:focusable="false"
             android:hint="@string/pickadate"
             android:onClick="@{listener_date::onDateClick}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.567" />
+            app:layout_constraintVertical_bias="0.418" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout"
@@ -99,8 +102,6 @@
             android:layout_height="32dp"
             android:layout_marginEnd="4dp"
             android:onClick="@{listener_time::onTimeClick}"
-
-            app:endIconDrawable="@drawable/ic_baseline_access_time_24"
             app:endIconMode="custom"
             app:hintAnimationEnabled="false"
             app:hintEnabled="true"
@@ -121,17 +122,18 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="120dp"
+            android:background="@drawable/shapeemail"
+            android:drawableLeft="@drawable/ic_baseline_access_time_24"
+            android:drawablePadding="10dp"
             android:enabled="true"
             android:focusable="false"
             android:hint="@string/pickatime"
             app:layout_constraintBottom_toTopOf="@+id/saveCard"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtDate"
-            app:layout_constraintVertical_bias="1.0" />
-
-
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

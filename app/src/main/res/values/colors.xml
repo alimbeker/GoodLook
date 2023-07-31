@@ -13,7 +13,7 @@
     <color name="bottom_nav_selected_item">#220006</color>
     <color name="fragment_bg_color">#FDF8F4</color>
     <color name="lavender">#f1cbff</color>
-
+    <color name="turkish_rose">#e17888</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
