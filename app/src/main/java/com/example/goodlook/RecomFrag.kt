@@ -72,8 +72,9 @@ class RecomFrag : Fragment(),
 
             try {
                 // some code that might throw an exception
-                if (deadline < sysdate) {
+                if (deadline <= sysdate || newCardTask.isEmpty()) {
                     throw DateException("Something went wrong with date")
+
                 } else {
                     vm.onClickInsert(newCardTask, deadline, sysdate)
 
