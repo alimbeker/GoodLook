@@ -25,4 +25,15 @@ class CardRepository(private val cardDao: CardDao) {
     }
 
 
+    suspend fun deleteByDeadline() {
+        val currentTime = System.currentTimeMillis() / 1000L // Convert to seconds
+        cardDao.deleteByDeadline(currentTime)
+    }
+
+
+
+
+
+
+
 }
