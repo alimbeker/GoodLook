@@ -4,8 +4,8 @@
 
     <item
         android:id="@+id/favorFragment"
-        android:icon="@drawable/ic_baseline_favorite"
-        android:title="Favourite"
+        android:icon="@drawable/ic_baseline_density_small_24"
+        android:title="Cards"
         app:cnb_backgroundColor="@color/white"/>
     <item
         android:id="@+id/catFrag"
@@ -14,12 +14,12 @@
         app:cnb_backgroundColor="@color/white"/>
     <item
         android:id="@+id/recomFrag"
-        android:icon="@drawable/ic_baseline_add_card"
-        android:title="Cards"
+        android:icon="@drawable/ic_baseline_add_comment_24"
+        android:title="Add Card"
         app:cnb_backgroundColor="@color/white"/>
     <item
         android:id="@+id/korzinFrag"
-        android:icon="@drawable/ic_baseline_shopping_basket"
+        android:icon="@drawable/ic_baseline_sync_24"
         android:title="Basket"
         app:cnb_backgroundColor="@color/white"/>
 </menu>
