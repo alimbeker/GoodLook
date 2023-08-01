@@ -19,9 +19,6 @@ data class CardEntity(
 
     @ColumnInfo(name="cardName")
     val cardName: String,
-/*
-    @ColumnInfo(name="type")
-    val type:String,*/
 
     @ColumnInfo(name="deadline")
     var deadline: Long,
@@ -44,7 +41,7 @@ data class CardEntity(
 
      val differenceHours = differenceMillis / (60 * 60)
 
-     return "${differenceHours.toString()} hours"
+     return "$differenceHours hours"
  }
 
 
