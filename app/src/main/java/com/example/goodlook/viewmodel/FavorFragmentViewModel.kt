@@ -74,13 +74,13 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
     }
 
     //DeleteByDeadline
-    fun startDeletingExpiredCards() {
+    fun deleteByDeadline() {
         viewModelScope.launch {
-            while (true) {
+
                 val currentTime = System.currentTimeMillis() / 1000L // Convert to seconds
                 repository.deleteByDeadline(currentTime)
-                delay(ONE_HOUR_IN_MILLIS) // Adjust the delay as needed
-            }
+
+
         }
     }
 
@@ -94,7 +94,5 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
         this.text.value = text
     }
 
-    companion object {
-        private const val ONE_HOUR_IN_MILLIS = 1000L * 60 * 60
-    }
+
 }
