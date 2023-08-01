@@ -7,6 +7,7 @@ import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.database.CardEntity
 import com.example.goodlook.database.CardRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class FavorFragmentViewModel(val database: CardDao, application: Application) : AndroidViewModel(application) {
@@ -72,6 +73,17 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
         }
     }
 
+    //DeleteByDeadline
+    fun startDeletingExpiredCards() {
+        viewModelScope.launch {
+            while (true) {
+                val currentTime = System.currentTimeMillis() / 1000L // Convert to seconds
+                repository.deleteByDeadline(currentTime)
+                delay(ONE_HOUR_IN_MILLIS) // Adjust the delay as needed
+            }
+        }
+    }
+
     suspend fun delete(card:CardEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.delete(card)
@@ -80,5 +92,9 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
 
     fun onQueryTextChange(text: String?) {
         this.text.value = text
+    }
+
+    companion object {
+        private const val ONE_HOUR_IN_MILLIS = 1000L * 60 * 60
     }
 }

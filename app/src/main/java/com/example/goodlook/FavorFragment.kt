@@ -40,7 +40,7 @@ class FavorFragment : Fragment() {
         val vm = ViewModelProvider(this, vmFactory).get(FavorFragmentViewModel::class.java)
         val recyclerView = binding.recyclerView
 
-
+        vm.startDeletingExpiredCards()
         //Adapter
         itemAdapter = ItemAdapter()
         recyclerView.adapter = itemAdapter
