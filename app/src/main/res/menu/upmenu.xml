@@ -4,11 +4,11 @@
 
     <item
         android:id="@+id/remove_by_deadline"
-        android:title="Time limit"
+        android:title="🕓 Time limit"
         app:cnb_backgroundColor="@color/white"/>
     <item
         android:id="@+id/remove_all"
-        android:title="Clear"
+        android:title="🆇 Clear"
         app:cnb_backgroundColor="@color/white"/>
 
 </menu>
