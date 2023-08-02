@@ -53,7 +53,9 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
     }
 
     suspend fun clear() {
-        repository.clear()
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.clear()
+        }
     }
 
 

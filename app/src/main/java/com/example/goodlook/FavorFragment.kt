@@ -2,11 +2,8 @@ package com.example.goodlook
 
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.MenuInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
@@ -28,7 +25,7 @@ import com.example.goodlook.viewmodel.VmFactory
 class FavorFragment : Fragment() {
     lateinit var itemAdapter: ItemAdapter
     private lateinit var binding: FragmentFavorBinding
-
+    private lateinit var vm: FavorFragmentViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,12 +37,9 @@ class FavorFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val dataSource = CardDatabase.getInstance(application)!!.cardDao()
         val vmFactory = VmFactory(dataSource, application)
-        val vm = ViewModelProvider(this, vmFactory).get(FavorFragmentViewModel::class.java)
+        vm = ViewModelProvider(this, vmFactory).get(FavorFragmentViewModel::class.java)
         val recyclerView = binding.recyclerView
 
-        binding.deleteButton.setOnClickListener {
-            vm.deleteByDeadline()
-        }
 
         //Adapter
         itemAdapter = ItemAdapter()
@@ -91,7 +85,27 @@ class FavorFragment : Fragment() {
     }
 
     private fun showMenu() {
+        val popupMenu = PopupMenu(requireContext(), binding.dotMenu)
+        val inflater: MenuInflater = popupMenu.menuInflater
+        inflater.inflate(R.menu.upmenu, popupMenu.menu)
 
+
+        popupMenu.setOnMenuItemClickListener { item: MenuItem ->
+            when (item.itemId) {
+                R.id.remove_by_deadline -> {
+                    vm.deleteByDeadline()
+                    true
+                }
+                R.id.remove_all -> {
+                    vm.onClear()
+                    true
+                }
+                // Add more cases for other menu options if needed
+                else -> false
+            }
+        }
+
+        popupMenu.show()
     }
 
 
