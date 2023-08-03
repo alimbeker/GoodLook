@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
                     var fragment: Fragment? = null
                     when (i) {
                         R.id.favorFragment -> fragment = FavorFragment()
-                        R.id.catFrag -> fragment = CatFrag()
                         R.id.recomFrag -> fragment = RecomFrag()
                         R.id.korzinFrag -> fragment = KorzinFrag()
                     }

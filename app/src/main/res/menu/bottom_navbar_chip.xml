@@ -7,11 +7,7 @@
         android:icon="@drawable/ic_baseline_density_small_24"
         android:title="Cards"
         app:cnb_backgroundColor="@color/white"/>
-    <item
-        android:id="@+id/catFrag"
-        android:icon="@drawable/ic_baseline_search"
-        android:title="Search"
-        app:cnb_backgroundColor="@color/white"/>
+
     <item
         android:id="@+id/recomFrag"
         android:icon="@drawable/ic_baseline_add_comment_24"

@@ -30,7 +30,7 @@
             android:layout_height="55dp"
             android:clickable="true"
             android:padding="12dp"
-            android:src="@drawable/ic_baseline_drag_indicator_24"
+            android:src="@drawable/ic_baseline_align_horizontal_right_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
