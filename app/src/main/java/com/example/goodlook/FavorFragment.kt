@@ -34,6 +34,8 @@ class FavorFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentFavorBinding.inflate(inflater, container, false)
+
+
         //implement viewModel
         val application = requireNotNull(this.activity).application
         val dataSource = CardDatabase.getInstance(application)!!.cardDao()
@@ -47,15 +49,12 @@ class FavorFragment : Fragment() {
         recyclerView.adapter = itemAdapter
         vm.filteredCards.observe(viewLifecycleOwner) {
             itemAdapter.submitList(it)
-
-
-
         }
         recyclerView.layoutManager = LinearLayoutManager(this.context)
-
         itemAdapter.notifyDataSetChanged()
-
         recyclerView.setHasFixedSize(true)
+
+
 
         //Menu
         binding.dotMenu.setOnClickListener {
@@ -68,16 +67,15 @@ class FavorFragment : Fragment() {
             showBottomSheet()
         }
 
+
+        //Swipe to Delete
         val swipeToDelete = object :SwipeToDelete(){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val a = vm.filteredCards.value?.get(position)
                 vm.onSwipeDelete(a)
-
-
             }
         }
-
         val itemTouchHelper = ItemTouchHelper(swipeToDelete)
         itemTouchHelper.attachToRecyclerView(recyclerView)
 
@@ -85,15 +83,19 @@ class FavorFragment : Fragment() {
 
         return binding.root
     }
+
+
+    //BottomSheet
     private fun showBottomSheet() {
             val bottomSheetFragment = SearchBottomScreen()
             bottomSheetFragment.show(childFragmentManager, bottomSheetFragment.tag)
     }
+
+    //Menu to delete by deadline
     private fun showMenu() {
         val popupMenu = PopupMenu(requireContext(), binding.dotMenu)
         val inflater: MenuInflater = popupMenu.menuInflater
         inflater.inflate(R.menu.upmenu, popupMenu.menu)
-
 
         popupMenu.setOnMenuItemClickListener { item: MenuItem ->
             when (item.itemId) {
@@ -109,7 +111,6 @@ class FavorFragment : Fragment() {
                 else -> false
             }
         }
-
         popupMenu.show()
     }
 
