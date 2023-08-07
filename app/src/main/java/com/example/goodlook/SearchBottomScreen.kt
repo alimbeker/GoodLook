@@ -6,23 +6,43 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModelProvider
+import com.example.goodlook.database.CardDao
 import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.database.CardEntity
 import com.example.goodlook.database.CardRepository
+import com.example.goodlook.databinding.FragmentSearchBottomScreenBinding
+import com.example.goodlook.viewmodel.FavorFragmentViewModel
+import com.example.goodlook.viewmodel.VmFactory
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class SearchBottomScreen : BottomSheetDialogFragment() {
-
+    private lateinit var cardDao: CardDao // Replace with your Room DAO
+    private lateinit var cardList: MutableList<CardEntity> // Replace with your list of CardView items
+    private lateinit var binding: FragmentSearchBottomScreenBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        //implement viewModel
+        val application = requireNotNull(this.activity).application
+        val dataSource = CardDatabase.getInstance(application)!!.cardDao()
+        val vmFactory = VmFactory(dataSource, application)
+        val vm = ViewModelProvider(this, vmFactory).get(FavorFragmentViewModel::class.java)
+
+        val searchView = binding.searchView
+
+
         return inflater.inflate(R.layout.fragment_search_bottom_screen, container, false)
     }
+
+
 
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
