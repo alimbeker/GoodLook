@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".SearchBottomScreen"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <!-- Add your content for the bottom sheet here -->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="30dp"
+        android:queryHint="Search board"
+        android:iconifiedByDefault="false"
+        android:background="@drawable/search_background"
+        android:searchIcon="@drawable/ic_search2"
+        app:iconifiedByDefault="false"
+        android:theme="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle.Inverse"
+        />
+
+
+
+
+
+
 
 </LinearLayout>
+
