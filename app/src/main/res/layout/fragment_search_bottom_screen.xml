@@ -8,11 +8,6 @@
     android:orientation="vertical"
     tools:context=".SearchBottomScreen"
     >
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
@@ -27,10 +22,6 @@
         app:iconifiedByDefault="false"
         android:theme="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle.Inverse"
         />
-
-
-
-
 
 
 
