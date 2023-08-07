@@ -22,6 +22,7 @@ import com.example.goodlook.viewmodel.FavorFragmentViewModel
 import com.example.goodlook.viewmodel.VmFactory
 
 
+
 class FavorFragment : Fragment() {
     lateinit var itemAdapter: ItemAdapter
     private lateinit var binding: FragmentFavorBinding
@@ -62,9 +63,10 @@ class FavorFragment : Fragment() {
         }
 
 
-
-
-
+       //Bottom Screen
+        binding.searchByCircle.setOnClickListener {
+            showBottomSheet()
+        }
 
         val swipeToDelete = object :SwipeToDelete(){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
@@ -83,7 +85,10 @@ class FavorFragment : Fragment() {
 
         return binding.root
     }
-
+    private fun showBottomSheet() {
+            val bottomSheetFragment = SearchBottomScreen()
+            bottomSheetFragment.show(childFragmentManager, bottomSheetFragment.tag)
+    }
     private fun showMenu() {
         val popupMenu = PopupMenu(requireContext(), binding.dotMenu)
         val inflater: MenuInflater = popupMenu.menuInflater
