@@ -13,6 +13,7 @@ import com.example.goodlook.database.CardDao
 import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.database.CardEntity
 import com.example.goodlook.database.CardRepository
+import com.example.goodlook.databinding.FragmentFavorBinding
 import com.example.goodlook.databinding.FragmentSearchBottomScreenBinding
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 import com.example.goodlook.viewmodel.VmFactory
@@ -29,6 +30,9 @@ class SearchBottomScreen : BottomSheetDialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //binding
+        binding = FragmentSearchBottomScreenBinding.inflate(inflater, container, false)
+
 
         //implement viewModel
         val application = requireNotNull(this.activity).application
@@ -39,7 +43,7 @@ class SearchBottomScreen : BottomSheetDialogFragment() {
         val searchView = binding.searchView
 
 
-        return inflater.inflate(R.layout.fragment_search_bottom_screen, container, false)
+        return binding.root
     }
 
 
