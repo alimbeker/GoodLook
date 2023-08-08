@@ -27,6 +27,7 @@ class FavorFragment : Fragment() {
     lateinit var itemAdapter: ItemAdapter
     private lateinit var binding: FragmentFavorBinding
     private lateinit var vm: FavorFragmentViewModel
+    private lateinit var search: SearchBottomScreen
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,13 +48,14 @@ class FavorFragment : Fragment() {
         //Adapter
         itemAdapter = ItemAdapter()
         recyclerView.adapter = itemAdapter
+
         vm.filteredCards.observe(viewLifecycleOwner) {
             itemAdapter.submitList(it)
         }
+
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         itemAdapter.notifyDataSetChanged()
         recyclerView.setHasFixedSize(true)
-
 
 
         //Menu
@@ -61,6 +63,7 @@ class FavorFragment : Fragment() {
             showMenu()
         }
 
+        //Search Bar
 
        //Bottom Screen
         binding.searchByCircle.setOnClickListener {

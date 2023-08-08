@@ -40,7 +40,19 @@ class SearchBottomScreen : BottomSheetDialogFragment() {
         val vmFactory = VmFactory(dataSource, application)
         val vm = ViewModelProvider(this, vmFactory).get(FavorFragmentViewModel::class.java)
 
+        //Search
         val searchView = binding.searchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(text: String?): Boolean {
+                searchView.clearFocus()
+                return true
+            }
+            override fun onQueryTextChange(text: String?): Boolean {
+                vm.onQueryTextChange(text)
+                return true
+            }
+        })
 
 
         return binding.root
