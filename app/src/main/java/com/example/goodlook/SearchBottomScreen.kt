@@ -9,12 +9,14 @@ import android.view.WindowManager
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.goodlook.database.CardDao
 import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.database.CardEntity
 import com.example.goodlook.database.CardRepository
 import com.example.goodlook.databinding.FragmentFavorBinding
 import com.example.goodlook.databinding.FragmentSearchBottomScreenBinding
+import com.example.goodlook.view.ItemAdapter
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 import com.example.goodlook.viewmodel.VmFactory
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -22,9 +24,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class SearchBottomScreen : BottomSheetDialogFragment() {
-    private lateinit var cardDao: CardDao // Replace with your Room DAO
-    private lateinit var cardList: MutableList<CardEntity> // Replace with your list of CardView items
+    private lateinit var itemAdapter: ItemAdapter
     private lateinit var binding: FragmentSearchBottomScreenBinding
+    private lateinit var cardDao: CardDao
+    private val allCards: LiveData<MutableList<CardEntity>> = cardDao.getAll()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +42,20 @@ class SearchBottomScreen : BottomSheetDialogFragment() {
         val dataSource = CardDatabase.getInstance(application)!!.cardDao()
         val vmFactory = VmFactory(dataSource, application)
         val vm = ViewModelProvider(this, vmFactory).get(FavorFragmentViewModel::class.java)
+
+        //Get list
+        val recyclerView = binding.recyclerView
+        itemAdapter = ItemAdapter()
+        recyclerView.adapter = itemAdapter
+
+        vm.filteredCards.observe(viewLifecycleOwner) {
+            itemAdapter.submitList(it)
+        }
+
+        recyclerView.layoutManager = LinearLayoutManager(this.context)
+        itemAdapter.notifyDataSetChanged()
+        recyclerView.setHasFixedSize(true)
+
 
         //Search
         val searchView = binding.searchView

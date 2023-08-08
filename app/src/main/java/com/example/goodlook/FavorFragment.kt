@@ -24,7 +24,7 @@ import com.example.goodlook.viewmodel.VmFactory
 
 
 class FavorFragment : Fragment() {
-    lateinit var itemAdapter: ItemAdapter
+    private lateinit var itemAdapter: ItemAdapter
     private lateinit var binding: FragmentFavorBinding
     private lateinit var vm: FavorFragmentViewModel
     private lateinit var search: SearchBottomScreen
@@ -42,10 +42,10 @@ class FavorFragment : Fragment() {
         val dataSource = CardDatabase.getInstance(application)!!.cardDao()
         val vmFactory = VmFactory(dataSource, application)
         vm = ViewModelProvider(this, vmFactory).get(FavorFragmentViewModel::class.java)
-        val recyclerView = binding.recyclerView
 
 
         //Adapter
+        val recyclerView = binding.recyclerView
         itemAdapter = ItemAdapter()
         recyclerView.adapter = itemAdapter
 
