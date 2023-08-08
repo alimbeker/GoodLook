@@ -26,8 +26,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class SearchBottomScreen : BottomSheetDialogFragment() {
     private lateinit var itemAdapter: ItemAdapter
     private lateinit var binding: FragmentSearchBottomScreenBinding
-    private lateinit var cardDao: CardDao
-    private val allCards: LiveData<MutableList<CardEntity>> = cardDao.getAll()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,7 +65,14 @@ class SearchBottomScreen : BottomSheetDialogFragment() {
                 return true
             }
             override fun onQueryTextChange(text: String?): Boolean {
-                vm.onQueryTextChange(text)
+                if (text.isNullOrEmpty()) {
+                    recyclerView.visibility = View.GONE
+                } else {
+
+                    recyclerView.visibility = View.VISIBLE
+                    vm.onQueryTextChange(text)
+
+                }
                 return true
             }
         })
