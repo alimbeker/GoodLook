@@ -42,9 +42,7 @@ class RecomFrag : Fragment(),
 
         binding = FragmentRecomBinding.inflate(inflater, container, false)
 
-        //interface
-//        dataBinding.listenerDate = this
-//        dataBinding.listenerTime = this
+
 
         //implement viewModel
         val application = requireNotNull(this.activity).application
@@ -52,13 +50,6 @@ class RecomFrag : Fragment(),
         val vmFactory = VmFactory(dataSource,application)
         val vm = ViewModelProvider(this,vmFactory).get(FavorFragmentViewModel::class.java)
 
-        binding.txtDate.setOnClickListener {
-                view -> onDateClick(view)
-        }
-
-        binding.txtTime.setOnClickListener {
-                view -> onTimeClick(view)
-        }
 
         binding.saveCard.setOnClickListener {
             val newCardTask = binding.newCardTask.text.toString()
@@ -107,6 +98,21 @@ class RecomFrag : Fragment(),
 
         return binding.root
     }
+
+    //Give view to our methods
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.txtDate.setOnClickListener {
+                view -> onDateClick(view)
+        }
+        binding.txtTime.setOnClickListener {
+                view -> onTimeClick(view)
+        }
+
+    }
+
+
 
     //To catch the error
     class DateException(message: String) : Exception(message)
