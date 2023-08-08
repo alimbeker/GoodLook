@@ -104,6 +104,8 @@ class RecomFrag : Fragment(),
 
         return dataBinding.root
     }
+
+    //To catch the error
     class DateException(message: String) : Exception(message)
 
 
