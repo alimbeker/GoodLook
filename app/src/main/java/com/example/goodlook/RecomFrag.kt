@@ -14,12 +14,9 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.workDataOf
 import com.example.goodlook.database.CardDatabase
-import com.example.goodlook.database.CardEntity
-import com.example.goodlook.databinding.FragmentFavorBinding
 import com.example.goodlook.databinding.FragmentRecomBinding
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 import com.example.goodlook.viewmodel.VmFactory
-import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -27,7 +24,7 @@ import java.util.concurrent.TimeUnit
 class RecomFrag : Fragment(),
     DateClickListener, TimeClickListener,DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
-    private lateinit var dataBinding: FragmentRecomBinding
+    private lateinit var binding: FragmentRecomBinding
 
 
       var year = 0
@@ -43,11 +40,11 @@ class RecomFrag : Fragment(),
         savedInstanceState: Bundle?
     ): View? {
 
-        dataBinding = FragmentRecomBinding.inflate(inflater, container, false)
+        binding = FragmentRecomBinding.inflate(inflater, container, false)
 
         //interface
-        dataBinding.listenerDate = this
-        dataBinding.listenerTime = this
+//        dataBinding.listenerDate = this
+//        dataBinding.listenerTime = this
 
         //implement viewModel
         val application = requireNotNull(this.activity).application
@@ -55,10 +52,16 @@ class RecomFrag : Fragment(),
         val vmFactory = VmFactory(dataSource,application)
         val vm = ViewModelProvider(this,vmFactory).get(FavorFragmentViewModel::class.java)
 
+        binding.txtDate.setOnClickListener {
+                view -> onDateClick(view)
+        }
 
+        binding.txtTime.setOnClickListener {
+                view -> onTimeClick(view)
+        }
 
-        dataBinding.saveCard.setOnClickListener {
-            val newCardTask = dataBinding.newCardTask.text.toString()
+        binding.saveCard.setOnClickListener {
+            val newCardTask = binding.newCardTask.text.toString()
               //Calendar
             val c = Calendar.getInstance()
             c.set(year,month,day,hour,minute)
@@ -102,7 +105,7 @@ class RecomFrag : Fragment(),
 
 
 
-        return dataBinding.root
+        return binding.root
     }
 
     //To catch the error
@@ -135,7 +138,7 @@ class RecomFrag : Fragment(),
     override fun onDateSet(p0: DatePicker?, year: Int, month: Int, day: Int) {
         Calendar.getInstance().let {
             it.set(year,month,day)
-            dataBinding.txtDate.setText(day.toString().padStart(2, '0')
+            binding.txtDate.setText(day.toString().padStart(2, '0')
                     + "-" + (month+1).toString().padStart(2, '0') + "-" + year)
             this.year = year
             this.month = month
@@ -144,7 +147,7 @@ class RecomFrag : Fragment(),
     }
 
     override fun onTimeSet(p0: TimePicker?, hourOfDay: Int, minute: Int) {
-        dataBinding.txtTime.setText(
+        binding.txtTime.setText(
             hourOfDay.toString().padStart(2, '0') + ":"
                     + minute.toString().padStart(2, '0')
         )
