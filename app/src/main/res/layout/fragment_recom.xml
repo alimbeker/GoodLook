@@ -2,19 +2,7 @@
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <data>
-        <variable
-            name="card"
-            type="com.example.goodlook.database.CardEntity" />
 
-        <variable
-            name="listener_date"
-            type="com.example.goodlook.DateClickListener" />
-
-        <variable
-            name="listener_time"
-            type="com.example.goodlook.TimeClickListener" />
-    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -75,7 +63,6 @@
             android:enabled="true"
             android:focusable="false"
             android:hint="@string/pickadate"
-            android:onClick="@{listener_date::onDateClick}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
