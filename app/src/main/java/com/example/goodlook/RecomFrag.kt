@@ -124,17 +124,24 @@ class RecomFrag : Fragment(),
         var year = c.get(Calendar.YEAR)
         var month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
-        val hour = c.get(Calendar.HOUR_OF_DAY)
-        val minute = c.get(Calendar.MINUTE)
 
 
 
 
-        TimePickerDialog(activity,this,hour,minute,DateFormat.is24HourFormat(activity)).show()
+
 
 
         activity?.let { DatePickerDialog(it, this, year,month,day).show() }
 
+
+    }
+
+    override fun onTimeClick(v: View) {
+        val c = Calendar.getInstance()
+        val hour = c.get(Calendar.HOUR_OF_DAY)
+        val minute = c.get(Calendar.MINUTE)
+
+        TimePickerDialog(activity,this,hour,minute,DateFormat.is24HourFormat(activity)).show()
 
     }
 
