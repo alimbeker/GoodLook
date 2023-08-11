@@ -111,7 +111,7 @@ class FavorFragment : Fragment() {
                     true
                 }
                 R.id.sort_asc -> {
-                    vm.onClear()
+                    vm.sortByDate()
                     true
                 }
                 // Add more cases for other menu options if needed
