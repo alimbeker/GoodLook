@@ -59,6 +59,20 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
     }
 
 
+    fun sort() {
+        viewModelScope.launch {
+           sortByDate()
+        }
+    }
+
+    suspend fun sortByDate() {
+        viewModelScope.launch {
+            repository.sortByDate()
+        }
+    }
+
+
+
 
     suspend fun insert(cardName:String,deadline:Long, sysdate: Long) {
         viewModelScope.launch(Dispatchers.IO) {

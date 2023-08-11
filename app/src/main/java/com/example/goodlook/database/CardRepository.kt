@@ -24,6 +24,10 @@ class CardRepository(private val cardDao: CardDao) {
         return cardDao.getAll()
     }
 
+    suspend fun sortByDate(): LiveData<MutableList<CardEntity>> {
+        return cardDao.sortByDate()
+    }
+
 
     suspend fun deleteByDeadline(currentTime: Long) {
         cardDao.deleteByDeadline(currentTime)

@@ -110,6 +110,10 @@ class FavorFragment : Fragment() {
                     vm.onClear()
                     true
                 }
+                R.id.sort_asc -> {
+                    vm.onClear()
+                    true
+                }
                 // Add more cases for other menu options if needed
                 else -> false
             }
