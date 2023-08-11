@@ -32,17 +32,20 @@ data class CardEntity(
 {
 
  // in item adapter we have a function
-  fun getFormattedDeadline(): String {
-     val today = Calendar.getInstance()
+ fun getFormattedDeadline(): String {
+     val differenceMillis = deadline - Calendar.getInstance().timeInMillis / 1000L
 
-     val sysdate = today.timeInMillis/1000L
+     val differenceDays = differenceMillis / (60 * 60 * 24)
+     val remainingSeconds = differenceMillis % (60 * 60 * 24)
+     val differenceHours = remainingSeconds / (60 * 60)
 
-     val differenceMillis = deadline - sysdate
-
-     val differenceHours = differenceMillis / (60 * 60)
-
-     return "$differenceHours hours"
+     return if (differenceDays > 0) {
+         "$differenceDays days $differenceHours hours"
+     } else {
+         "$differenceHours hours"
+     }
  }
+
 
 
 
