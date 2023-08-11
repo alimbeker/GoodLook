@@ -24,7 +24,7 @@ class CardRepository(private val cardDao: CardDao) {
         return cardDao.getAll()
     }
 
-    suspend fun sortByDate(): LiveData<MutableList<CardEntity>> {
+    fun sortByDate(): LiveData<MutableList<CardEntity>> {
         return cardDao.sortByDate()
     }
 
