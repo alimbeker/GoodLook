@@ -13,6 +13,10 @@ import kotlinx.coroutines.launch
 class FavorFragmentViewModel(val database: CardDao, application: Application) : AndroidViewModel(application) {
 
     val allCards : LiveData<MutableList<CardEntity>>
+
+    val sortedCards : LiveData<MutableList<CardEntity>>
+
+
     val repository : CardRepository
 
 
@@ -20,6 +24,8 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
         val dao = CardDatabase.getInstance(application)!!.cardDao()
         repository = CardRepository(dao)
         allCards =  repository.allCards
+        sortedCards = repository.sortedCards
+
     }
 
     private val cardsLiveData= repository.getAll()
@@ -40,6 +46,8 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
         val filteredCards = latestCards.filter { it.cardName.contains(latestText, ignoreCase = true) }
         _filteredCards.value = filteredCards
     }
+
+
     fun onClickInsert(cardName:String,deadline:Long, sysdate: Long) {
         viewModelScope.launch {
             insert(cardName,deadline, sysdate)

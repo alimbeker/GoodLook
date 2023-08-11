@@ -49,7 +49,7 @@ class FavorFragment : Fragment() {
         itemAdapter = ItemAdapter()
         recyclerView.adapter = itemAdapter
 
-        vm.filteredCards.observe(viewLifecycleOwner) {
+        vm.allCards.observe(viewLifecycleOwner) {
             itemAdapter.submitList(it)
         }
 
@@ -111,7 +111,9 @@ class FavorFragment : Fragment() {
                     true
                 }
                 R.id.sort_asc -> {
-                    vm.sortByDate()
+                    vm.sortedCards.observe(viewLifecycleOwner) {
+                        itemAdapter.submitList(it)
+                    }
                     true
                 }
                 // Add more cases for other menu options if needed

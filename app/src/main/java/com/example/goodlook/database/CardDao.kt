@@ -18,7 +18,7 @@ interface CardDao {
     @Query("Select * from cardTable")
     fun getAll(): LiveData<MutableList<CardEntity>>
 
-    @Query("SELECT * FROM cardTable ORDER BY deadline;")
+    @Query("SELECT * FROM cardTable ORDER BY deadline")
     fun sortByDate(): LiveData<MutableList<CardEntity>>
 
     @Delete

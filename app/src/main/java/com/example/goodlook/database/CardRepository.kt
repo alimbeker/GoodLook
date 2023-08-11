@@ -7,6 +7,9 @@ class CardRepository(private val cardDao: CardDao) {
 
     val allCards: LiveData<MutableList<CardEntity>> = cardDao.getAll()
 
+    val sortedCards : LiveData<MutableList<CardEntity>> = cardDao.sortByDate()
+
+
 
     suspend fun insert(card: CardEntity) {
         cardDao.insert(card)
