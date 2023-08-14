@@ -9,6 +9,8 @@ class CardRepository(private val cardDao: CardDao) {
 
     val sortedCards : LiveData<MutableList<CardEntity>> = cardDao.sortByDate()
 
+    val favorCards : LiveData<MutableList<CardEntity>> = cardDao.favorCards()
+
 
 
     suspend fun insert(card: CardEntity) {
@@ -31,6 +33,9 @@ class CardRepository(private val cardDao: CardDao) {
         return cardDao.sortByDate()
     }
 
+    fun favorCards(): LiveData<MutableList<CardEntity>> {
+        return cardDao.favorCards()
+    }
 
     suspend fun deleteByDeadline(currentTime: Long) {
         cardDao.deleteByDeadline(currentTime)

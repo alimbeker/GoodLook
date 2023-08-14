@@ -16,6 +16,8 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
 
     val sortedCards : LiveData<MutableList<CardEntity>>
 
+    val favorCards : LiveData<MutableList<CardEntity>>
+
 
     val repository : CardRepository
 
@@ -25,7 +27,7 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
         repository = CardRepository(dao)
         allCards =  repository.allCards
         sortedCards = repository.sortedCards
-
+        favorCards = repository.favorCards
     }
 
     private val cardsLiveData= repository.getAll()

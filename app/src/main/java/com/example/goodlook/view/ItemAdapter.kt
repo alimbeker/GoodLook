@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.goodlook.R
 import com.example.goodlook.database.CardEntity
 import com.example.goodlook.databinding.ListItemBinding
 
@@ -17,6 +18,17 @@ class ItemAdapter:ListAdapter<CardEntity,ItemAdapter.ViewHolder>(CardDiffCallbac
             listName.text = card.cardName
             //to print
             listTime.text = card.getFormattedDeadline()
+            listImage.setOnClickListener {
+                val favoriteDrawable = if (card.isFavorite) {
+                    R.drawable.ic_baseline_favorite_border_24 // Your black favorite icon drawable
+                } else {
+                    R.drawable.ic_baseline_favorite_24 // Your red favorite icon drawable
+                }
+                listImage.setImageResource(favoriteDrawable)
+
+                // Toggle the favorite status of the card
+                card.isFavorite = !card.isFavorite
+            }
 
         }
         companion object{
