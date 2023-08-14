@@ -49,7 +49,7 @@ class FavorFragment : Fragment() {
         itemAdapter = ItemAdapter()
         recyclerView.adapter = itemAdapter
 
-        vm.allCards.observe(viewLifecycleOwner) {
+        vm.filteredCards.observe(viewLifecycleOwner) {
             itemAdapter.submitList(it)
         }
 
