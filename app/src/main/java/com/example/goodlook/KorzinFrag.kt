@@ -34,7 +34,7 @@ class KorzinFrag : Fragment() {
 
 
         //Adapter
-        val recyclerView = binding.recyclerView
+        val recyclerView = binding.korzinRecyclerView
         val itemAdapter = ItemAdapter()
         recyclerView.adapter = itemAdapter
 
