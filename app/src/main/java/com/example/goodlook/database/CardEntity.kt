@@ -27,7 +27,7 @@ data class CardEntity(
      var sysdate: Long,
 
     @ColumnInfo(name="isFavorite")
-    var isFavorite: Boolean = false
+    var isFavorite: Boolean = true
 
 
 )
