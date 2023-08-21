@@ -38,7 +38,9 @@ class ItemAdapter(private val vm : FavorFragmentViewModel):ListAdapter<CardEntit
         val card = getItem(position)
         holder.itemView.findViewById<ImageView>(R.id.listImage).setOnClickListener {
 
-                vm.onChecked(card)
+            holder.itemView.findViewById<ImageView>(R.id.listImage).setImageResource(R.drawable.checked)
+
+            vm.onChecked(card)
 
         }
         holder.bind(getItem(position))

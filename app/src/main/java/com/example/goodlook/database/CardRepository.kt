@@ -2,6 +2,9 @@ package com.example.goodlook.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Insert
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 
 class CardRepository(private val cardDao: CardDao) {
 
@@ -17,7 +20,8 @@ class CardRepository(private val cardDao: CardDao) {
         cardDao.insert(card)
     }
 
-    suspend fun delete(card: CardEntity) {
+    suspend fun delete(card: CardEntity) = withContext(Dispatchers.IO) {
+        delay(1200)
         cardDao.delete(card)
     }
 

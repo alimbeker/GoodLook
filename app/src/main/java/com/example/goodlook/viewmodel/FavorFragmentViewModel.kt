@@ -91,8 +91,10 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
 
     fun onChecked(card: CardEntity?){
         viewModelScope.launch(Dispatchers.IO) {
+
             if (card != null) {
                 repository.delete(card)
+
             }
         }
     }
