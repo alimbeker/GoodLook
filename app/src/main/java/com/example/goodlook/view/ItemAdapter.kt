@@ -20,9 +20,9 @@ class ItemAdapter:ListAdapter<CardEntity,ItemAdapter.ViewHolder>(CardDiffCallbac
             listTime.text = card.getFormattedDeadline()
             listImage.setOnClickListener {
                 val favoriteDrawable = if (card.isFavorite) {
-                    R.drawable.ic_baseline_favorite_border_24 // Your black favorite icon drawable
+                    R.drawable.checked // Your black favorite icon drawable
                 } else {
-                    R.drawable.ic_baseline_favorite_24 // Your red favorite icon drawable
+                    R.drawable.check // Your red favorite icon drawable
                 }
                 listImage.setImageResource(favoriteDrawable)
 

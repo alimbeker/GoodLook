@@ -71,7 +71,7 @@ class RecomFrag : Fragment(),
 
                 } else {
                     vm.onClickInsert(newCardTask, deadline, sysdate)
-
+2
                     Toast.makeText(context,"Succesfully added new $newCardTask card.", Toast.LENGTH_SHORT).show()
                     val myWorkRequest = OneTimeWorkRequestBuilder<TodoWorker>()
                         .setInitialDelay(15, TimeUnit.SECONDS)
