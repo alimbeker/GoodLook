@@ -14,7 +14,7 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
 
     val allCards : LiveData<MutableList<CardEntity>>
 
-    val sortedCards : LiveData<MutableList<CardEntity>>
+
 
     val favorCards : LiveData<MutableList<CardEntity>>
 
@@ -26,7 +26,6 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
         val dao = CardDatabase.getInstance(application)!!.cardDao()
         repository = CardRepository(dao)
         allCards =  repository.allCards
-        sortedCards = repository.sortedCards
         favorCards = repository.favorCards
     }
 
@@ -70,11 +69,7 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
 
 
 
-    fun sortByDate() {
-        viewModelScope.launch {
-            repository.sortByDate()
-        }
-    }
+
 
 
 

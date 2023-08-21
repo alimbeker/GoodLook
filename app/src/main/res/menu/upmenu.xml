@@ -11,10 +11,7 @@
         android:title="🆇 Clear"
         app:cnb_backgroundColor="@color/white"/>
 
-    <item
-        android:id="@+id/sort_asc"
-        android:title="🔢 Sort by date"
-        app:cnb_backgroundColor="@color/white"/>
+
 
 
 

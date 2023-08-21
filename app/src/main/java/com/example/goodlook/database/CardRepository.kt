@@ -7,7 +7,7 @@ class CardRepository(private val cardDao: CardDao) {
 
     val allCards: LiveData<MutableList<CardEntity>> = cardDao.getAll()
 
-    val sortedCards : LiveData<MutableList<CardEntity>> = cardDao.sortByDate()
+
 
     val favorCards : LiveData<MutableList<CardEntity>> = cardDao.favorCards()
 
@@ -29,9 +29,7 @@ class CardRepository(private val cardDao: CardDao) {
         return cardDao.getAll()
     }
 
-    fun sortByDate(): LiveData<MutableList<CardEntity>> {
-        return cardDao.sortByDate()
-    }
+
 
     fun favorCards(): LiveData<MutableList<CardEntity>> {
         return cardDao.favorCards()
