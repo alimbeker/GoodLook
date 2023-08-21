@@ -35,7 +35,7 @@ class KorzinFrag : Fragment() {
 
         //Adapter
         val recyclerView = binding.korzinRecyclerView
-        val itemAdapter = ItemAdapter()
+        val itemAdapter = ItemAdapter(vm)
         recyclerView.adapter = itemAdapter
 
         vm.favorCards.observe(viewLifecycleOwner) {

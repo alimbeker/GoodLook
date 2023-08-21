@@ -2,33 +2,24 @@ package com.example.goodlook.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.goodlook.R
 import com.example.goodlook.database.CardEntity
 import com.example.goodlook.databinding.ListItemBinding
+import com.example.goodlook.viewmodel.FavorFragmentViewModel
 
 
-
-class ItemAdapter:ListAdapter<CardEntity,ItemAdapter.ViewHolder>(CardDiffCallback()){
+class ItemAdapter(private val vm : FavorFragmentViewModel):ListAdapter<CardEntity,ItemAdapter.ViewHolder>(CardDiffCallback()){
 
     class ViewHolder(private val binding: ListItemBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(card:CardEntity)=with(binding){
             listName.text = card.cardName
             //to print
             listTime.text = card.getFormattedDeadline()
-            listImage.setOnClickListener {
-                val favoriteDrawable = if (card.isFavorite) {
-                    R.drawable.checked // Your black favorite icon drawable
-                } else {
-                    R.drawable.check // Your red favorite icon drawable
-                }
-                listImage.setImageResource(favoriteDrawable)
 
-                // Toggle the favorite status of the card
-                card.isFavorite = !card.isFavorite
-            }
 
         }
         companion object{
@@ -44,6 +35,12 @@ class ItemAdapter:ListAdapter<CardEntity,ItemAdapter.ViewHolder>(CardDiffCallbac
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val card = getItem(position)
+        holder.itemView.findViewById<ImageView>(R.id.listImage).setOnClickListener {
+
+                vm.onChecked(card)
+
+        }
         holder.bind(getItem(position))
     }
 }

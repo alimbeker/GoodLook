@@ -47,7 +47,7 @@ class FavorFragment : Fragment() {
 
         //Adapter
         val recyclerView = binding.recyclerView
-        itemAdapter = ItemAdapter()
+        itemAdapter = ItemAdapter(vm)
         recyclerView.adapter = itemAdapter
 
         vm.filteredCards.observe(viewLifecycleOwner) {

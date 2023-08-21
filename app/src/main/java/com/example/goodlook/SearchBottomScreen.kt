@@ -44,7 +44,7 @@ class SearchBottomScreen : BottomSheetDialogFragment() {
 
         //Get list
         val recyclerView = binding.recyclerView
-        itemAdapter = ItemAdapter()
+        itemAdapter = ItemAdapter(vm)
         recyclerView.adapter = itemAdapter
 
         vm.filteredCards.observe(viewLifecycleOwner) {
