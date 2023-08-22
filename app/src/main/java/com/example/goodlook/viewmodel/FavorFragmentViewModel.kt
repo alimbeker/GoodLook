@@ -15,12 +15,6 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
     val allCards : LiveData<MutableList<CardEntity>>
 
 
-
-    val favorCards : LiveData<MutableList<CardEntity>>  = _favorCards
-
-    private val _favorCards : LiveData<MutableList<CardEntity>>
-
-
     val repository : CardRepository
 
 
