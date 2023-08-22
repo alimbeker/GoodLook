@@ -84,7 +84,7 @@ class FavorFragment : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val card = vm.filteredCards.value?.get(position)
-                    vm.onSwipeDelete(card) // Remove from filteredCards
+                vm.onSwipeDelete(card) // Remove from filteredCards
 
             }
         }
