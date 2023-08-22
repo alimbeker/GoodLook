@@ -20,8 +20,7 @@ interface CardDao {
 
 
 
-    @Query("SELECT * FROM cardTable where isFavorite=1")
-    fun favorCards(): LiveData<MutableList<CardEntity>>
+
 
     @Delete
     suspend fun delete(card: CardEntity)

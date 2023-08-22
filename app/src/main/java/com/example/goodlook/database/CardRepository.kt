@@ -12,7 +12,7 @@ class CardRepository(private val cardDao: CardDao) {
 
 
 
-    val favorCards : LiveData<MutableList<CardEntity>> = cardDao.favorCards()
+
 
 
 
@@ -21,7 +21,7 @@ class CardRepository(private val cardDao: CardDao) {
     }
 
     suspend fun delete(card: CardEntity) = withContext(Dispatchers.IO) {
-        delay(1200)
+        delay(500)
         cardDao.delete(card)
     }
 
@@ -35,9 +35,7 @@ class CardRepository(private val cardDao: CardDao) {
 
 
 
-    fun favorCards(): LiveData<MutableList<CardEntity>> {
-        return cardDao.favorCards()
-    }
+
 
     suspend fun deleteByDeadline(currentTime: Long) {
         cardDao.deleteByDeadline(currentTime)

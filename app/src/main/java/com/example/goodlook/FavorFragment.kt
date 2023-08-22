@@ -80,15 +80,24 @@ class FavorFragment : Fragment() {
         }
 
         //Swipe to Delete
-        val swipeToDelete = object :SwipeToDelete(){
+        val swipeToDelete = object : SwipeToDelete() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                val a = vm.filteredCards.value?.get(position)
-                vm.onSwipeDelete(a)
+                val cardToMove = vm.filteredCards.value?.get(position)
+                cardToMove?.let {
+                    vm.onSwipeDelete(it) // Remove from filteredCards
+
+                    // Update favorCards LiveData through the ViewModel
+                    val favorCardsList = vm.favorCards.value?.toMutableList() ?: mutableListOf()
+                    favorCardsList.add(it)
+                    vm.favorCards.value = favorCardsList
+                }
             }
         }
+
         val itemTouchHelper = ItemTouchHelper(swipeToDelete)
         itemTouchHelper.attachToRecyclerView(recyclerView)
+
 
 
 
