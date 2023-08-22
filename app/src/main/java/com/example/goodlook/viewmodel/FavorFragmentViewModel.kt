@@ -82,7 +82,7 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
 
 
     fun onSwipeDelete(card: CardEntity?){
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             if (card != null) {
                 val currentCardsList = _favorCards.value ?: mutableListOf()
                 currentCardsList.add(card)
