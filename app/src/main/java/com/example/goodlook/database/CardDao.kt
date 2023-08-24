@@ -19,9 +19,6 @@ interface CardDao {
     fun getAll(): LiveData<MutableList<CardEntity>>
 
 
-
-
-
     @Delete
     suspend fun delete(card: CardEntity)
 

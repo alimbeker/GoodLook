@@ -62,7 +62,11 @@ class RecomFrag : Fragment(),
             val deadline = c.timeInMillis/1000L
 
             val sysdate = today.timeInMillis/1000L
+            val differenceMillis = deadline - Calendar.getInstance().timeInMillis / 1000L
 
+            val differenceDays = differenceMillis / (60 * 60 * 24)
+            val remainingSeconds = differenceMillis % (60 * 60 * 24)
+            val differenceHours = remainingSeconds / (60 * 60)
 
             try {
                 // some code that might throw an exception
@@ -73,15 +77,43 @@ class RecomFrag : Fragment(),
                     vm.onClickInsert(newCardTask, deadline, sysdate)
 2
                     Toast.makeText(context,"Succesfully added new $newCardTask card.", Toast.LENGTH_SHORT).show()
-                    val myWorkRequest = OneTimeWorkRequestBuilder<TodoWorker>()
-                        .setInitialDelay(15, TimeUnit.SECONDS)
-                        .setInputData(
-                            workDataOf(
-                                "title" to "Todo Created",
-                                "message" to "A new todo has been created!")
-                        )
-                        .build()
-                    WorkManager.getInstance(requireContext()).enqueue(myWorkRequest)
+                    val notificationWorkRequest = when {
+                        differenceDays > 30 -> {
+                            OneTimeWorkRequestBuilder<TodoWorker>()
+                                .setInitialDelay(30, TimeUnit.DAYS)
+                                .setInputData(
+                                    workDataOf(
+                                        "title" to "Monthly Todo Reminder",
+                                        "message" to "Time to review and complete your monthly tasks!"
+                                    )
+                                )
+                                .build()
+                        }
+                        differenceDays > 7 -> {
+                            OneTimeWorkRequestBuilder<TodoWorker>()
+                                .setInitialDelay(7, TimeUnit.DAYS)
+                                .setInputData(
+                                    workDataOf(
+                                        "title" to "Weekly Todo Reminder",
+                                        "message" to "Here's your weekly task reminder!"
+                                    )
+                                )
+                                .build()
+                        }
+                        else -> {
+                            OneTimeWorkRequestBuilder<TodoWorker>()
+                                .setInitialDelay(1, TimeUnit.DAYS)
+                                .setInputData(
+                                    workDataOf(
+                                        "title" to "Daily Todo Reminder",
+                                        "message" to "Don't forget to complete your tasks today!"
+                                    )
+                                )
+                                .build()
+                        }
+                    }
+
+                    WorkManager.getInstance(requireContext()).enqueue(notificationWorkRequest)
                 }
             } catch (e: DateException) {
                 // handle the error gracefully
