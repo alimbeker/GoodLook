@@ -21,16 +21,12 @@ class NotificationHelper(val context : Context) {
         }
 
         val pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
-        val icon = BitmapFactory.decodeResource(context.resources, R.drawable.todochar)
+
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.checklist)
-            .setLargeIcon(icon)
             .setContentTitle(title)
             .setContentText(message)
-            .setStyle(
-                NotificationCompat.BigPictureStyle().bigPicture(icon).bigLargeIcon(null)
 
-            )
             .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .build()
