@@ -42,6 +42,7 @@
         android:drawablePadding="15dp"
         android:hint="Category"
         android:textAlignment="gravity"
+        android:inputType="none"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/saveCard"

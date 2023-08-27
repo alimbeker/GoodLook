@@ -64,6 +64,8 @@ class RecomFrag : Fragment(),
             spinner.adapter = adapter
         }
 
+
+
         binding.saveCard.setOnClickListener {
             val newCardTask = binding.newCardTask.text.toString()
               //Calendar
