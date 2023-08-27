@@ -5,17 +5,18 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-@Entity(tableName = "lists")
-data class Lists(
+@Entity(tableName = "category")
+data class CategoryEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
 
     @ColumnInfo(name="listName")
-    val name: String,
+    val categoryName: String,
 
     @ColumnInfo(name="cardList")
     val cards: List<CardEntity>
     )
 {
+    constructor(categoryName: String,cards: List<CardEntity>):this(0,categoryName,cards)
 
 }
