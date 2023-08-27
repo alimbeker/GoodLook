@@ -24,10 +24,8 @@ data class CardEntity(
     var deadline: Long,
 
     @ColumnInfo(name="sysdate")
-     var sysdate: Long,
+     var sysdate: Long
 
-    @ColumnInfo(name="isFavorite")
-    var isFavorite: Boolean = true
 
 
 )
