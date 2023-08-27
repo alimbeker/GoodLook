@@ -38,9 +38,9 @@ class KorzinFrag : Fragment() {
         val itemAdapter = ItemAdapter(vm)
         recyclerView.adapter = itemAdapter
 
-        vm.favorCards.observe(viewLifecycleOwner) {
-            itemAdapter.submitList(it)
-        }
+//        vm.favorCards.observe(viewLifecycleOwner) {
+//            itemAdapter.submitList(it)
+//        }
 
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         itemAdapter.notifyDataSetChanged()
