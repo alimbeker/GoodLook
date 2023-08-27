@@ -4,4 +4,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="pickadate">Pick a Date</string>
     <string name="pickatime">Pick a Time</string>
+
+    <string-array name="spinner_items">
+        <item>Groceries</item>
+        <item>Work</item>
+        <item>Personal</item>
+        <!-- Add more items as needed -->
+    </string-array>
 </resources>

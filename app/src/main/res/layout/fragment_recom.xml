@@ -52,12 +52,11 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="349dp"
-        android:layout_height="54dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="18dp"
         app:layout_constraintBottom_toTopOf="@+id/saveCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.931"
