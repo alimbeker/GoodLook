@@ -13,6 +13,7 @@ import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.databinding.FragmentFavorBinding
 import com.example.goodlook.databinding.ListItemBinding
 import com.example.goodlook.view.ItemAdapter
+import com.example.goodlook.view.ParentAdapter
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 import com.example.goodlook.viewmodel.VmFactory
 
@@ -23,6 +24,8 @@ class FavorFragment : Fragment() {
     private lateinit var binding: FragmentFavorBinding
     private lateinit var vm: FavorFragmentViewModel
     private lateinit var itemBinding: ListItemBinding
+    private lateinit var parentRecyclerView: RecyclerView
+    private lateinit var parentAdapter: ParentAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,17 +44,25 @@ class FavorFragment : Fragment() {
 
         //Adapter
         val recyclerView = binding.recyclerView
-        itemAdapter = ItemAdapter(vm)
-        recyclerView.adapter = itemAdapter
-
-        vm.filteredCards.observe(viewLifecycleOwner) {
-            itemAdapter.submitList(it)
-        }
+        parentAdapter = ParentAdapter(vm)
+        recyclerView.adapter = parentAdapter
 
         recyclerView.layoutManager = LinearLayoutManager(this.context)
-        itemAdapter.notifyDataSetChanged()
-        recyclerView.setHasFixedSize(true)
 
+
+
+
+
+
+//        parentRecyclerView = binding.recyclerView
+//
+//        // Set up the layout manager for the parent RecyclerView
+//        val layoutManager = LinearLayoutManager(requireContext())
+//        parentRecyclerView.layoutManager = layoutManager
+//
+//        // Initialize the ParentAdapter and set it to the RecyclerView
+//        parentAdapter = ParentAdapter(vm) // Initialize the ParentAdapter with your ViewModel
+//        parentRecyclerView.adapter = parentAdapter
 
         //Menu
         binding.dotMenu.setOnClickListener {

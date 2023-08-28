@@ -3,6 +3,7 @@ package com.example.goodlook.view
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.goodlook.R
 import com.example.goodlook.database.CardEntity
@@ -37,7 +38,15 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel) : RecyclerVie
 
         fun bind(category: CategoryEntity, itemAdapter: ItemAdapter) {
             sectionTitleTextView.text = category.categoryName
-            itemRecyclerView.adapter = itemAdapter
+
+
+            itemRecyclerView.apply {
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                itemRecyclerView.adapter = itemAdapter
+                itemAdapter.notifyDataSetChanged()
+            }
+
+
         }
     }
 }
