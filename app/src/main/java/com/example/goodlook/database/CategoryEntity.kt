@@ -1,5 +1,6 @@
 package com.example.goodlook.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -14,7 +15,7 @@ data class CategoryEntity(
     val categoryName: String,
 
     @ColumnInfo(name = "cardList")
-    val cardList : List<CardEntity>
+    val cardList : LiveData<MutableList<CardEntity>>
 
 
     )
@@ -24,6 +25,6 @@ data class CategoryEntity(
     override fun toString(): String {
         return categoryName
     }
-    constructor(categoryName: String, cardList: List<CardEntity>):this(0,categoryName,cardList)
+    constructor(categoryName: String, cardList: LiveData<MutableList<CardEntity>>):this(0,categoryName,cardList)
 
 }

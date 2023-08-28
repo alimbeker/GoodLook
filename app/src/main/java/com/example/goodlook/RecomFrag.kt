@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.workDataOf
@@ -27,7 +26,7 @@ class RecomFrag : Fragment(),
     DateClickListener, TimeClickListener,DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     private lateinit var binding: FragmentRecomBinding
-
+    private lateinit var vm: FavorFragmentViewModel
 
       var year = 0
       var month = 0
@@ -50,7 +49,7 @@ class RecomFrag : Fragment(),
         val application = requireNotNull(this.activity).application
         val dataSource = CardDatabase.getInstance(application)!!.cardDao()
         val vmFactory = VmFactory(dataSource,application)
-        val vm = ViewModelProvider(this,vmFactory).get(FavorFragmentViewModel::class.java)
+        vm = ViewModelProvider(this,vmFactory).get(FavorFragmentViewModel::class.java)
 
 
         //Spinner
@@ -174,6 +173,18 @@ class RecomFrag : Fragment(),
 
 
 
+    private fun getCategoryObjects(): ArrayList<CategoryEntity> {
+        val customObjects = ArrayList<CategoryEntity>()
+        customObjects.apply {
+            add(CategoryEntity(0,"Groceries", vm.groceries))
+            add(CategoryEntity(1,"Work", vm.work))
+            add(CategoryEntity(2,"Personal", vm.personal))
+
+        }
+        return customObjects
+    }
+
+
     //To catch the error
     class DateException(message: String) : Exception(message)
 
@@ -237,15 +248,5 @@ class RecomFrag : Fragment(),
 }
 
 
-private fun getCategoryObjects(): ArrayList<CategoryEntity> {
-    val customObjects = ArrayList<CategoryEntity>()
-    customObjects.apply {
-        add(CategoryEntity("Groceries", ))
-        add(CategoryEntity( "Work"))
-        add(CategoryEntity("Personal", }))
-
-    }
-    return customObjects
-}
 
 
