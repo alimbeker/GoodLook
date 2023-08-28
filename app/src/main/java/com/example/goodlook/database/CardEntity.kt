@@ -1,9 +1,7 @@
 package com.example.goodlook.database
 
 import android.text.format.DateFormat
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import java.time.Duration
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -11,7 +9,12 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 
-@Entity(tableName = "cardTable")
+@Entity(tableName = "cardTable",
+    foreignKeys = [
+        ForeignKey(entity = CategoryEntity::class, parentColumns = ["category"], childColumns = ["cardCategory"])
+    ],
+    indices = [Index("cardCategory")]
+)
 data class CardEntity(
 
     @PrimaryKey(autoGenerate = true)
@@ -24,7 +27,11 @@ data class CardEntity(
     var deadline: Long,
 
     @ColumnInfo(name="sysdate")
-     var sysdate: Long
+     var sysdate: Long,
+
+    @ColumnInfo(name="category")
+    val cardCategory: String
+
 
 
 
@@ -53,7 +60,7 @@ data class CardEntity(
 
     // for add card like this
 
-    constructor(cardName:String,deadline: Long, sysdate: Long):this(0,cardName,deadline,sysdate)
+    constructor(cardName:String,deadline: Long, sysdate: Long,cardCategory: String):this(0,cardName,deadline,sysdate,cardCategory)
 }
 
 

@@ -17,6 +17,7 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel) : RecyclerVie
     private val sections: List<CategoryEntity> = mutableListOf()
     private val itemAdapter: ItemAdapter = ItemAdapter(viewModel)
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ParentAdapterBinding.inflate(inflater, parent, false)
