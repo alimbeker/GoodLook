@@ -9,12 +9,7 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 
-@Entity(tableName = "cardTable",
-    foreignKeys = [
-        ForeignKey(entity = CategoryEntity::class, parentColumns = ["category"], childColumns = ["cardCategory"])
-    ],
-    indices = [Index("cardCategory")]
-)
+@Entity(tableName = "cardTable")
 data class CardEntity(
 
     @PrimaryKey(autoGenerate = true)

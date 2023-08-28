@@ -79,6 +79,7 @@ class RecomFrag : Fragment(),
 
         binding.saveCard.setOnClickListener {
             val newCardTask = binding.newCardTask.text.toString()
+            val cardCategory = binding.category.text.toString()
               //Calendar
             val c = Calendar.getInstance()
             c.set(year,month,day,hour,minute)
@@ -100,7 +101,7 @@ class RecomFrag : Fragment(),
                     throw DateException("Something went wrong with date")
 
                 } else {
-                    vm.onClickInsert(newCardTask, deadline, sysdate)
+                    vm.onClickInsert(newCardTask, deadline, sysdate,cardCategory)
 2
                     Toast.makeText(context,"Succesfully added new $newCardTask card.", Toast.LENGTH_SHORT).show()
                     val notificationWorkRequest = when {
