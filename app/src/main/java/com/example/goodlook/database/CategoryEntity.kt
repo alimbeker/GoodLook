@@ -11,7 +11,10 @@ data class CategoryEntity(
     val id: Int,
 
     @ColumnInfo(name="listName")
-    val categoryName: String
+    val categoryName: String,
+
+    @ColumnInfo(name = "cardList")
+    val cardList : List<CardEntity>
 
 
     )
@@ -21,6 +24,6 @@ data class CategoryEntity(
     override fun toString(): String {
         return categoryName
     }
-    constructor(categoryName: String):this(0,categoryName)
+    constructor(categoryName: String, cardList: List<CardEntity>):this(0,categoryName,cardList)
 
 }

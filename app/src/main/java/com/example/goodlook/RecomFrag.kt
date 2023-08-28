@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.workDataOf
@@ -239,9 +240,9 @@ class RecomFrag : Fragment(),
 private fun getCategoryObjects(): ArrayList<CategoryEntity> {
     val customObjects = ArrayList<CategoryEntity>()
     customObjects.apply {
-        add(CategoryEntity(1, "Groceries"))
-        add(CategoryEntity(2, "Work"))
-        add(CategoryEntity(3, "Personal"))
+        add(CategoryEntity("Groceries", ))
+        add(CategoryEntity( "Work"))
+        add(CategoryEntity("Personal", }))
 
     }
     return customObjects

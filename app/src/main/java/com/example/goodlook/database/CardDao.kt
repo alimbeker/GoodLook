@@ -18,6 +18,15 @@ interface CardDao {
     @Query("Select * from cardTable")
     fun getAll(): LiveData<MutableList<CardEntity>>
 
+    @Query("SELECT * FROM cardTable WHERE category = 'Groceries'")
+    fun getGroceries(): LiveData<MutableList<CardEntity>>
+
+
+    @Query("SELECT * FROM cardTable WHERE category = 'Personal'")
+    fun getPersonal(): LiveData<MutableList<CardEntity>>
+
+    @Query("SELECT * FROM cardTable WHERE category = 'Work'")
+    fun getWork(): LiveData<MutableList<CardEntity>>
 
     @Delete
     suspend fun delete(card: CardEntity)
