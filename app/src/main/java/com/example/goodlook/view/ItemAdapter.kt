@@ -12,7 +12,7 @@ import com.example.goodlook.databinding.ListItemBinding
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 
 
-class ItemAdapter(private val vm : FavorFragmentViewModel):ListAdapter<CardEntity,ItemAdapter.ViewHolder>(CardDiffCallback()){
+open class ItemAdapter(private val vm : FavorFragmentViewModel):ListAdapter<CardEntity,ItemAdapter.ViewHolder>(CardDiffCallback()){
 
     class ViewHolder(private val binding: ListItemBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(card:CardEntity)=with(binding){
