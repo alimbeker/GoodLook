@@ -11,12 +11,16 @@ data class CategoryEntity(
     val id: Int,
 
     @ColumnInfo(name="listName")
-    val categoryName: String,
+    val categoryName: String
 
-    @ColumnInfo(name="cardList")
-    val cards: List<CardEntity>
+
     )
+
 {
-    constructor(categoryName: String,cards: List<CardEntity>):this(0,categoryName,cards)
+
+    override fun toString(): String {
+        return categoryName
+    }
+    constructor(categoryName: String):this(0,categoryName)
 
 }

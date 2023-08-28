@@ -14,6 +14,7 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.workDataOf
 import com.example.goodlook.database.CardDatabase
+import com.example.goodlook.database.CategoryEntity
 import com.example.goodlook.databinding.FragmentRecomBinding
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 import com.example.goodlook.viewmodel.VmFactory
@@ -50,20 +51,30 @@ class RecomFrag : Fragment(),
         val vmFactory = VmFactory(dataSource,application)
         val vm = ViewModelProvider(this,vmFactory).get(FavorFragmentViewModel::class.java)
 
-        // Populate the Spinner with items
-        val spinner: Spinner = binding.spinner
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter.createFromResource(
-            requireContext(),
-            R.array.spinner_items,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            spinner.adapter = adapter
-        }
 
+        //Spinner
+        val spinner = binding.spinner
+
+        val spinnerObj = getCategoryObjects()
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, spinnerObj)
+
+        spinner.adapter = adapter
+
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                // You can define your actions as you want
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+
+                val selectedObject = spinner.selectedItem as CategoryEntity
+
+                binding.category.text = selectedObject.categoryName
+
+            }
+        }
 
 
         binding.saveCard.setOnClickListener {
@@ -221,6 +232,18 @@ class RecomFrag : Fragment(),
     companion object{
         @JvmStatic val TAG = RecomFrag::class.java.simpleName
     }
+}
+
+
+private fun getCategoryObjects(): ArrayList<CategoryEntity> {
+    val customObjects = ArrayList<CategoryEntity>()
+    customObjects.apply {
+        add(CategoryEntity(1, "Groceries"))
+        add(CategoryEntity(2, "Work"))
+        add(CategoryEntity(3, "Personal"))
+
+    }
+    return customObjects
 }
 
 
