@@ -1,5 +1,6 @@
 package com.example.goodlook.view
 
+import android.content.ClipData.Item
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -11,12 +12,13 @@ import com.example.goodlook.database.CategoryEntity
 import com.example.goodlook.databinding.ListItemBinding
 import com.example.goodlook.databinding.ParentAdapterBinding
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
+import java.util.ArrayList
 
 class ParentAdapter(private val viewModel: FavorFragmentViewModel
 ) : RecyclerView.Adapter<ParentAdapter.ViewHolder>() {
 
-    private val sections: List<CategoryEntity> = mutableListOf()
-    private val itemAdapterMap: MutableMap<String, ItemAdapter> = mutableMapOf()
+    private val sections: List<CategoryEntity> = getCategoryObjects()
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,13 +29,15 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val section = sections[position]
-        val itemAdapter = itemAdapterMap.getOrPut(section.categoryName) { ItemAdapter(viewModel) }
+        val itemAdapter = ItemAdapter(viewModel)
         holder.bind(section, itemAdapter)
     }
 
     override fun getItemCount(): Int {
         return sections.size
     }
+
+
 
     inner class ViewHolder(private val binding: ParentAdapterBinding) : RecyclerView.ViewHolder(binding.root) {
         private val sectionTitleTextView = binding.contentTitle
@@ -42,13 +46,33 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel
         fun bind(category: CategoryEntity, itemAdapter: ItemAdapter) {
             sectionTitleTextView.text = category.categoryName
 
+            // Observe changes in favorCards LiveData and update itemAdapter
+            viewModel.filteredCards.observeForever { favorCards ->
+                // Filter favorCards based on the category or any other logic
+                val filteredFavorCards = favorCards.filter { it.cardCategory == category.categoryName }
+                itemAdapter.submitList(filteredFavorCards)
+            }
+
             itemRecyclerView.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = itemAdapter
             }
-
-            itemAdapter.submitList(viewModel.getCardListForCategory(category.categoryName))
-
         }
     }
+
+
+    private fun getCategoryObjects(): ArrayList<CategoryEntity> {
+        val customObjects = ArrayList<CategoryEntity>()
+        customObjects.apply {
+            add(CategoryEntity(0,"Groceries", viewModel.groceries))
+            add(CategoryEntity(1,"Work", viewModel.work))
+            add(CategoryEntity(2,"Personal", viewModel.personal))
+
+        }
+        return customObjects
+    }
+
+
 }
+
+
