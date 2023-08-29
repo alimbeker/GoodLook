@@ -20,11 +20,9 @@ import com.example.goodlook.viewmodel.VmFactory
 
 
 class FavorFragment : Fragment() {
-    private lateinit var itemAdapter: ItemAdapter
     private lateinit var binding: FragmentFavorBinding
     private lateinit var vm: FavorFragmentViewModel
     private lateinit var itemBinding: ListItemBinding
-    private lateinit var parentRecyclerView: RecyclerView
     private lateinit var parentAdapter: ParentAdapter
 
     override fun onCreateView(
@@ -44,6 +42,7 @@ class FavorFragment : Fragment() {
 
         //Adapter
         val recyclerView = binding.recyclerView
+
         parentAdapter = ParentAdapter(vm)
         recyclerView.adapter = parentAdapter
 

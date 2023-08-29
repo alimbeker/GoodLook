@@ -12,10 +12,11 @@ import com.example.goodlook.databinding.ListItemBinding
 import com.example.goodlook.databinding.ParentAdapterBinding
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 
-class ParentAdapter(private val viewModel: FavorFragmentViewModel) : RecyclerView.Adapter<ParentAdapter.ViewHolder>() {
+class ParentAdapter(private val viewModel: FavorFragmentViewModel
+) : RecyclerView.Adapter<ParentAdapter.ViewHolder>() {
 
     private val sections: List<CategoryEntity> = mutableListOf()
-    private val itemAdapter: ItemAdapter = ItemAdapter(viewModel)
+    private val itemAdapterMap: MutableMap<String, ItemAdapter> = mutableMapOf()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,6 +27,7 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel) : RecyclerVie
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val section = sections[position]
+        val itemAdapter = itemAdapterMap.getOrPut(section.categoryName) { ItemAdapter(viewModel) }
         holder.bind(section, itemAdapter)
     }
 
@@ -40,13 +42,12 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel) : RecyclerVie
         fun bind(category: CategoryEntity, itemAdapter: ItemAdapter) {
             sectionTitleTextView.text = category.categoryName
 
-
             itemRecyclerView.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                itemRecyclerView.adapter = itemAdapter
-                itemAdapter.notifyDataSetChanged()
+                adapter = itemAdapter
             }
 
+            itemAdapter.submitList(viewModel.getCardListForCategory(category.categoryName))
 
         }
     }
