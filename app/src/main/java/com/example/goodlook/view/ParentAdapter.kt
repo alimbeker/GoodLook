@@ -47,16 +47,18 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel
             sectionTitleTextView.text = category.categoryName
 
             // Observe changes in favorCards LiveData and update itemAdapter
-            viewModel.filteredCards.observeForever { favorCards ->
+            viewModel.filteredCards.observeForever { allCards ->
                 // Filter favorCards based on the category or any other logic
-                val filteredFavorCards = favorCards.filter { it.cardCategory == category.categoryName }
+                val filteredFavorCards = allCards.filter { it.cardCategory == category.categoryName }
                 itemAdapter.submitList(filteredFavorCards)
             }
 
             itemRecyclerView.apply {
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                layoutManager = LinearLayoutManager(this.context)
                 adapter = itemAdapter
             }
+
+
         }
     }
 
