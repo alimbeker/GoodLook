@@ -38,8 +38,10 @@ class KorzinFrag : Fragment() {
         val itemAdapter = ItemAdapter(vm)
         recyclerView.adapter = itemAdapter
 
-//        vm.favorCards.observe(viewLifecycleOwner) {
-//            itemAdapter.submitList(it)
+//        vm.filteredCards.observeForever {
+//            // Filter favorCards based on the category or any other logic
+//            val filteredFavorCards = it.filter { it.cardCategory == true }
+//            itemAdapter.submitList(filteredFavorCards)
 //        }
 
         recyclerView.layoutManager = LinearLayoutManager(this.context)
