@@ -34,14 +34,7 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
     }
 
 
-    fun getCardListForCategory(categoryName: String): List<CardEntity> {
-        return when (categoryName) {
-            "Groceries" -> groceries.value ?: emptyList()
-            "Personal" -> personal.value ?: emptyList()
-            "Work" -> work.value ?: emptyList()
-            else -> emptyList()
-        }
-    }
+
 
     private val cardsLiveData= repository.getAll()
     private val text = MutableLiveData("")

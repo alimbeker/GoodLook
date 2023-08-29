@@ -14,8 +14,7 @@ data class CategoryEntity(
     @ColumnInfo(name="listName")
     val categoryName: String,
 
-    @ColumnInfo(name = "cardList")
-    val cardList : LiveData<MutableList<CardEntity>>
+
 
 
     )
@@ -25,6 +24,6 @@ data class CategoryEntity(
     override fun toString(): String {
         return categoryName
     }
-    constructor(categoryName: String, cardList: LiveData<MutableList<CardEntity>>):this(0,categoryName,cardList)
+    constructor(categoryName: String):this(0,categoryName)
 
 }
