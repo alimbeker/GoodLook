@@ -10,11 +10,7 @@ class CardRepository(private val cardDao: CardDao) {
 
     val allCards: LiveData<MutableList<CardEntity>> = cardDao.getAll()
 
-    val groceries : LiveData<MutableList<CardEntity>> = cardDao.getGroceries()
 
-    val work : LiveData<MutableList<CardEntity>> = cardDao.getWork()
-
-    val personal : LiveData<MutableList<CardEntity>> = cardDao.getPersonal()
 
 
 
