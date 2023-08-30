@@ -1,4 +1,4 @@
-package com.example.goodlook.database
+package com.example.goodlook.databasecategory
 
 import androidx.lifecycle.LiveData
 import androidx.room.ColumnInfo

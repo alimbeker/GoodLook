@@ -14,7 +14,7 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.workDataOf
 import com.example.goodlook.database.CardDatabase
-import com.example.goodlook.database.CategoryEntity
+import com.example.goodlook.databasecategory.CategoryEntity
 import com.example.goodlook.databinding.FragmentRecomBinding
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 import com.example.goodlook.viewmodel.VmFactory
