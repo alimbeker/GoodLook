@@ -1,7 +1,11 @@
 package com.example.goodlook
 
+import android.app.AlarmManager
 import android.app.DatePickerDialog
+import android.app.PendingIntent
 import android.app.TimePickerDialog
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.format.DateFormat
 import androidx.fragment.app.Fragment
@@ -24,7 +28,8 @@ import java.util.concurrent.TimeUnit
 
 class RecomFrag : Fragment(),
     DateClickListener, TimeClickListener,DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
-
+    private lateinit var alarmIntent: PendingIntent
+    private var alarmManager: AlarmManager? = null
     private lateinit var binding: FragmentRecomBinding
     private lateinit var vm: FavorFragmentViewModel
 
@@ -161,6 +166,21 @@ class RecomFrag : Fragment(),
     //Give view to our methods
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        alarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+        // Observe the LiveData in your Activity or Fragment
+        vm.allCards.observe(viewLifecycleOwner, { cardList ->
+            if (cardList != null) {
+                for (card in cardList) {
+                    alarmIntent = Intent(context, AlarmReceiver::class.java).let { intent ->
+                        PendingIntent.getBroadcast(context, card.id, intent, PendingIntent.FLAG_IMMUTABLE)
+                    }
+                }
+            }
+        })
+
+
+
 
         binding.txtDate.setOnClickListener {
                 view -> onDateClick(view)
