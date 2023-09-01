@@ -111,43 +111,15 @@ class RecomFrag : Fragment(),
                     vm.onClickInsert(newCardTask, deadline, sysdate,cardCategory)
 2
                     Toast.makeText(context,"Succesfully added new $newCardTask card.", Toast.LENGTH_SHORT).show()
-                    val notificationWorkRequest = when {
-                        differenceDays > 30 -> {
-                            OneTimeWorkRequestBuilder<TodoWorker>()
-                                .setInitialDelay(30, TimeUnit.DAYS)
-                                .setInputData(
-                                    workDataOf(
-                                        "title" to "Monthly Todo Reminder",
-                                        "message" to "Time to review and complete your monthly tasks!"
-                                    )
-                                )
-                                .build()
-                        }
-                        differenceDays > 7 -> {
-                            OneTimeWorkRequestBuilder<TodoWorker>()
-                                .setInitialDelay(7, TimeUnit.DAYS)
-                                .setInputData(
-                                    workDataOf(
-                                        "title" to "Weekly Todo Reminder",
-                                        "message" to "Here's your weekly task reminder!"
-                                    )
-                                )
-                                .build()
-                        }
-                        else -> {
-                            OneTimeWorkRequestBuilder<TodoWorker>()
-                                .setInitialDelay(1, TimeUnit.DAYS)
-                                .setInputData(
-                                    workDataOf(
-                                        "title" to "Daily Todo Reminder",
-                                        "message" to "Don't forget to complete your tasks today!"
-                                    )
-                                )
-                                .build()
-                        }
-                    }
-
-                    WorkManager.getInstance(requireContext()).enqueue(notificationWorkRequest)
+                    val myWorkRequest = OneTimeWorkRequestBuilder<TodoWorker>()
+                        .setInitialDelay(15, TimeUnit.SECONDS)
+                        .setInputData(
+                            workDataOf(
+                                "title" to "Todo Created",
+                                "message" to "A new todo has been created!")
+                        )
+                        .build()
+                    WorkManager.getInstance(requireContext()).enqueue(myWorkRequest)
                 }
             } catch (e: DateException) {
                 // handle the error gracefully
