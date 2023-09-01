@@ -30,6 +30,7 @@ class RecomFrag : Fragment(),
     DateClickListener, TimeClickListener,DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     private lateinit var alarmIntent: PendingIntent
     private var alarmManager: AlarmManager? = null
+    private lateinit var alarmTimeMillis : Calendar
     private lateinit var binding: FragmentRecomBinding
     private lateinit var vm: FavorFragmentViewModel
 
@@ -184,6 +185,10 @@ class RecomFrag : Fragment(),
 
         binding.txtDate.setOnClickListener {
                 view -> onDateClick(view)
+                alarmManager?.setExact(
+                    AlarmManager.RTC_WAKEUP,
+
+                )
         }
         binding.txtTime.setOnClickListener {
                 view -> onTimeClick(view)
@@ -231,6 +236,8 @@ class RecomFrag : Fragment(),
         val c = Calendar.getInstance()
         val hour = c.get(Calendar.HOUR_OF_DAY)
         val minute = c.get(Calendar.MINUTE)
+
+        alarmTimeMillis = calendar.timeInMillis
 
         TimePickerDialog(activity,this,hour,minute,DateFormat.is24HourFormat(activity)).show()
 
