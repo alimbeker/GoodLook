@@ -96,11 +96,8 @@ class RecomFrag : Fragment(),
             val deadline = c.timeInMillis/1000L
 
             val sysdate = today.timeInMillis/1000L
-            val differenceMillis = deadline - Calendar.getInstance().timeInMillis / 1000L
 
-            val differenceDays = differenceMillis / (60 * 60 * 24)
-            val remainingSeconds = differenceMillis % (60 * 60 * 24)
-            val differenceHours = remainingSeconds / (60 * 60)
+
 
             try {
                 // some code that might throw an exception
@@ -108,18 +105,18 @@ class RecomFrag : Fragment(),
                     throw DateException("Something went wrong with date")
 
                 } else {
-                    vm.onClickInsert(newCardTask, deadline, sysdate,cardCategory)
-2
+                    vm.onClickInsert(newCardTask, deadline,cardCategory)
+
                     Toast.makeText(context,"Succesfully added new $newCardTask card.", Toast.LENGTH_SHORT).show()
-                    val myWorkRequest = OneTimeWorkRequestBuilder<TodoWorker>()
-                        .setInitialDelay(15, TimeUnit.SECONDS)
-                        .setInputData(
-                            workDataOf(
-                                "title" to "Todo Created",
-                                "message" to "A new todo has been created!")
-                        )
-                        .build()
-                    WorkManager.getInstance(requireContext()).enqueue(myWorkRequest)
+//                    val myWorkRequest = OneTimeWorkRequestBuilder<TodoWorker>()
+//                        .setInitialDelay(15, TimeUnit.SECONDS)
+//                        .setInputData(
+//                            workDataOf(
+//                                "title" to "Todo Created",
+//                                "message" to "A new todo has been created!")
+//                        )
+//                        .build()
+//                    WorkManager.getInstance(requireContext()).enqueue(myWorkRequest)
                 }
             } catch (e: DateException) {
                 // handle the error gracefully
@@ -143,27 +140,27 @@ class RecomFrag : Fragment(),
         alarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         // Observe the LiveData in your Activity or Fragment
-        vm.allCards.observe(viewLifecycleOwner, { cardList ->
-            if (cardList != null) {
-                for (card in cardList) {
-                    alarmIntent = Intent(context, AlarmReceiver::class.java).let { intent ->
-                        PendingIntent.getBroadcast(context, card.id, intent, PendingIntent.FLAG_IMMUTABLE)
-                    }
-                }
-            }
-        })
-
+//        vm.filteredCards.observe(viewLifecycleOwner, { cardList ->
+//            if (cardList != null) {
+//                for (card in cardList) {
+//                    alarmIntent = Intent(context, AlarmReceiver::class.java).let { intent ->
+//                        PendingIntent.getBroadcast(context, card.id, intent, PendingIntent.FLAG_IMMUTABLE)
+//                    }
+//                }
+//            }
+//        })
+//
 
 
 
         binding.txtDate.setOnClickListener {
                 view -> onDateClick(view)
-                alarmManager?.setInexactRepeating(
-                AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_HALF_HOUR,
-                AlarmManager.INTERVAL_HALF_HOUR,
-                alarmIntent
-                )
+//                alarmManager?.setInexactRepeating(
+//                AlarmManager.ELAPSED_REALTIME_WAKEUP,
+//                SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_HALF_HOUR,
+//                AlarmManager.INTERVAL_HALF_HOUR,
+//                alarmIntent
+//                )
         }
         binding.txtTime.setOnClickListener {
                 view -> onTimeClick(view)
@@ -245,6 +242,9 @@ class RecomFrag : Fragment(),
     }
 
     companion object{
+        const val DAILY_ALARM_REQUEST_CODE = 1001
+        const val WEEKLY_ALARM_REQUEST_CODE = 1002
+        const val MONTHLY_ALARM_REQUEST_CODE = 1003
         @JvmStatic val TAG = RecomFrag::class.java.simpleName
     }
 }
