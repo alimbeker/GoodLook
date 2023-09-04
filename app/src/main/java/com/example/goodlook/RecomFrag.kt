@@ -86,9 +86,7 @@ class RecomFrag : Fragment(),
         alarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
 
-        alarmIntent = Intent(context, AlarmReceiver::class.java).let { intent ->
-                        PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
-                    }
+
         binding.saveCard.setOnClickListener {
             val newCardTask = binding.newCardTask.text.toString()
             val cardCategory = binding.category.text.toString()
@@ -111,10 +109,15 @@ class RecomFrag : Fragment(),
                     throw DateException("Something went wrong with date")
 
                 } else {
-
-                    vm.onClickInsert(newCardTask, deadline,cardCategory)
+                    val requestCode = generateUniqueRequestId()
+                    vm.onClickInsert(newCardTask, deadline,cardCategory,requestCode)
 
                     Toast.makeText(context,"Succesfully added new $newCardTask card.", Toast.LENGTH_SHORT).show()
+
+                    alarmIntent = Intent(context, AlarmReceiver::class.java).let { intent ->
+                        PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_IMMUTABLE)
+                    }
+
                     alarmManager?.setInexactRepeating(
                     AlarmManager.ELAPSED_REALTIME_WAKEUP,
                         SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_HALF_HOUR,
@@ -122,15 +125,7 @@ class RecomFrag : Fragment(),
                     alarmIntent
                     )
 
-//                    val myWorkRequest = OneTimeWorkRequestBuilder<TodoWorker>()
-//                        .setInitialDelay(15, TimeUnit.SECONDS)
-//                        .setInputData(
-//                            workDataOf(
-//                                "title" to "Todo Created",
-//                                "message" to "A new todo has been created!")
-//                        )
-//                        .build()
-//                    WorkManager.getInstance(requireContext()).enqueue(myWorkRequest)
+
                 }
             } catch (e: DateException) {
                 // handle the error gracefully
@@ -201,6 +196,22 @@ class RecomFrag : Fragment(),
 
 
     }
+
+
+    private val usedRequestIds = mutableSetOf<Int>()
+
+    fun generateUniqueRequestId(): Int {
+        var requestId: Int
+        do {
+            requestId = (0..Int.MAX_VALUE).random() // Generate a random request ID
+        } while (usedRequestIds.contains(requestId))
+
+        // Add the generated ID to the set of used IDs
+        usedRequestIds.add(requestId)
+
+        return requestId
+    }
+
 
     override fun onTimeClick(v: View) {
 

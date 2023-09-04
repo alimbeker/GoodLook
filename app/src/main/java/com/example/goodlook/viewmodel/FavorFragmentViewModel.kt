@@ -50,9 +50,9 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
     }
 
 
-    fun onClickInsert(cardName:String,deadline:Long,cardCategory:String) {
+    fun onClickInsert(cardName:String,deadline:Long,cardCategory:String, requestCode: Int) {
         viewModelScope.launch {
-            insert(cardName,deadline,cardCategory)
+            insert(cardName,deadline,cardCategory,requestCode)
         }
     }
 
@@ -75,9 +75,9 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
 
 
 
-    suspend fun insert(cardName:String,deadline:Long, cardCategory: String) {
+    suspend fun insert(cardName:String,deadline:Long, cardCategory: String, requestCode: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.insert(CardEntity(cardName,deadline,cardCategory))
+            repository.insert(CardEntity(cardName,deadline,cardCategory,requestCode))
         }
     }
 

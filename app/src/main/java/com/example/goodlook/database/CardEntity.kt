@@ -22,7 +22,10 @@ data class CardEntity(
     var deadline: Long,
 
     @ColumnInfo(name="category")
-    val cardCategory: String
+    val cardCategory: String,
+
+    @ColumnInfo(name="requestCode")
+    val requestCode: Int
 
 
 
@@ -52,7 +55,7 @@ data class CardEntity(
 
     // for add card like this
 
-    constructor(cardName:String,deadline: Long, cardCategory: String):this(0,cardName,deadline,cardCategory)
+    constructor(cardName:String,deadline: Long, cardCategory: String,requestCode: Int):this(0,cardName,deadline,cardCategory, requestCode)
 }
 
 
