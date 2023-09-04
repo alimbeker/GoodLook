@@ -1,7 +1,12 @@
 package com.example.goodlook.viewmodel
 
+import android.app.AlarmManager
 import android.app.Application
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.*
+import com.example.goodlook.AlarmReceiver
 import com.example.goodlook.database.CardDao
 import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.database.CardEntity
@@ -88,10 +93,28 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
         viewModelScope.launch(Dispatchers.IO) {
 
             if (card != null) {
+                cancelNotificationForCard(card)
                 repository.delete(card)
 
             }
         }
+    }
+
+    private fun cancelNotificationForCard(card: CardEntity) {
+        // Create an intent for the cancel operation
+        val cancelIntent = Intent(getApplication<Application>().applicationContext, AlarmReceiver::class.java)
+
+        // Create a PendingIntent for the cancel operation with the card's requestCode
+        val cancelPendingIntent = PendingIntent.getBroadcast(
+            getApplication<Application>().applicationContext,
+            card.requestCode,
+            cancelIntent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
+        // Cancel the alarm/notification associated with this card
+        val alarmManager = getApplication<Application>().applicationContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.cancel(cancelPendingIntent)
     }
 
     //DeleteByDeadline
