@@ -6,6 +6,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.PopupMenu
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -63,6 +64,11 @@ class FavorFragment : Fragment() {
 //        parentAdapter = ParentAdapter(vm) // Initialize the ParentAdapter with your ViewModel
 //        parentRecyclerView.adapter = parentAdapter
 
+
+        //Dialog ADDLIST
+        binding.addlist.setOnClickListener {
+            showAddCardFragment()
+        }
         //Menu
         binding.dotMenu.setOnClickListener {
             showMenu()
@@ -92,6 +98,10 @@ class FavorFragment : Fragment() {
     }
 
 
+    private fun showAddCardFragment(){
+        val dialogFragment = AddListFragment()
+        dialogFragment.show(childFragmentManager,AddListFragment.TAG)
+    }
     //BottomSheet
     private fun showBottomSheet() {
             val bottomSheetFragment = SearchBottomScreen()
