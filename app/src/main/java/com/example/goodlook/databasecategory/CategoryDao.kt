@@ -10,7 +10,7 @@ import androidx.room.Query
 interface CategoryDao {
 
     @Query("SELECT * FROM category")
-    fun getAllCategories(): LiveData<List<CategoryEntity>>
+    fun getAllCategories(): LiveData<MutableList<CategoryEntity>>
 
     @Insert
     suspend fun insertCategory(category: CategoryEntity)
