@@ -9,22 +9,37 @@
         android:orientation="vertical">
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="35dp"
-            android:layout_marginBottom="225dp">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="225dp"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="0dp">
 
-        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
-        <ImageView
+    <ImageView
+        android:id="@+id/addlist"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:clickable="true"
+        android:padding="15dp"
+        android:src="@drawable/ic_baseline_add_box_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
             android:id="@+id/dotMenu"
-            android:layout_width="61dp"
-            android:layout_height="55dp"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             android:clickable="true"
-            android:padding="12dp"
+            android:padding="15dp"
             android:src="@drawable/ic_baseline_align_horizontal_right_24"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
