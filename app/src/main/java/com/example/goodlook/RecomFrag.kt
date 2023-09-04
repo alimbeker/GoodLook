@@ -94,12 +94,11 @@ class RecomFrag : Fragment(),
             val c = Calendar.getInstance()
             c.set(year,month,day,hour,minute)
 
-            val today = Calendar.getInstance()
-
             val deadline = c.timeInMillis/1000L
 
-            val sysdate = today.timeInMillis/1000L
+            val sysdate = Calendar.getInstance().timeInMillis/1000L
 
+            val diffDays = (deadline - sysdate) / (60 * 60 * 24)
 
 
 
@@ -119,11 +118,18 @@ class RecomFrag : Fragment(),
                         PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_IMMUTABLE)
                     }
 
+
+                    val interval: Long = when {
+                        diffDays > 30 -> AlarmManager.INTERVAL_DAY * 30 // Monthly
+                        diffDays > 7 -> AlarmManager.INTERVAL_DAY * 7   // Weekly
+                        else -> AlarmManager.INTERVAL_DAY               // Daily
+                    }
+
                     alarmManager?.setInexactRepeating(
                     AlarmManager.ELAPSED_REALTIME_WAKEUP,
                         SystemClock.elapsedRealtime(),
-                        60*1000,
-                    alarmIntent
+                        interval,
+                        alarmIntent
                     )
 
 

@@ -105,9 +105,8 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
         viewModelScope.launch(Dispatchers.IO) {
 
             if (card != null) {
-                cancelNotificationForCard(card)
-
                 repository.delete(card)
+                cancelNotificationForCard(card)
                 usedRequestIds.remove(card.requestCode)
             }
 
