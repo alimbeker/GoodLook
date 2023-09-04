@@ -115,13 +115,14 @@ class RecomFrag : Fragment(),
                     Toast.makeText(context,"Succesfully added new $newCardTask card.", Toast.LENGTH_SHORT).show()
 
                     alarmIntent = Intent(context, AlarmReceiver::class.java).let { intent ->
+                        intent.putExtra("ToDo", "$newCardTask")
                         PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_IMMUTABLE)
                     }
 
                     alarmManager?.setInexactRepeating(
                     AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                        SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_HALF_HOUR,
-                    AlarmManager.INTERVAL_HALF_HOUR,
+                        SystemClock.elapsedRealtime(),
+                        60*1000,
                     alarmIntent
                     )
 
@@ -251,9 +252,7 @@ class RecomFrag : Fragment(),
     }
 
     companion object{
-        const val DAILY_ALARM_REQUEST_CODE = 1001
-        const val WEEKLY_ALARM_REQUEST_CODE = 1002
-        const val MONTHLY_ALARM_REQUEST_CODE = 1003
+
         @JvmStatic val TAG = RecomFrag::class.java.simpleName
     }
 }
