@@ -5,24 +5,31 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [CategoryEntity::class], version = 1)
-abstract class AppDatabase : RoomDatabase() {
+
+@Database(entities = [CategoryEntity::class], version = 1, exportSchema = false)
+abstract class CategoryDatabase : RoomDatabase() {
 
     abstract fun categoryDao(): CategoryDao
 
     companion object {
-        @Volatile
-        private var INSTANCE: AppDatabase? = null
 
-        fun getDatabase(context: Context): AppDatabase {
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    AppDatabase::class.java,
-                    "app_database"
-                ).build()
-                INSTANCE = instance
-                instance
+        @Volatile
+        private var INSTANCE: CategoryDatabase? = null
+
+        fun getInstance(context: Context): CategoryDatabase? {
+            synchronized(this) {
+                var instance = INSTANCE
+
+                if (instance == null) {
+                    instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        CategoryDatabase::class.java,
+                        "category_database"
+                    ).fallbackToDestructiveMigration()
+                        .build()
+                    INSTANCE = instance
+                }
+                return INSTANCE
             }
         }
     }
