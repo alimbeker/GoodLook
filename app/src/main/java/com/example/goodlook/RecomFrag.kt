@@ -109,7 +109,7 @@ class RecomFrag : Fragment(),
                     throw DateException("Something went wrong with date")
 
                 } else {
-                    val requestCode = generateUniqueRequestId()
+                    val requestCode = vm.generateUniqueRequestId()
                     vm.onClickInsert(newCardTask, deadline,cardCategory,requestCode)
 
                     Toast.makeText(context,"Succesfully added new $newCardTask card.", Toast.LENGTH_SHORT).show()
@@ -199,19 +199,7 @@ class RecomFrag : Fragment(),
     }
 
 
-    private val usedRequestIds = mutableSetOf<Int>()
 
-    fun generateUniqueRequestId(): Int {
-        var requestId: Int
-        do {
-            requestId = (0..Int.MAX_VALUE).random() // Generate a random request ID
-        } while (usedRequestIds.contains(requestId))
-
-        // Add the generated ID to the set of used IDs
-        usedRequestIds.add(requestId)
-
-        return requestId
-    }
 
 
     override fun onTimeClick(v: View) {
