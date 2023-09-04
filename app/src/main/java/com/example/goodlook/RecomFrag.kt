@@ -82,8 +82,13 @@ class RecomFrag : Fragment(),
 
             }
         }
+        // SET VALUE TO ALARMMANAGER
+        alarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
 
+        alarmIntent = Intent(context, AlarmReceiver::class.java).let { intent ->
+                        PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+                    }
         binding.saveCard.setOnClickListener {
             val newCardTask = binding.newCardTask.text.toString()
             val cardCategory = binding.category.text.toString()
@@ -99,15 +104,24 @@ class RecomFrag : Fragment(),
 
 
 
+
             try {
                 // some code that might throw an exception
                 if (deadline < sysdate || newCardTask.isEmpty()) {
                     throw DateException("Something went wrong with date")
 
                 } else {
+
                     vm.onClickInsert(newCardTask, deadline,cardCategory)
 
                     Toast.makeText(context,"Succesfully added new $newCardTask card.", Toast.LENGTH_SHORT).show()
+                    alarmManager?.setInexactRepeating(
+                    AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                        SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_HALF_HOUR,
+                    AlarmManager.INTERVAL_HALF_HOUR,
+                    alarmIntent
+                    )
+
 //                    val myWorkRequest = OneTimeWorkRequestBuilder<TodoWorker>()
 //                        .setInitialDelay(15, TimeUnit.SECONDS)
 //                        .setInputData(
@@ -137,30 +151,14 @@ class RecomFrag : Fragment(),
     //Give view to our methods
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        alarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
-        // Observe the LiveData in your Activity or Fragment
-//        vm.filteredCards.observe(viewLifecycleOwner, { cardList ->
-//            if (cardList != null) {
-//                for (card in cardList) {
-//                    alarmIntent = Intent(context, AlarmReceiver::class.java).let { intent ->
-//                        PendingIntent.getBroadcast(context, card.id, intent, PendingIntent.FLAG_IMMUTABLE)
-//                    }
-//                }
-//            }
-//        })
-//
+
+        // Observe the LiveData in your Activity or Fragment\
 
 
 
         binding.txtDate.setOnClickListener {
                 view -> onDateClick(view)
-//                alarmManager?.setInexactRepeating(
-//                AlarmManager.ELAPSED_REALTIME_WAKEUP,
-//                SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_HALF_HOUR,
-//                AlarmManager.INTERVAL_HALF_HOUR,
-//                alarmIntent
-//                )
         }
         binding.txtTime.setOnClickListener {
                 view -> onTimeClick(view)
