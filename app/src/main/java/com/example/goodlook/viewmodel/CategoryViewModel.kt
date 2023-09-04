@@ -1,18 +1,36 @@
 package com.example.goodlook.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.goodlook.database.CardDao
+import com.example.goodlook.database.CardDatabase
+import com.example.goodlook.database.CardEntity
+import com.example.goodlook.database.CardRepository
+import com.example.goodlook.databasecategory.CategoryDao
 import com.example.goodlook.databasecategory.CategoryEntity
+import com.example.goodlook.databasecategory.CategoryRepository
 
-class CategoryViewModel : ViewModel() {
+class CategoryViewModel(val database: CategoryDao, application: Application) : AndroidViewModel(application) {
 
-    private val _categoryList = MutableLiveData<List<CategoryEntity>>()
-    val categoryList: LiveData<List<CategoryEntity>> = _categoryList
+    val allCards : LiveData<MutableList<CardEntity>>
+
+
+
+    val repository : CardRepository
+
 
     init {
-        _categoryList.value = getCategoryObjects()
+        val dao = CardDatabase.getInstance(application)!!.cardDao()
+        repository = CardRepository(dao)
+        allCards =  repository.allCards
+
+
     }
+
+
 
     private fun getCategoryObjects(): List<CategoryEntity> {
         return listOf(
@@ -23,14 +41,10 @@ class CategoryViewModel : ViewModel() {
     }
 
     fun insertCategory(category: CategoryEntity) {
-        val currentList = _categoryList.value.orEmpty().toMutableList()
-        currentList.add(category)
-        _categoryList.value = currentList
+
     }
 
     fun deleteCategory(category: CategoryEntity) {
-        val currentList = _categoryList.value.orEmpty().toMutableList()
-        currentList.remove(category)
-        _categoryList.value = currentList
+
     }
 }
