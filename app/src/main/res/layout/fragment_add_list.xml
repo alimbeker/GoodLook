@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddListFragment">
+    android:minWidth="400dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="15dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_background"
+        android:orientation="vertical"
+        android:padding="2dp"
+        android:paddingBottom="15dp">
 
-</FrameLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:paddingBottom="10dp"
+            android:src="@drawable/card"
+            android:paddingTop="10dp"
+            android:background="@color/lavender"
+            android:clipToOutline="true"
+            android:layout_marginBottom="20dp"
+            />
+        <EditText
+            android:id="@+id/newCardTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:hint="Card"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/newCardDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:hint="Description"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="25dp"
+            android:paddingTop="10dp"
+            >
+
+            <Button
+                android:id="@+id/backCard"
+                android:layout_width="15mm"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:backgroundTint="#f53649"
+                android:text="back" />
+
+            <Button
+                android:id="@+id/saveCard"
+                android:layout_width="15mm"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:text="save" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
