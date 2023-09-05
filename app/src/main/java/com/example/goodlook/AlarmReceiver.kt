@@ -9,10 +9,10 @@ class AlarmReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         val message = intent.getStringExtra("ToDo") ?: "Default Message"
-        Log.d("MyLog", "Alarm message: $message")
+        Log.d("ToDo", "Alarm message: $message")
 
         // Create and show a notification using NotificationHelper
         val notificationHelper = NotificationHelper(context)
-        notificationHelper.createNotification("Deadline is coming!", message)
+        notificationHelper.createNotification("$message", "Deadline is coming!")
     }
 }
