@@ -33,7 +33,7 @@ class AddListFragment : DialogFragment() {
         binding.saveCard.setOnClickListener {
             val newCardTask =binding.newCardTask.text.toString()
 
-            vm.OnInsertCategory(newCardTask)
+            vm.onInsertCategory(newCardTask)
 
             Toast.makeText(context,"Succesfully added new $newCardTask category.", Toast.LENGTH_LONG).show()
 
