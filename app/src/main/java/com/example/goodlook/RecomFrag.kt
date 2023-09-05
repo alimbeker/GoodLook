@@ -37,7 +37,6 @@ class RecomFrag : Fragment(),
     private var calendar : Calendar = Calendar.getInstance()
     private lateinit var binding: FragmentRecomBinding
     private lateinit var vm: FavorFragmentViewModel
-    private var sections: MutableList<CategoryEntity> = mutableListOf()
 
       var year = 0
       var month = 0
@@ -67,18 +66,16 @@ class RecomFrag : Fragment(),
         val cat_vmFactory = CategoryVmFactory(cat_dataSource, application)
         val cat_viewModel = ViewModelProvider(this, cat_vmFactory).get(CategoryViewModel::class.java)
 
-        cat_viewModel.allCards.observe(viewLifecycleOwner) {
-            sections = it
 
-        }
+
         //Spinner
         val spinner = binding.spinner
 
-        val spinnerObj = sections
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, spinnerObj)
-
-        spinner.adapter = adapter
-
+        cat_viewModel.allCards.observe(viewLifecycleOwner) { categories ->
+            // Update the Spinner with the list of categories
+            val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, categories)
+            spinner.adapter = adapter
+        }
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
