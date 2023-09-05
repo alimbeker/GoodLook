@@ -68,16 +68,6 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
     }
 
 
-    private fun getCategoryObjects(): ArrayList<CategoryEntity> {
-        val customObjects = ArrayList<CategoryEntity>()
-        customObjects.apply {
-            add(CategoryEntity(0,"Groceries"))
-            add(CategoryEntity(1,"Work"))
-            add(CategoryEntity(2,"Personal"))
-
-        }
-        return customObjects
-    }
 
 
 }
