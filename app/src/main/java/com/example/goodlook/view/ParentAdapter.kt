@@ -6,15 +6,25 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.goodlook.databasecategory.CategoryEntity
 import com.example.goodlook.databinding.ParentAdapterBinding
+import com.example.goodlook.viewmodel.CategoryViewModel
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 import java.util.ArrayList
 
-class ParentAdapter(private val viewModel: FavorFragmentViewModel
+class ParentAdapter(private val viewModel: FavorFragmentViewModel,
+                    private val cat_viewmodel : CategoryViewModel
+
 ) : RecyclerView.Adapter<ParentAdapter.ViewHolder>() {
 
-    private val sections: List<CategoryEntity> = getCategoryObjects()
+//    private val sections: List<CategoryEntity> = getCategoryObjects()
 
+    private var sections: List<CategoryEntity> = emptyList()
 
+    init {
+        cat_viewmodel.allCards.observeForever { categories ->
+            sections = categories
+            notifyDataSetChanged()
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)

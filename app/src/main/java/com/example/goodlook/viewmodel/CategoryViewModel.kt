@@ -14,21 +14,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CategoryViewModel(val database: CategoryDao, application: Application) : AndroidViewModel(application) {
-
-    val allCards : LiveData<MutableList<CategoryEntity>>
-
-
-
-    val repository: CategoryRepository
+    private val dao = CategoryDatabase.getInstance(application)!!.categoryDao()
+    private val repository = CategoryRepository(dao)
+    val allCards : LiveData<MutableList<CategoryEntity>> =  repository.allCategories
 
 
-    init {
-        val dao = CategoryDatabase.getInstance(application)!!.categoryDao()
-        repository = CategoryRepository(dao)
-        allCards =  repository.allCategories
 
 
-    }
+
+
 
 
 

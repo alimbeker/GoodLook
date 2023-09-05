@@ -11,10 +11,13 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.goodlook.database.CardDatabase
+import com.example.goodlook.databasecategory.CategoryDatabase
 import com.example.goodlook.databinding.FragmentFavorBinding
 import com.example.goodlook.databinding.ListItemBinding
 import com.example.goodlook.view.ItemAdapter
 import com.example.goodlook.view.ParentAdapter
+import com.example.goodlook.viewmodel.CategoryViewModel
+import com.example.goodlook.viewmodel.CategoryVmFactory
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 import com.example.goodlook.viewmodel.VmFactory
 
@@ -40,11 +43,13 @@ class FavorFragment : Fragment() {
         val vmFactory = VmFactory(dataSource, application)
         vm = ViewModelProvider(this, vmFactory).get(FavorFragmentViewModel::class.java)
 
-
+        val cat_dataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
+        val cat_vmFactory = CategoryVmFactory(cat_dataSource, application)
+        val viewModel = ViewModelProvider(this, cat_vmFactory).get(CategoryViewModel::class.java)
         //Adapter
         val recyclerView = binding.recyclerView
 
-        parentAdapter = ParentAdapter(vm)
+        parentAdapter = ParentAdapter(vm,viewModel)
         recyclerView.adapter = parentAdapter
 
         recyclerView.layoutManager = LinearLayoutManager(this.context)
