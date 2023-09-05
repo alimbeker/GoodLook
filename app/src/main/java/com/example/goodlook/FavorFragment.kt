@@ -45,11 +45,11 @@ class FavorFragment : Fragment() {
 
         val cat_dataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
         val cat_vmFactory = CategoryVmFactory(cat_dataSource, application)
-        val viewModel = ViewModelProvider(this, cat_vmFactory).get(CategoryViewModel::class.java)
+        val cat_viewModel = ViewModelProvider(this, cat_vmFactory).get(CategoryViewModel::class.java)
         //Adapter
         val recyclerView = binding.recyclerView
 
-        parentAdapter = ParentAdapter(vm,viewModel)
+        parentAdapter = ParentAdapter(vm,cat_viewModel)
         recyclerView.adapter = parentAdapter
 
         recyclerView.layoutManager = LinearLayoutManager(this.context)

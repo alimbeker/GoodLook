@@ -19,8 +19,11 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.workDataOf
 import com.example.goodlook.database.CardDatabase
+import com.example.goodlook.databasecategory.CategoryDatabase
 import com.example.goodlook.databasecategory.CategoryEntity
 import com.example.goodlook.databinding.FragmentRecomBinding
+import com.example.goodlook.viewmodel.CategoryViewModel
+import com.example.goodlook.viewmodel.CategoryVmFactory
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 import com.example.goodlook.viewmodel.VmFactory
 import java.util.*
@@ -34,6 +37,7 @@ class RecomFrag : Fragment(),
     private var calendar : Calendar = Calendar.getInstance()
     private lateinit var binding: FragmentRecomBinding
     private lateinit var vm: FavorFragmentViewModel
+    private var sections: MutableList<CategoryEntity> = mutableListOf()
 
       var year = 0
       var month = 0
@@ -58,11 +62,19 @@ class RecomFrag : Fragment(),
         val vmFactory = VmFactory(dataSource,application)
         vm = ViewModelProvider(this,vmFactory).get(FavorFragmentViewModel::class.java)
 
+        //cat viewmodel
+        val cat_dataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
+        val cat_vmFactory = CategoryVmFactory(cat_dataSource, application)
+        val cat_viewModel = ViewModelProvider(this, cat_vmFactory).get(CategoryViewModel::class.java)
 
+        cat_viewModel.allCards.observe(viewLifecycleOwner) {
+            sections = it
+
+        }
         //Spinner
         val spinner = binding.spinner
 
-        val spinnerObj = getCategoryObjects()
+        val spinnerObj = sections
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, spinnerObj)
 
         spinner.adapter = adapter
