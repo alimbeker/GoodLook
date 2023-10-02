@@ -113,7 +113,7 @@ class RecomFrag : Fragment(),
 
             try {
                 // some code that might throw an exception
-                if (deadline < sysdate || newCardTask.isEmpty()) {
+                if (deadline < sysdate || newCardTask.isNullOrBlank()) {
                     throw DateException("Something went wrong with date")
 
                 } else {
