@@ -85,14 +85,6 @@ class FavorFragment : Fragment() {
         binding.searchByCircle.setOnClickListener {
             showBottomSheet()
         }
-       //delete by checked
-        itemBinding.listImage.setOnClickListener {
-           fun onCheck(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                val a = vm.filteredCards.value?.get(position)
-                vm.onChecked(a)
-            }
-        }
 
 
 

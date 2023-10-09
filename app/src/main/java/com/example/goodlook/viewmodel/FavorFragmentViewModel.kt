@@ -101,7 +101,7 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
         return requestId
     }
 
-    fun onChecked(card: CardEntity?){
+    fun onDone(card: CardEntity?){
         viewModelScope.launch(Dispatchers.IO) {
 
             if (card != null) {
