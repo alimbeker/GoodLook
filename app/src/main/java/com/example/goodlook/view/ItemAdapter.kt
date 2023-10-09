@@ -1,5 +1,7 @@
 package com.example.goodlook.view
 
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -20,7 +22,6 @@ open class ItemAdapter(private val vm : FavorFragmentViewModel):ListAdapter<Card
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val card = getItem(position)
-
         holder.bind(card,vm)
     }
 
@@ -31,7 +32,12 @@ open class ItemAdapter(private val vm : FavorFragmentViewModel):ListAdapter<Card
             binding.listTime.text = card.getFormattedDeadline()
             binding.listImage.setOnClickListener {
                 binding.listImage.setImageResource(R.drawable.checked)
-                vm.onChecked(card)
+
+
+                Handler(Looper.getMainLooper()).postDelayed({
+                    // Perform the action after the delay
+                    vm.onChecked(card)
+                }, 1000)
             }
         }
         companion object{

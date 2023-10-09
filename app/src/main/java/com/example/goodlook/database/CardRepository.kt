@@ -19,7 +19,6 @@ class CardRepository(private val cardDao: CardDao) {
     }
 
     suspend fun delete(card: CardEntity) = withContext(Dispatchers.IO) {
-        delay(500)
         cardDao.delete(card)
     }
 
