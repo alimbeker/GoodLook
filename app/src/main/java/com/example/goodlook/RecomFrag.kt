@@ -21,6 +21,7 @@ import androidx.work.workDataOf
 import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.databasecategory.CategoryDatabase
 import com.example.goodlook.databasecategory.CategoryEntity
+import com.example.goodlook.databinding.FragmentFavorBinding
 import com.example.goodlook.databinding.FragmentRecomBinding
 import com.example.goodlook.viewmodel.CategoryViewModel
 import com.example.goodlook.viewmodel.CategoryVmFactory
@@ -30,12 +31,11 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 
-class RecomFrag : Fragment(),
+class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::inflate),
     DateClickListener, TimeClickListener,DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     private lateinit var alarmIntent: PendingIntent
     private var alarmManager: AlarmManager? = null
     private var calendar : Calendar = Calendar.getInstance()
-    private lateinit var binding: FragmentRecomBinding
     private lateinit var vm: FavorFragmentViewModel
 
       var year = 0
@@ -46,15 +46,9 @@ class RecomFrag : Fragment(),
 
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        binding = FragmentRecomBinding.inflate(inflater, container, false)
-
-
-
+    //Give view to our methods
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         //implement viewModel
         val application = requireNotNull(this.activity).application
         val dataSource = CardDatabase.getInstance(application)!!.cardDao()
@@ -99,7 +93,7 @@ class RecomFrag : Fragment(),
         binding.saveCard.setOnClickListener {
             val newCardTask = binding.newCardTask.text.toString()
             val cardCategory = binding.category.text.toString()
-              //Calendar
+            //Calendar
             val c = Calendar.getInstance()
             c.set(year,month,day,hour,minute)
 
@@ -135,7 +129,7 @@ class RecomFrag : Fragment(),
                     }
 
                     alarmManager?.setInexactRepeating(
-                    AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                        AlarmManager.ELAPSED_REALTIME_WAKEUP,
                         SystemClock.elapsedRealtime(),
                         interval,
                         alarmIntent
@@ -156,12 +150,6 @@ class RecomFrag : Fragment(),
 
 
 
-        return binding.root
-    }
-
-    //Give view to our methods
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
 
         binding.txtDate.setOnClickListener {
