@@ -23,19 +23,15 @@ import com.example.goodlook.viewmodel.VmFactory
 
 
 
-class FavorFragment : Fragment() {
-    private lateinit var binding: FragmentFavorBinding
+class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::inflate) {
     private lateinit var vm: FavorFragmentViewModel
     private lateinit var parentAdapter: ParentAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentFavorBinding.inflate(inflater, container, false)
 
-        //implement viewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Implement viewModel
         val application = requireNotNull(this.activity).application
         val dataSource = CardDatabase.getInstance(application)!!.cardDao()
         val vmFactory = VmFactory(dataSource, application)
@@ -43,44 +39,33 @@ class FavorFragment : Fragment() {
 
         val cat_dataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
         val cat_vmFactory = CategoryVmFactory(cat_dataSource, application)
-        val cat_viewModel = ViewModelProvider(this, cat_vmFactory).get(CategoryViewModel::class.java)
+        val cat_viewModel =
+            ViewModelProvider(this, cat_vmFactory).get(CategoryViewModel::class.java)
 
-
-        //Adapter
+        // Adapter
         val recyclerView = binding.recyclerView
-
-        parentAdapter = ParentAdapter(vm,cat_viewModel)
+        parentAdapter = ParentAdapter(vm, cat_viewModel)
         recyclerView.adapter = parentAdapter
-
         recyclerView.layoutManager = LinearLayoutManager(this.context)
 
-
-
-
-        //Dialog ADDLIST
+        // Dialog ADDLIST
         binding.addlist.setOnClickListener {
             showAddCardFragment()
         }
-        //Menu
+
+        // Menu
         binding.dotMenu.setOnClickListener {
             showMenu()
         }
 
-        //Search Bar
+        // Search Bar
 
-       //Bottom Screen
+        // Bottom Screen
         binding.searchByCircle.setOnClickListener {
             showBottomSheet()
         }
 
-
-
-
-
-
-        return binding.root
     }
-
 
     private fun showAddCardFragment(){
         val dialogFragment = AddListFragment()
