@@ -26,7 +26,6 @@ import com.example.goodlook.viewmodel.VmFactory
 class FavorFragment : Fragment() {
     private lateinit var binding: FragmentFavorBinding
     private lateinit var vm: FavorFragmentViewModel
-    private lateinit var itemBinding: ListItemBinding
     private lateinit var parentAdapter: ParentAdapter
 
     override fun onCreateView(
@@ -35,8 +34,7 @@ class FavorFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentFavorBinding.inflate(inflater, container, false)
-         //to delete card
-        itemBinding = ListItemBinding.inflate(inflater,container,false)
+
         //implement viewModel
         val application = requireNotNull(this.activity).application
         val dataSource = CardDatabase.getInstance(application)!!.cardDao()
@@ -46,6 +44,8 @@ class FavorFragment : Fragment() {
         val cat_dataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
         val cat_vmFactory = CategoryVmFactory(cat_dataSource, application)
         val cat_viewModel = ViewModelProvider(this, cat_vmFactory).get(CategoryViewModel::class.java)
+
+
         //Adapter
         val recyclerView = binding.recyclerView
 
