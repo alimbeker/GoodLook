@@ -164,10 +164,6 @@ class RecomFrag : Fragment(),
         super.onViewCreated(view, savedInstanceState)
 
 
-        // Observe the LiveData in your Activity or Fragment\
-
-
-
         binding.txtDate.setOnClickListener {
                 view -> onDateClick(view)
         }
@@ -192,9 +188,6 @@ class RecomFrag : Fragment(),
         var year = c.get(Calendar.YEAR)
         var month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
-
-
-
 
 
 

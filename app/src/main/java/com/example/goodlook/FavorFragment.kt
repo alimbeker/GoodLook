@@ -57,19 +57,6 @@ class FavorFragment : Fragment() {
 
 
 
-
-
-//        parentRecyclerView = binding.recyclerView
-//
-//        // Set up the layout manager for the parent RecyclerView
-//        val layoutManager = LinearLayoutManager(requireContext())
-//        parentRecyclerView.layoutManager = layoutManager
-//
-//        // Initialize the ParentAdapter and set it to the RecyclerView
-//        parentAdapter = ParentAdapter(vm) // Initialize the ParentAdapter with your ViewModel
-//        parentRecyclerView.adapter = parentAdapter
-
-
         //Dialog ADDLIST
         binding.addlist.setOnClickListener {
             showAddCardFragment()

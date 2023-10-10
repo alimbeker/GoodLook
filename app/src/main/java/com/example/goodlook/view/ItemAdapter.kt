@@ -35,7 +35,6 @@ open class ItemAdapter(private val vm : FavorFragmentViewModel):ListAdapter<Card
 
 
                 Handler(Looper.getMainLooper()).postDelayed({
-                    // Perform the action after the delay
                     vm.onDone(card)
                 }, 800)
             }
