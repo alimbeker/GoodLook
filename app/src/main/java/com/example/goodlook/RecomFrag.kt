@@ -90,6 +90,13 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
 
 
 
+        binding.txtDate.setOnClickListener {
+               onDateClick(it)
+        }
+        binding.txtTime.setOnClickListener {
+               onTimeClick(it)
+        }
+
         binding.saveCard.setOnClickListener {
             val newCardTask = binding.newCardTask.text.toString()
             val cardCategory = binding.category.text.toString()
@@ -150,14 +157,6 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
 
 
 
-
-
-        binding.txtDate.setOnClickListener {
-                view -> onDateClick(view)
-        }
-        binding.txtTime.setOnClickListener {
-                view -> onTimeClick(view)
-        }
 
     }
 
