@@ -29,10 +29,11 @@
 
         <TextView
             android:id="@+id/listName"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
+            android:layout_marginStart="30dp"
+            android:gravity="left"
             android:text="My card"
             android:fontFamily="@font/sf_regular"
             android:textStyle="bold"
@@ -41,17 +42,13 @@
 
         <TextView
             android:id="@+id/listTime"
-            android:layout_width="165dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:layout_alignParentTop="true"
-
-            android:layout_alignParentEnd="true"
-
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_toEndOf="@id/listName"
+            android:layout_marginStart="165dp"
+            android:layout_marginTop="18dp"
+            android:text="5 hours"
+            android:fontFamily="@font/sf_regular"
+            android:textStyle="bold"
             android:textColor="@color/lavender"
             android:textSize="12sp" />
     </LinearLayout>
