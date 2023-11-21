@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.goodlook.OffsetDecoration
 import com.example.goodlook.databasecategory.CategoryEntity
 import com.example.goodlook.databinding.ParentAdapterBinding
 import com.example.goodlook.viewmodel.CategoryViewModel
@@ -18,6 +19,8 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
 //    private val sections: List<CategoryEntity> = getCategoryObjects()
 
     private var sections: List<CategoryEntity> = emptyList()
+    //For itemRecyclerView
+    private val offsetDecoration = OffsetDecoration(start = 16, top = 16, end = 15, bottom = 16)
 
     init {
         cat_viewmodel.allCards.observeForever { categories ->
@@ -63,7 +66,7 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
                 adapter = itemAdapter
             }
 
-
+            itemRecyclerView.addItemDecoration(offsetDecoration)
         }
     }
 
