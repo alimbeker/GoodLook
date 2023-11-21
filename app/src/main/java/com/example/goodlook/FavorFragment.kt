@@ -49,6 +49,7 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
         recyclerView.layoutManager = LinearLayoutManager(this.context)
 
 
+        
 
         // Dialog ADDLIST
         binding.addlist.setOnClickListener {
