@@ -51,9 +51,9 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
         vm = ViewModelProvider(this, cardVmFactory).get(FavorFragmentViewModel::class.java)
 
         //cat viewmodel
-        val cat_dataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
-        val cat_vmFactory = CategoryVmFactory(cat_dataSource, application)
-        val cat_viewModel = ViewModelProvider(this, cat_vmFactory).get(CategoryViewModel::class.java)
+        val categoryDataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
+        val categoryVmFactory = VmFactory(categoryDataSource, application, CategoryViewModel::class.java)
+        val cat_viewModel = ViewModelProvider(this, categoryVmFactory).get(CategoryViewModel::class.java)
 
 
 
