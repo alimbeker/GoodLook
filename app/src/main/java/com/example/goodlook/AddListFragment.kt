@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.goodlook.databasecategory.CategoryDatabase
 import com.example.goodlook.databinding.FragmentAddListBinding
 import com.example.goodlook.viewmodel.CategoryViewModel
-import com.example.goodlook.viewmodel.CategoryVmFactory
+import com.example.goodlook.viewmodel.VmFactory
 
 class AddListFragment : DialogFragment() {
 
@@ -26,14 +26,17 @@ class AddListFragment : DialogFragment() {
         }
         //implement viewModel
         val application = requireNotNull(this.activity).application
-        val dataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
-        val vmFactory = CategoryVmFactory(dataSource,application)
-        val vm = ViewModelProvider(this,vmFactory).get(CategoryViewModel::class.java)
+
+        val categoryDataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
+        val categoryVmFactory = VmFactory(categoryDataSource, application, CategoryViewModel::class.java)
+        val cat_viewModel = ViewModelProvider(this, categoryVmFactory).get(CategoryViewModel::class.java)
+
+
 
         binding.saveCard.setOnClickListener {
             val newCardTask =binding.newCardTask.text.toString()
 
-            vm.onInsertCategory(newCardTask)
+            cat_viewModel.onInsertCategory(newCardTask)
 
             Toast.makeText(context,"Succesfully added new $newCardTask category.", Toast.LENGTH_LONG).show()
 

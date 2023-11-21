@@ -9,26 +9,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import android.text.format.DateFormat
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
-import androidx.work.workDataOf
 import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.databasecategory.CategoryDatabase
 import com.example.goodlook.databasecategory.CategoryEntity
-import com.example.goodlook.databinding.FragmentFavorBinding
 import com.example.goodlook.databinding.FragmentRecomBinding
 import com.example.goodlook.viewmodel.CategoryViewModel
-import com.example.goodlook.viewmodel.CategoryVmFactory
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 import com.example.goodlook.viewmodel.VmFactory
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 
 class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::inflate),
@@ -50,10 +41,14 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //implement viewModel
+        // Implement viewModel
         val application = requireNotNull(this.activity).application
-        val dataSource = CardDatabase.getInstance(application)!!.cardDao()
-        val vmFactory = VmFactory(dataSource,application)
-        vm = ViewModelProvider(this,vmFactory).get(FavorFragmentViewModel::class.java)
+
+
+        // Implement viewModel for FavorFragmentViewModel
+        val cardDataSource = CardDatabase.getInstance(application)!!.cardDao()
+        val cardVmFactory = VmFactory(cardDataSource, application, FavorFragmentViewModel::class.java)
+        vm = ViewModelProvider(this, cardVmFactory).get(FavorFragmentViewModel::class.java)
 
         //cat viewmodel
         val cat_dataSource = CategoryDatabase.getInstance(application)!!.categoryDao()

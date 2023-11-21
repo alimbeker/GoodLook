@@ -19,7 +19,6 @@ abstract class BaseFragment<VB: ViewBinding>(private val inflate: Inflate<VB>) :
 
     val binding get() = _binding ?: throw RuntimeException()
 
-    val viewModel get() = _viewModel ?: throw RuntimeException()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,10 +26,6 @@ abstract class BaseFragment<VB: ViewBinding>(private val inflate: Inflate<VB>) :
         savedInstanceState: Bundle?
     ): View? {
         _binding = inflate(inflater, container, false)
-        val application = requireNotNull(this.activity).application
-        val dataSource = CardDatabase.getInstance(application)!!.cardDao()
-        val vmFactory = VmFactory(dataSource,application)
-        _viewModel = ViewModelProvider(this,vmFactory).get(FavorFragmentViewModel::class.java)
 
 
         return binding.root

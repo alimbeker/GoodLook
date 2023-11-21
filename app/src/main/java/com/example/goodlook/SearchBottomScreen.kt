@@ -36,11 +36,14 @@ class SearchBottomScreen : BottomSheetDialogFragment() {
         binding = FragmentSearchBottomScreenBinding.inflate(inflater, container, false)
 
 
-        //implement viewModel
+        // Implement viewModel
         val application = requireNotNull(this.activity).application
-        val dataSource = CardDatabase.getInstance(application)!!.cardDao()
-        val vmFactory = VmFactory(dataSource, application)
-        val vm = ViewModelProvider(this, vmFactory).get(FavorFragmentViewModel::class.java)
+
+
+        // Implement viewModel for FavorFragmentViewModel
+        val cardDataSource = CardDatabase.getInstance(application)!!.cardDao()
+        val cardVmFactory = VmFactory(cardDataSource, application, FavorFragmentViewModel::class.java)
+        val vm = ViewModelProvider(this, cardVmFactory).get(FavorFragmentViewModel::class.java)
 
         //Get list
         val recyclerView = binding.recyclerView
