@@ -62,7 +62,7 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
 
         cat_viewModel.allCards.observe(viewLifecycleOwner) { categories ->
             // Update the Spinner with the list of categories
-            val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, categories)
+            val adapter = ArrayAdapter(requireContext(), android.R.layout.preference_category, categories)
             spinner.adapter = adapter
         }
 
