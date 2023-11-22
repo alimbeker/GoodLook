@@ -1,6 +1,7 @@
 package com.example.goodlook
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,10 +24,19 @@ class DetailedCategory : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentDetailedCategoryBinding.inflate(inflater, container, false)
+        val args = DetailedCategoryArgs.fromBundle(requireArguments())
 
+        binding.title.text = args.title
 
 
         return binding.root
+
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        sharedElementEnterTransition = TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
 
     }
 
