@@ -30,56 +30,41 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.776" />
+        app:layout_constraintVertical_bias="0.75" />
 
-    <TextView
-        android:id="@+id/category"
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/shapeemail"
-        android:drawableLeft="@drawable/ic_baseline_category_24"
-        android:drawablePadding="15dp"
-        android:hint="Category"
-        android:textAlignment="gravity"
-        android:inputType="none"
         android:textColor="@color/black"
-        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/saveCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTime" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/saveCard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.931"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newCardTask"
-        app:layout_constraintVertical_bias="0.862" />
 
-    <Button
-            android:id="@+id/saveCard"
-            android:layout_width="141dp"
-            android:layout_height="54dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/turkish_rose"
-            android:text="Add Card"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDate"
-            app:layout_constraintVertical_bias="0.656" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/saveCard"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="@color/turkish_rose"
+        android:text="Add Card"
+        android:textColor="@color/white"
+        app:cornerRadius="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDate"
+        app:layout_constraintVertical_bias="0.656" />
 
 
     <com.google.android.material.textfield.TextInputEditText

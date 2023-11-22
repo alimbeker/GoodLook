@@ -36,20 +36,20 @@
             android:text="My card"
             android:fontFamily="@font/sf_regular"
             android:textStyle="bold"
-            android:textColor="@color/lavender"
+            android:textColor="#333333"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/listTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="130dp"
             android:layout_marginTop="18dp"
-            android:text="5 hours"
             android:fontFamily="@font/sf_regular"
-            android:textStyle="bold"
-            android:textColor="@color/lavender"
-            android:textSize="12sp" />
+            android:text="5 hours"
+            android:textColor="#333333"
+            android:textSize="12sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

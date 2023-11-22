@@ -28,8 +28,8 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
     private var alarmManager: AlarmManager? = null
     private var calendar : Calendar = Calendar.getInstance()
     private lateinit var vm: FavorFragmentViewModel
-
-      var year = 0
+    private var selected_category: CategoryEntity? = null
+    var year = 0
       var month = 0
       var day = 0
       var hour = 0
@@ -62,9 +62,12 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
 
         cat_viewModel.allCards.observe(viewLifecycleOwner) { categories ->
             // Update the Spinner with the list of categories
-            val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, categories)
+            val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, categories)
             spinner.adapter = adapter
         }
+
+
+
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
@@ -74,9 +77,9 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
 
-                val selectedObject = spinner.selectedItem as CategoryEntity
+                selected_category = spinner.selectedItem as CategoryEntity
 
-                binding.category.text = selectedObject.categoryName
+
 
             }
         }
@@ -94,7 +97,7 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
 
         binding.saveCard.setOnClickListener {
             val newCardTask = binding.newCardTask.text.toString()
-            val cardCategory = binding.category.text.toString()
+            val cardCategory = selected_category.toString()
             //Calendar
             val c = Calendar.getInstance()
             c.set(year,month,day,hour,minute)
