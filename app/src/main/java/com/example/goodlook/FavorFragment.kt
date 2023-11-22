@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.*
 import android.widget.PopupMenu
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.databasecategory.CategoryDatabase
@@ -46,6 +48,17 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
 
 
 
+        parentAdapter.itemClick = { it1, it2 ->
+
+            findNavController().navigate(
+                FavorFragmentDirections.actionFavorFragmentToDetailedCategory(it1.categoryName),
+                it2
+            )
+
+        }
+
+
+
         // Dialog ADDLIST
         binding.addlist.setOnClickListener {
             showAddCardFragment()
@@ -62,6 +75,10 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
         binding.searchByCircle.setOnClickListener {
             showBottomSheet()
         }
+
+
+
+
 
     }
 

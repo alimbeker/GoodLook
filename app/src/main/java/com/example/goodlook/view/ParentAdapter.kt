@@ -71,6 +71,8 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
             itemRecyclerView.addItemDecoration(offsetDecoration)
 
 
+            binding.contentTitle.transitionName = category.categoryName
+
             itemView.setOnClickListener {
                 val extras = FragmentNavigatorExtras(
                     binding.contentTitle to "title",

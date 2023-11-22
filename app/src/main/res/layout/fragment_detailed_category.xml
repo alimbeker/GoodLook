@@ -43,6 +43,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/content_title" />
 
-    </>
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>
