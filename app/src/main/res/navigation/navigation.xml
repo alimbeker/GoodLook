@@ -8,7 +8,11 @@
         android:id="@+id/favorFragment"
         android:name="com.example.goodlook.FavorFragment"
         android:label="fragment_favor"
-        tools:layout="@layout/fragment_favor" />
+        tools:layout="@layout/fragment_favor" >
+        <action
+            android:id="@+id/action_favorFragment_to_detailedCategory"
+            app:destination="@id/detailedCategory" />
+    </fragment>
     <fragment
         android:id="@+id/korzinFrag"
         android:name="com.example.goodlook.KorzinFrag"
@@ -24,4 +28,8 @@
         android:name="com.example.goodlook.RecomFrag"
         android:label="fragment_recom"
         tools:layout="@layout/fragment_recom" />
+    <fragment
+        android:id="@+id/detailedCategory"
+        android:name="com.example.goodlook.DetailedCategory"
+        android:label="DetailedCategory" />
 </navigation>
