@@ -18,7 +18,6 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
 
 ) : RecyclerView.Adapter<ParentAdapter.ViewHolder>() {
 
-    var itemClick: ((CategoryEntity, FragmentNavigator.Extras) -> Unit)? = null
 
     private var sections: List<CategoryEntity> = emptyList()
     //For itemRecyclerView
@@ -34,7 +33,7 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ParentAdapterBinding.inflate(inflater, parent, false)
-        return ViewHolder(binding,itemClick)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -49,7 +48,7 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
 
 
 
-    inner class ViewHolder(private val binding: ParentAdapterBinding,  val itemClick: ((CategoryEntity,FragmentNavigator.Extras) -> Unit)?) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ParentAdapterBinding) : RecyclerView.ViewHolder(binding.root) {
         private val sectionTitleTextView = binding.contentTitle
         private val itemRecyclerView = binding.childRecyclerView
 
@@ -71,15 +70,7 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
             itemRecyclerView.addItemDecoration(offsetDecoration)
 
 
-            binding.contentTitle.transitionName = category.categoryName
 
-            itemView.setOnClickListener {
-                val extras = FragmentNavigatorExtras(
-                    binding.contentTitle to "title",
-                    binding.childRecyclerView to "recyclerView"
-                )
-                itemClick?.invoke(category,extras)
-            }
         }
     }
 
