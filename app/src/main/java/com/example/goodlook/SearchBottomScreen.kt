@@ -58,6 +58,9 @@ class SearchBottomScreen : BottomSheetDialogFragment() {
         itemAdapter.notifyDataSetChanged()
         recyclerView.setHasFixedSize(true)
 
+        //OffsetDecoration
+        val offsetDecoration = OffsetDecoration(start = 16, top = 16, end = 15, bottom = 16)
+        recyclerView.addItemDecoration(offsetDecoration)
 
         //Search
         val searchView = binding.searchView
