@@ -25,6 +25,7 @@ abstract class BaseFragment<VB: ViewBinding>(private val inflate: Inflate<VB>) :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         _binding = inflate(inflater, container, false)
 
 

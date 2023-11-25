@@ -44,7 +44,7 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
         val recyclerView = binding.recyclerView
         parentAdapter = ParentAdapter(vm, cat_viewModel)
         recyclerView.adapter = parentAdapter
-        recyclerView.layoutManager = LinearLayoutManager(this.context)
+        recyclerView.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
 
 

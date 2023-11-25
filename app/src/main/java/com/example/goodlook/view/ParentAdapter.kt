@@ -2,6 +2,7 @@ package com.example.goodlook.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.compose.ui.BiasAlignment
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.LinearLayoutManager
