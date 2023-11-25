@@ -7,6 +7,7 @@ import android.widget.PopupMenu
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.databasecategory.CategoryDatabase
@@ -44,7 +45,7 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
         val recyclerView = binding.recyclerView
         parentAdapter = ParentAdapter(vm, cat_viewModel)
         recyclerView.adapter = parentAdapter
-        recyclerView.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.layoutManager = GridLayoutManager(this.context, 2, GridLayoutManager.VERTICAL, false)
 
         //For parentRecyclerView
        val offsetDecoration = OffsetDecoration(start = 4, top = 20, end = 2, bottom = 16)
