@@ -21,8 +21,6 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
 
 
     private var sections: List<CategoryEntity> = emptyList()
-    //For itemRecyclerView
-    private val offsetDecoration = OffsetDecoration(start = 16, top = 16, end = 15, bottom = 16)
 
     init {
         cat_viewmodel.allCards.observeForever { categories ->
@@ -68,7 +66,7 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
                 adapter = itemAdapter
             }
 
-            itemRecyclerView.addItemDecoration(offsetDecoration)
+
 
 
 

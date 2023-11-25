@@ -46,8 +46,10 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
         recyclerView.adapter = parentAdapter
         recyclerView.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
+        //For parentRecyclerView
+       val offsetDecoration = OffsetDecoration(start = 4, top = 20, end = 2, bottom = 16)
 
-
+       recyclerView.addItemDecoration(offsetDecoration)
 
 
 
