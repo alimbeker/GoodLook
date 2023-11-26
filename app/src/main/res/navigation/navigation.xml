@@ -28,10 +28,12 @@
     <fragment
         android:id="@+id/detailedCategoryFragment"
         android:name="com.example.goodlook.DetailedCategoryFragment"
-        android:label="DetailedCategoryFragment">
-        <argument>
+        android:label="DetailedCategoryFragment"
+        tools:layout="@layout/fragment_detailed_category">
+        <argument
+            android:name="title"
+            app:argType="string" />
 
-        </argument>
     </fragment>
 
 </navigation>
