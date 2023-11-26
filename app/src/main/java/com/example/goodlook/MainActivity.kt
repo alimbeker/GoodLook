@@ -26,27 +26,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNavigation() {
-        val bottomNavView: BottomNavigationView = findViewById(R.id.bottomNavView)
+        val bottomNavView: ChipNavigationBar = findViewById(R.id.bottom_nav_bar)
 
-        bottomNavView.setupWithNavController(navController)
-
-        // Optional: Customize behavior if needed
-        /*bottomNavView.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.favorFragment -> {
-                    navController.navigate(R.id.favorFragment)
-                    true
-                }
-                R.id.recomFrag -> {
-                    navController.navigate(R.id.recomFrag)
-                    true
-                }
-                R.id.korzinFrag -> {
-                    navController.navigate(R.id.korzinFrag)
-                    true
-                }
-                else -> false
+        bottomNavView.setOnItemSelectedListener { itemId ->
+            when (itemId) {
+                R.id.favorFragment -> navController.navigate(R.id.favorFragment)
+                R.id.recomFrag -> navController.navigate(R.id.recomFrag)
+                R.id.korzinFrag -> navController.navigate(R.id.korzinFrag)
             }
-        }*/
+        }
+
+        // Optional: Set the initial selected item
+        // bottomNavView.setItemSelected(R.id.favorFragment, true)
     }
 }

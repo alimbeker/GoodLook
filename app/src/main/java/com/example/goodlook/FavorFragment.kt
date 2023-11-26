@@ -53,14 +53,14 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
        recyclerView.addItemDecoration(offsetDecoration)
 
 
-//        parentAdapter.itemClick = {
-//
-//            findNavController().navigate(
-//                FavorFragmentDirections.actionFavorFragmentToDetailedCategoryFragment()
-//
-//            )
-//
-//        }
+        parentAdapter.itemClick = {
+
+            findNavController().navigate(
+                FavorFragmentDirections.actionFavorFragmentToDetailedCategoryFragment()
+
+            )
+
+        }
 
 
         // Dialog ADDLIST
