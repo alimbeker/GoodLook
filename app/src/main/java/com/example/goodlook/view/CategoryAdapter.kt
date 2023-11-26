@@ -2,22 +2,16 @@ package com.example.goodlook.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.compose.ui.BiasAlignment
-import androidx.navigation.fragment.FragmentNavigator
-import androidx.navigation.fragment.FragmentNavigatorExtras
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.goodlook.OffsetDecoration
 import com.example.goodlook.databasecategory.CategoryEntity
 import com.example.goodlook.databinding.ParentAdapterBinding
 import com.example.goodlook.viewmodel.CategoryViewModel
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
-import java.util.ArrayList
 
-class ParentAdapter(private val viewModel: FavorFragmentViewModel,
-                    private val cat_viewmodel : CategoryViewModel
+class CategoryAdapter(private val viewModel: FavorFragmentViewModel,
+                      private val cat_viewmodel : CategoryViewModel
 
-) : RecyclerView.Adapter<ParentAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     var itemClick: ((CategoryEntity) -> Unit)? = null
 

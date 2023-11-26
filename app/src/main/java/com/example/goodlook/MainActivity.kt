@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Optional: Set the initial selected item
-        // bottomNavView.setItemSelected(R.id.favorFragment, true)
+
     }
 }
