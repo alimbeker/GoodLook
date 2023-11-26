@@ -13,19 +13,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/bottom_nav_bar"
-        app:layout_constraintHorizontal_bias="0.5"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/navigation" />
 
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:id="@+id/bottom_nav_bar"
-        android:layout_width="401dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="10dp"
@@ -33,8 +32,9 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/round_corners"
-        android:elevation="8dp"
-        app:cnb_iconSize="22dp"
+        android:elevation="4dp"
+        android:minHeight="45dp"
+        app:cnb_iconSize="23dp"
         app:cnb_menuResource="@menu/bottom_navbar_chip"
         app:cnb_orientationMode="horizontal"
         app:cnb_radius="4dp"

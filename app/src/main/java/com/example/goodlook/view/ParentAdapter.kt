@@ -38,8 +38,8 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val section = sections[position]
-        val itemAdapter = ItemAdapter(viewModel)
-        holder.bind(section, itemAdapter)
+
+        holder.bind(section)
     }
 
     override fun getItemCount(): Int {
@@ -50,22 +50,11 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
 
     inner class ViewHolder(private val binding: ParentAdapterBinding, val itemClick: ((CategoryEntity) -> Unit)?) : RecyclerView.ViewHolder(binding.root) {
         private val sectionTitleTextView = binding.contentTitle
-        private val itemRecyclerView = binding.childRecyclerView
 
-        fun bind(category: CategoryEntity, itemAdapter: ItemAdapter) {
+
+        fun bind(category: CategoryEntity) {
             sectionTitleTextView.text = category.categoryName
 
-            // Observe changes in favorCards LiveData and update itemAdapter
-            viewModel.filteredCards.observeForever { allCards ->
-                // Filter favorCards based on the category or any other logic
-                val filteredFavorCards = allCards.filter { it.cardCategory == category.categoryName }
-                itemAdapter.submitList(filteredFavorCards)
-            }
-
-            itemRecyclerView.apply {
-                layoutManager = LinearLayoutManager(this.context)
-                adapter = itemAdapter
-            }
 
 
             itemView.setOnClickListener {
