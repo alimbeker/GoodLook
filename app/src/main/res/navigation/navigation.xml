@@ -9,31 +9,29 @@
         android:name="com.example.goodlook.FavorFragment"
         android:label="fragment_favor"
         tools:layout="@layout/fragment_favor" >
+
         <action
-            android:id="@+id/action_favorFragment_to_detailedCategory"
-            app:destination="@id/detailedCategory" />
+            android:id="@+id/action_favorFragment_to_detailedCategoryFragment"
+            app:destination="@id/detailedCategoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/korzinFrag"
         android:name="com.example.goodlook.KorzinFrag"
         android:label="fragment_korzin"
         tools:layout="@layout/fragment_korzin" />
-    <fragment
-        android:id="@+id/catFrag"
-        android:name="com.example.goodlook.CatFrag"
-        android:label="fragment_cat"
-        tools:layout="@layout/fragment_cat" />
+
     <fragment
         android:id="@+id/recomFrag"
         android:name="com.example.goodlook.RecomFrag"
         android:label="fragment_recom"
         tools:layout="@layout/fragment_recom" />
     <fragment
-        android:id="@+id/detailedCategory"
-        android:name="com.example.goodlook.DetailedCategory"
-        android:label="DetailedCategory" >
-        <argument
-            android:name="title"
-            app:argType="string" />
+        android:id="@+id/detailedCategoryFragment"
+        android:name="com.example.goodlook.DetailedCategoryFragment"
+        android:label="DetailedCategoryFragment">
+        <argument>
+
+        </argument>
     </fragment>
+
 </navigation>
