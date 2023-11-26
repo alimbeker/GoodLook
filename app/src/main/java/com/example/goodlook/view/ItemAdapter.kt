@@ -32,7 +32,7 @@ open class ItemAdapter(private val vm : FavorFragmentViewModel):ListAdapter<Card
             binding.listTime.text = card.getFormattedDeadline()
             binding.listImage.setOnClickListener {
                 binding.listImage.setImageResource(R.drawable.checked)
-c
+
 
                 Handler(Looper.getMainLooper()).postDelayed({
                     vm.onDone(card)
