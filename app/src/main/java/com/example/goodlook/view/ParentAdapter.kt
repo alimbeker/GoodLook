@@ -48,7 +48,7 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
 
 
 
-    inner class ViewHolder(private val binding: ParentAdapterBinding,var itemClick: ((CategoryEntity) -> Unit)?) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ParentAdapterBinding, val itemClick: ((CategoryEntity) -> Unit)?) : RecyclerView.ViewHolder(binding.root) {
         private val sectionTitleTextView = binding.contentTitle
         private val itemRecyclerView = binding.childRecyclerView
 
