@@ -24,8 +24,8 @@ class DetailedCategoryFragment : Fragment() {
     ): View? {
         val binding = FragmentDetailedCategoryBinding.inflate(inflater, container, false)
 
-        val args = DetailedCategoryFragmentArgs.fromBundle(requireArguments())
-        binding.contentTitle.text = args.title
+//        val args = DetailedCategoryFragmentArgs.fromBundle(requireArguments())
+//        binding.contentTitle.text = args.title
 
 
 
