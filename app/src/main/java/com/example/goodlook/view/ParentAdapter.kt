@@ -19,6 +19,7 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
 
 ) : RecyclerView.Adapter<ParentAdapter.ViewHolder>() {
 
+    var itemClick: ((CategoryEntity) -> Unit)? = null
 
     private var sections: List<CategoryEntity> = emptyList()
 
@@ -32,7 +33,7 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ParentAdapterBinding.inflate(inflater, parent, false)
-        return ViewHolder(binding)
+        return ViewHolder(binding,itemClick)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -47,7 +48,7 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
 
 
 
-    inner class ViewHolder(private val binding: ParentAdapterBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ParentAdapterBinding,var itemClick: ((CategoryEntity) -> Unit)?) : RecyclerView.ViewHolder(binding.root) {
         private val sectionTitleTextView = binding.contentTitle
         private val itemRecyclerView = binding.childRecyclerView
 
@@ -67,6 +68,10 @@ class ParentAdapter(private val viewModel: FavorFragmentViewModel,
             }
 
 
+            itemView.setOnClickListener {
+
+                itemClick?.invoke(category)
+            }
 
 
 
