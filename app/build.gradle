@@ -58,6 +58,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
     implementation 'com.google.firebase:firebase-analytics-ktx'
+
     def nav_version = "2.5.3"
 
     // Java language implementation

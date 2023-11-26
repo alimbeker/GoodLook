@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.goodlook.database.CardDatabase
+import com.example.goodlook.databinding.FragmentDetailedCategoryBinding
 import com.example.goodlook.databinding.FragmentKorzinBinding
 import com.example.goodlook.view.ItemAdapter
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
@@ -21,7 +22,12 @@ class DetailedCategoryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentKorzinBinding.inflate(inflater, container, false)
+        val binding = FragmentDetailedCategoryBinding.inflate(inflater, container, false)
+
+        val args = DetailedCategoryFragmentArgs.fromBundle(requireArguments())
+        binding.contentTitle.text = args.title
+
+
 
 
 
