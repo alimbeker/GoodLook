@@ -5,6 +5,8 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +14,8 @@ import com.example.goodlook.R
 import com.example.goodlook.database.CardEntity
 import com.example.goodlook.databinding.ListItemBinding
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
 
 
 open class ItemAdapter(private val vm : FavorFragmentViewModel):ListAdapter<CardEntity,ItemAdapter.ViewHolder>(CardDiffCallback()){
@@ -56,6 +60,8 @@ class CardDiffCallback: DiffUtil.ItemCallback<CardEntity>() {
         return oldItem==newItem
     }
 }
+
+
 
 
 
