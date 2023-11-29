@@ -22,17 +22,6 @@ class CategoryViewModel(val database: CategoryDao, application: Application) : A
 
 
 
-
-
-
-
-    private fun getCategoryObjects(): List<CategoryEntity> {
-        return listOf(
-            CategoryEntity(0, "Groceries"),
-            CategoryEntity(1, "Work"),
-            CategoryEntity(2, "Personal")
-        )
-    }
     fun onInsertCategory(categoryName:String) {
         viewModelScope.launch {
             insertCategory(categoryName)

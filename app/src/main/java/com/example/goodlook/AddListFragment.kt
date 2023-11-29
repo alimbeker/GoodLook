@@ -34,13 +34,18 @@ class AddListFragment : DialogFragment() {
 
 
         binding.saveCard.setOnClickListener {
-            val newCardTask =binding.newCardTask.text.toString()
+            val newCardTask = binding.newCardTask.text.toString()
 
-            cat_viewModel.onInsertCategory(newCardTask)
+            if(!newCardTask.isNullOrBlank()) {
+                cat_viewModel.onInsertCategory(newCardTask)
+                Toast.makeText(context,"Succesfully added new $newCardTask category.", Toast.LENGTH_LONG).show()
+                dismiss()
+            } else {
+                Toast.makeText(context,"You must give name to category", Toast.LENGTH_LONG).show()
 
-            Toast.makeText(context,"Succesfully added new $newCardTask category.", Toast.LENGTH_LONG).show()
+            }
 
-            dismiss()
+
 
         }
         return  binding.root
