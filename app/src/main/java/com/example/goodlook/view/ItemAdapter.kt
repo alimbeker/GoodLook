@@ -14,6 +14,7 @@ import com.example.goodlook.R
 import com.example.goodlook.database.CardEntity
 import com.example.goodlook.databinding.ListItemBinding
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 
@@ -35,14 +36,40 @@ open class ItemAdapter(private val vm : FavorFragmentViewModel):ListAdapter<Card
             //to print
             binding.listTime.text = card.getFormattedDeadline()
             binding.listImage.setOnClickListener {
-                binding.listImage.setImageResource(R.drawable.checked)
-
-
-                Handler(Looper.getMainLooper()).postDelayed({
-                    vm.onDone(card)
-                }, 800)
+                showDeleteSnackbar(card, vm)
             }
         }
+
+        private fun showDeleteSnackbar(card: CardEntity, vm: FavorFragmentViewModel) {
+            val snackbar = Snackbar.make(
+                binding.root,
+                "Item deleted",
+                Snackbar.LENGTH_LONG
+            )
+
+//            snackbar.setAction("Undo") {
+//                // Handle undo action, for example, restoring the deleted item
+//                vm.onUndone(card)
+//            }
+
+            snackbar.setActionTextColor(binding.root.resources.getColor(R.color.colorAccent)) // Change action text color
+
+            snackbar.addCallback(object : Snackbar.Callback() {
+                override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+                    if (event != DISMISS_EVENT_ACTION) {
+                        // If the Snackbar is dismissed without clicking on Undo,
+                        // proceed with the actual deletion
+                        vm.onDone(card)
+
+                        binding.listImage.setImageResource(R.drawable.checkaed)
+
+                    }
+                }
+            })
+
+            snackbar.show()
+        }
+
         companion object{
             fun create (parent:ViewGroup):ViewHolder{
                 return ViewHolder(ListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
@@ -50,6 +77,8 @@ open class ItemAdapter(private val vm : FavorFragmentViewModel):ListAdapter<Card
         }
 
     }
+
+
 }
 class CardDiffCallback: DiffUtil.ItemCallback<CardEntity>() {
     override fun areItemsTheSame(oldItem: CardEntity, newItem: CardEntity): Boolean {
