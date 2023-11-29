@@ -8,10 +8,10 @@
         android:gravity="center"
         android:orientation="vertical"
     >
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+       >
 
 
     <ImageView
@@ -26,18 +26,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/dotMenu"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:clickable="true"
-        android:padding="15dp"
-        android:src="@drawable/ic_baseline_align_horizontal_right_24"
-        android:gravity="right"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Lists"
+            android:textSize="18sp"
+            android:textColor="@color/lists"
+            android:fontFamily="@font/nunito_black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/dotMenu"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/addlist"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/dotMenu"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:clickable="true"
+            android:padding="15dp"
+            android:src="@drawable/ic_baseline_align_horizontal_right_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView

@@ -74,9 +74,9 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
         // Search Bar
 
         // Bottom Screen
-        binding.searchByCircle.setOnClickListener {
-            showBottomSheet()
-        }
+//        binding.searchByCircle.setOnClickListener {
+//            showBottomSheet()
+//        }
 
 
 
