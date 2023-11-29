@@ -36,33 +36,26 @@ open class ItemAdapter(private val vm : FavorFragmentViewModel):ListAdapter<Card
             //to print
             binding.listTime.text = card.getFormattedDeadline()
             binding.listImage.setOnClickListener {
-                showDeleteSnackbar(card, vm)
+                binding.listImage.setImageResource(R.drawable.checked)
+                showDeleteSnackbar(card,vm)
             }
         }
 
         private fun showDeleteSnackbar(card: CardEntity, vm: FavorFragmentViewModel) {
             val snackbar = Snackbar.make(
                 binding.root,
-                "Item deleted",
+                "${card.cardName} is deleted",
                 Snackbar.LENGTH_LONG
             )
 
-//            snackbar.setAction("Undo") {
-//                // Handle undo action, for example, restoring the deleted item
-//                vm.onUndone(card)
-//            }
 
             snackbar.setActionTextColor(binding.root.resources.getColor(R.color.colorAccent)) // Change action text color
 
             snackbar.addCallback(object : Snackbar.Callback() {
                 override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
                     if (event != DISMISS_EVENT_ACTION) {
-                        // If the Snackbar is dismissed without clicking on Undo,
-                        // proceed with the actual deletion
+
                         vm.onDone(card)
-
-                        binding.listImage.setImageResource(R.drawable.checkaed)
-
                     }
                 }
             })
@@ -77,8 +70,6 @@ open class ItemAdapter(private val vm : FavorFragmentViewModel):ListAdapter<Card
         }
 
     }
-
-
 }
 class CardDiffCallback: DiffUtil.ItemCallback<CardEntity>() {
     override fun areItemsTheSame(oldItem: CardEntity, newItem: CardEntity): Boolean {

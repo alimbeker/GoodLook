@@ -113,6 +113,8 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
         }
     }
 
+
+
     private fun cancelNotificationForCard(card: CardEntity) {
         // Create an intent for the cancel operation
         val cancelIntent = Intent(getApplication<Application>().applicationContext, AlarmReceiver::class.java)
