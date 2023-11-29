@@ -22,4 +22,7 @@
     <color name="blue">#0036d8</color>
     <color name="main_background">#F8EEE2</color>
     <color name="lists">#403B36</color>
+    <color name="category_item_background">#FFFDFA</color>
+    <color name="cardview_stroke_color">#595550</color>
+    <color name="category_item_text_color">#595550</color>
 </resources>

@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+ <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="150dp"
     android:layout_height="150dp"
     android:layout_margin="15dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="4dp"
+    app:cardCornerRadius="12dp"
+    android:background="@color/category_item_background"
+    app:strokeWidth="0.5dp"
+    app:strokeColor="@color/cardview_stroke_color"
     >
 
 
-
-        <View
-            android:id="@+id/line"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/blue"
-
-            />
 
     <TextView
         android:id="@+id/content_title"
@@ -24,14 +18,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:fontFamily="@font/sf_regular"
+        android:fontFamily="@font/nunito_black"
         android:layout_gravity="center"
         android:includeFontPadding="false"
         android:padding="10dp"
         android:text="List Name"
-        android:textColor="@color/black"
+        android:textColor="@color/category_item_text_color"
         android:textSize="22sp"
         android:textStyle="bold" />
 
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
