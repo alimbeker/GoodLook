@@ -5,13 +5,13 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import java.util.*
 
-
-@Entity(tableName = "category", indices = [Index(value = ["categoryName"], unique = true)])
+@Entity(tableName = "category")
 data class CategoryEntity(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @ColumnInfo(name = "id")
-    val id: Int = 0,
+    val id: UUID = UUID.randomUUID(),
 
     @ColumnInfo(name = "categoryName")
     val categoryName: String
@@ -21,5 +21,5 @@ data class CategoryEntity(
     }
 
     // If you want to create instances without specifying an ID
-    constructor(categoryName: String) : this(0, categoryName)
+    constructor(categoryName: String) : this(UUID.randomUUID(), categoryName)
 }
