@@ -17,8 +17,8 @@
             android:padding="10dp"
             android:text="List Name"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            android:fontFamily="@font/sf_regular"
+            android:textSize="22sp"
+            android:fontFamily="@font/roboto_regular"
             android:textStyle="bold"
             />
 
