@@ -13,14 +13,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:fontFamily="@font/nunito_black"
             android:includeFontPadding="false"
             android:padding="10dp"
             android:text="List Name"
-            android:textColor="@color/black"
+            android:textColor="@color/category_item_text_color"
             android:textSize="22sp"
-            android:fontFamily="@font/roboto_regular"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/child_recycler_view"

@@ -25,4 +25,7 @@
     <color name="category_item_background">#FFFDFA</color>
     <color name="cardview_stroke_color">#595550</color>
     <color name="category_item_text_color">#595550</color>
+    <color name="recom_frag_button">#D9614C</color>
+    <color name="form_background">#FFFDFA</color>
+    <color name="form_stroke">#F2E5D5</color>
 </resources>
