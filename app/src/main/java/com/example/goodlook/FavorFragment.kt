@@ -66,10 +66,15 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
             showAddCardFragment()
         }
 
-        // Menu
-        binding.dotMenu.setOnClickListener {
-            showMenu()
+
+        binding.searchBar.setOnClickListener {
+            showBottomSheet()
         }
+
+        // Menu
+//        binding.dotMenu.setOnClickListener {
+//            showMenu()
+//        }
 
         // Search Bar
 
@@ -95,28 +100,28 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
     }
 
     //Menu to delete by deadline
-    private fun showMenu() {
-        val popupMenu = PopupMenu(requireContext(), binding.dotMenu)
-        val inflater: MenuInflater = popupMenu.menuInflater
-        inflater.inflate(R.menu.upmenu, popupMenu.menu)
-
-        popupMenu.setOnMenuItemClickListener { item: MenuItem ->
-            when (item.itemId) {
-                R.id.remove_by_deadline -> {
-                    vm.deleteByDeadline()
-                    true
-                }
-                R.id.remove_all -> {
-                    vm.onClear()
-                    true
-                }
-
-                // Add more cases for other menu options if needed
-                else -> false
-            }
-        }
-        popupMenu.show()
-    }
+//    private fun showMenu() {
+//        val popupMenu = PopupMenu(requireContext(), binding.dotMenu)
+//        val inflater: MenuInflater = popupMenu.menuInflater
+//        inflater.inflate(R.menu.upmenu, popupMenu.menu)
+//
+//        popupMenu.setOnMenuItemClickListener { item: MenuItem ->
+//            when (item.itemId) {
+//                R.id.remove_by_deadline -> {
+//                    vm.deleteByDeadline()
+//                    true
+//                }
+//                R.id.remove_all -> {
+//                    vm.onClear()
+//                    true
+//                }
+//
+//                // Add more cases for other menu options if needed
+//                else -> false
+//            }
+//        }
+//        popupMenu.show()
+//    }
 
 
 }
