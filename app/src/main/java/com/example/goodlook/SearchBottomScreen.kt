@@ -92,7 +92,7 @@ class SearchBottomScreen : BottomSheetDialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // Create a new BottomSheetDialog with the specified theme.
-        val dialog = BottomSheetDialog(requireContext(), R.style.AppBottomSheetDialogTheme)
+        val dialog = BottomSheetDialog(requireContext(), R.style.CustomBottomSheetDialog)
 
         // Set an OnShowListener for the dialog to perform custom actions when shown.
         dialog.setOnShowListener { dialogInterface ->
