@@ -1,4 +1,4 @@
-package com.example.goodlook
+package com.example.goodlook.basefragment
 
 import android.app.Application
 import android.os.Bundle
@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
-import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 import com.example.goodlook.viewmodel.VmFactory
 
