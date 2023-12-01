@@ -45,7 +45,6 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //implement viewModel
-        // Implement viewModel
         val application = requireNotNull(this.activity).application
 
 
