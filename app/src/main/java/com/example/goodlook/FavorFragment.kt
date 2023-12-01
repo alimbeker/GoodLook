@@ -43,6 +43,7 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
         categoryAdapter = CategoryAdapter(cat_viewModel)
         recyclerView.adapter = categoryAdapter
 
+
         recyclerView.layoutManager = GridLayoutManager(this.context, 2, GridLayoutManager.VERTICAL, false)
 
         //For parentRecyclerView
@@ -74,13 +75,6 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
         // Menu
 //        binding.dotMenu.setOnClickListener {
 //            showMenu()
-//        }
-
-        // Search Bar
-
-        // Bottom Screen
-//        binding.searchByCircle.setOnClickListener {
-//            showBottomSheet()
 //        }
 
 
