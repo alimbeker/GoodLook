@@ -24,7 +24,7 @@ class DetailedCategoryFragment : BaseFragment<FragmentDetailedCategoryBinding>(F
 
         // Safe args
         val args = DetailedCategoryFragmentArgs.fromBundle(requireArguments())
-        binding.contentTitle.text = "List"
+        binding.contentTitle.text = args.title
 
 
         // Implement viewmodel
