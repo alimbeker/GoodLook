@@ -29,7 +29,7 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
     private var calendar : Calendar = Calendar.getInstance()
     private lateinit var vm: FavorFragmentViewModel
     private var selected_category: CategoryEntity? = null
-    var year = 0
+      var year = 0
       var month = 0
       var day = 0
       var hour = 0
