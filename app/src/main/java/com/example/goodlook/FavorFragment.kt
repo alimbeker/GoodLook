@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.goodlook.database.CardDatabase
+import com.example.goodlook.databasecategory.CategoryDao
 import com.example.goodlook.databasecategory.CategoryDatabase
 import com.example.goodlook.databinding.FragmentFavorBinding
 import com.example.goodlook.view.CategoryAdapter
@@ -21,11 +22,8 @@ import com.example.goodlook.viewmodel.VmFactory
 
 class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::inflate) {
 
-    private val application = requireNotNull(this.activity).application
-    private val dataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
 
-    private val cat_viewModel = createViewModel<CategoryViewModel>(application, dataSource)
-
+    private lateinit var cat_viewModel: CategoryViewModel
 
 
     private lateinit var categoryAdapter: CategoryAdapter
@@ -34,7 +32,11 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //viewmodel
+        val application = requireNotNull(this.activity).application
+        val dataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
 
+        cat_viewModel = createViewModel(application, dataSource)
 
         // Adapter
         val recyclerView = binding.recyclerView
