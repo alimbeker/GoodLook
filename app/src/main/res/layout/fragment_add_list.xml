@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:minWidth="400dp"
     android:orientation="vertical"
     android:gravity="center"
+    android:background = "@color/form_background"
     android:layout_margin="15dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_background"
         android:orientation="vertical"
-        android:padding="2dp"
         android:paddingBottom="15dp">
 
         <ImageView
@@ -22,7 +23,7 @@
             android:paddingBottom="10dp"
             android:src="@drawable/card"
             android:paddingTop="10dp"
-            android:background="@color/lavender"
+            android:background="@color/form_stroke"
             android:clipToOutline="true"
             android:layout_marginBottom="20dp"
             />
@@ -31,39 +32,55 @@
             android:id="@+id/newCardTask"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:hint="Category"
+            android:layout_margin="24dp"
+            android:drawableLeft="@drawable/ic_baseline_add_task_24"
+            android:drawablePadding="15dp"
+            android:fontFamily="@font/nunito_bold"
+            android:hint="New List"
+            android:inputType="textPersonName|textCapWords"
             android:minHeight="48dp"
+            android:textAlignment="gravity"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
 
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="25dp"
-            android:paddingTop="10dp"
+
             >
-
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/backCard"
-                android:layout_width="15mm"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:backgroundTint="#f53649"
-                android:text="back" />
-
-            <Button
+                android:backgroundTint="@color/recom_frag_button"
+                android:layout_marginStart="20dp"
+                android:text="back"
+                app:cornerRadius="12dp"
+                android:fontFamily="@font/nunito_black"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/saveCard"
-                android:layout_width="15mm"
+                android:layout_width="100dp"
+                android:backgroundTint="@color/recom_frag_button"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="150dp"
-                android:text="save" />
+                android:layout_marginEnd="20dp"
+                android:text="save"
+                android:fontFamily="@font/nunito_black"
+                android:textColor="@color/white"
+                app:cornerRadius="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
-        </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 

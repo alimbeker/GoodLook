@@ -4,6 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="pickadate">Pick a Date</string>
     <string name="pickatime">Pick a Time</string>
+    <string name="alert_text">Are you sure you want to delete list ?</string>
 
 
 </resources>
