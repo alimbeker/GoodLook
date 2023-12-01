@@ -1,10 +1,13 @@
 package com.example.goodlook.view
 
+import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
@@ -19,7 +22,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 
 
-class ItemAdapter(private val vm : FavorFragmentViewModel):ListAdapter<CardEntity,ItemAdapter.ViewHolder>(CardDiffCallback()){
+class ItemAdapter(private val card_vm : FavorFragmentViewModel):ListAdapter<CardEntity,ItemAdapter.ViewHolder>(CardDiffCallback()){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.create(parent)
@@ -27,41 +30,44 @@ class ItemAdapter(private val vm : FavorFragmentViewModel):ListAdapter<CardEntit
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val card = getItem(position)
-        holder.bind(card,vm)
+        holder.bind(card,card_vm)
     }
 
     class ViewHolder(private val binding: ListItemBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(card:CardEntity, vm: FavorFragmentViewModel) {
+        fun bind(card:CardEntity, card_vm: FavorFragmentViewModel) {
             binding.listName.text = card.cardName
             //to print
             binding.listTime.text = card.getFormattedDeadline()
             binding.listImage.setOnClickListener {
                 binding.listImage.setImageResource(R.drawable.checked)
-                showDeleteSnackbar(card,vm)
+                showDeleteSnackbar(card,card_vm)
             }
         }
 
-        private fun showDeleteSnackbar(card: CardEntity, vm: FavorFragmentViewModel) {
+        private fun showDeleteSnackbar(card: CardEntity, card_vm: FavorFragmentViewModel) {
             val snackbar = Snackbar.make(
                 binding.root,
                 "${card.cardName} is deleted",
                 Snackbar.LENGTH_LONG
             )
 
+            snackbar.view.setBackgroundColor(Color.GRAY)
 
-            snackbar.setActionTextColor(binding.root.resources.getColor(R.color.colorAccent)) // Change action text color
+            snackbar.setActionTextColor(Color.WHITE)
+
+
 
             snackbar.addCallback(object : Snackbar.Callback() {
                 override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
                     if (event != DISMISS_EVENT_ACTION) {
-
-                        vm.onDone(card)
+                        card_vm.onDone(card)
                     }
                 }
             })
 
             snackbar.show()
         }
+
 
         companion object{
             fun create (parent:ViewGroup):ViewHolder{
