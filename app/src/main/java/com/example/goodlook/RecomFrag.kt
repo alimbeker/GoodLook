@@ -50,7 +50,7 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
 
 
         // Implement viewModel for FavorFragmentViewModel
-        val card_dataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
+        val card_dataSource = CardDatabase.getInstance(application)!!.cardDao()
         card_viewModel = createViewModel(application, card_dataSource)
 
         //cat viewmodel
