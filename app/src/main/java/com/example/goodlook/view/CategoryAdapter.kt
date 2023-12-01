@@ -1,9 +1,12 @@
 package com.example.goodlook.view
 
+import android.app.AlertDialog
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.goodlook.databasecategory.CategoryEntity
+import com.example.goodlook.databinding.DialogDeleteConfirmationBinding
 import com.example.goodlook.databinding.ParentAdapterBinding
 import com.example.goodlook.viewmodel.CategoryViewModel
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
@@ -56,9 +59,38 @@ class CategoryAdapter(private val viewModel: FavorFragmentViewModel,
                 itemClick?.invoke(category)
             }
 
+            itemView.setOnLongClickListener {
+                showDeleteConfirmationDialog(binding.root.context, position)
+                true
+            }
+
 
 
         }
+
+
+        fun showDeleteConfirmationDialog(context: Context, position: Int) {
+            val alertDialogBuilder = AlertDialog.Builder(context)
+            val binding = DialogDeleteConfirmationBinding.inflate(LayoutInflater.from(context))
+
+            alertDialogBuilder.setView(binding.root)
+
+            val alertDialog = alertDialogBuilder.create()
+
+            binding.btnConfirmDelete.setOnClickListener {
+                cat_viewmodel.onDeleteCategory(sections[position])
+                notifyItemChanged(position)
+                alertDialog.dismiss()
+            }
+
+            binding.btnCancelDelete.setOnClickListener {
+                // Dismiss the dialog
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+        }
+
     }
 
 

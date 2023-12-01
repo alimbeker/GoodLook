@@ -14,7 +14,5 @@ interface TimeClickListener {
     }
 }
 
-interface OnItemLongClickListener {
-    fun onItemLongClick(position: Int)
-}
+
 
