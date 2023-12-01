@@ -20,19 +20,21 @@ import com.example.goodlook.viewmodel.VmFactory
 
 
 class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::inflate) {
-    private lateinit var vm: FavorFragmentViewModel
+
+    private val application = requireNotNull(this.activity).application
+    private val dataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
+
+    private val cat_viewModel = createViewModel<CategoryViewModel>(application, dataSource)
+
+
+
     private lateinit var categoryAdapter: CategoryAdapter
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Implement viewModel
-        val application = requireNotNull(this.activity).application
 
-// Implement viewModel for CategoryViewModel
-        val categoryDataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
-        val cat_viewModel: CategoryViewModel = createViewModel(application, categoryDataSource)
 
         // Adapter
         val recyclerView = binding.recyclerView
@@ -95,10 +97,7 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
             bottomSheetFragment.show(childFragmentManager, bottomSheetFragment.tag)
     }
 
-    inline fun <reified T : ViewModel> createViewModel(application: Application, dataSource: Any): T {
-        val vmFactory = VmFactory(dataSource, application, T::class.java)
-        return ViewModelProvider(this, vmFactory).get(T::class.java)
-    }
+
 
     //Menu to delete by deadline
 //    private fun showMenu() {
