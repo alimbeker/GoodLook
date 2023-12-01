@@ -1,9 +1,11 @@
 package com.example.goodlook
 
 
+import android.app.Application
 import android.os.Bundle
 import android.view.*
 import android.widget.PopupMenu
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -30,8 +32,7 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
 
 // Implement viewModel for CategoryViewModel
         val categoryDataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
-        val categoryVmFactory = VmFactory(categoryDataSource, application, CategoryViewModel::class.java)
-        val cat_viewModel = ViewModelProvider(this, categoryVmFactory).get(CategoryViewModel::class.java)
+        val cat_viewModel: CategoryViewModel = createViewModel(application, categoryDataSource)
 
         // Adapter
         val recyclerView = binding.recyclerView
@@ -92,6 +93,11 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
     private fun showBottomSheet() {
             val bottomSheetFragment = SearchBottomScreen()
             bottomSheetFragment.show(childFragmentManager, bottomSheetFragment.tag)
+    }
+
+    inline fun <reified T : ViewModel> createViewModel(application: Application, dataSource: Any): T {
+        val vmFactory = VmFactory(dataSource, application, T::class.java)
+        return ViewModelProvider(this, vmFactory).get(T::class.java)
     }
 
     //Menu to delete by deadline
