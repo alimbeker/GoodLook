@@ -43,6 +43,7 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
         val recyclerView = binding.recyclerView
         categoryAdapter = CategoryAdapter(vm, cat_viewModel)
         recyclerView.adapter = categoryAdapter
+
         recyclerView.layoutManager = GridLayoutManager(this.context, 2, GridLayoutManager.VERTICAL, false)
 
         //For parentRecyclerView
