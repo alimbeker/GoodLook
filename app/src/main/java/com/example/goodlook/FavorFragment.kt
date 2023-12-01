@@ -48,7 +48,7 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
         categoryAdapter.itemClick = {
 
             findNavController().navigate(
-                FavorFragmentDirections.actionFavorFragmentToDetailedCategoryFragment(it.id.toString())
+                FavorFragmentDirections.actionFavorFragmentToDetailedCategoryFragment(it.id.toString(),it.categoryName)
 
             )
 
