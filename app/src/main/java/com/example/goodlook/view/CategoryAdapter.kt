@@ -3,6 +3,7 @@ package com.example.goodlook.view
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.goodlook.OnItemLongClickListener
 import com.example.goodlook.databasecategory.CategoryEntity
 import com.example.goodlook.databinding.ParentAdapterBinding
 import com.example.goodlook.viewmodel.CategoryViewModel
@@ -11,7 +12,7 @@ import com.example.goodlook.viewmodel.FavorFragmentViewModel
 class CategoryAdapter(private val viewModel: FavorFragmentViewModel,
                       private val cat_viewmodel : CategoryViewModel
 
-) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>(), OnItemLongClickListener {
 
     var itemClick: ((CategoryEntity) -> Unit)? = null
 
@@ -22,7 +23,10 @@ class CategoryAdapter(private val viewModel: FavorFragmentViewModel,
             sections = categories
             notifyDataSetChanged()
         }
+
     }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -43,6 +47,11 @@ class CategoryAdapter(private val viewModel: FavorFragmentViewModel,
 
 
     inner class ViewHolder(private val binding: ParentAdapterBinding, val itemClick: ((CategoryEntity) -> Unit)?) : RecyclerView.ViewHolder(binding.root) {
+
+
+
+
+
         private val sectionTitleTextView = binding.contentTitle
 
 
@@ -54,6 +63,9 @@ class CategoryAdapter(private val viewModel: FavorFragmentViewModel,
             itemView.setOnClickListener {
 
                 itemClick?.invoke(category)
+
+                onItemLongClickListener?.onItemLongClick(adapterPosition)
+                true
             }
 
 
@@ -61,7 +73,13 @@ class CategoryAdapter(private val viewModel: FavorFragmentViewModel,
         }
     }
 
+    override fun onItemLongClick(position: Int) {
+        // Remove the item from the dataset
+        cat_viewmodel.onDeleteCategory(sections[position])
 
+        // Notify the adapter about the item removal
+        notifyItemRemoved(position)
+    }
 
 
 }

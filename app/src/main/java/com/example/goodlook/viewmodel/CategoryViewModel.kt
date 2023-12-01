@@ -2,8 +2,6 @@ package com.example.goodlook.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.goodlook.database.CardDao
-import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.database.CardEntity
 import com.example.goodlook.database.CardRepository
 import com.example.goodlook.databasecategory.CategoryDao
@@ -27,15 +25,24 @@ class CategoryViewModel(val database: CategoryDao, application: Application) : A
             insertCategory(categoryName)
         }
     }
+
+    fun onDeleteCategory(categoryName: CategoryEntity) {
+        viewModelScope.launch {
+            deleteCategory(categoryName)
+        }
+    }
+
     suspend fun insertCategory(categoryName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertCategory(CategoryEntity(categoryName))
         }
     }
 
-    suspend fun deleteCategory(category: CategoryEntity) {
+    suspend fun deleteCategory(categoryName: CategoryEntity) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteCategory(category)
+            repository.deleteCategory(categoryName)
         }
     }
+
+
 }
