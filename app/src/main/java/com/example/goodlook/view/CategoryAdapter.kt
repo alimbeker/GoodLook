@@ -11,8 +11,7 @@ import com.example.goodlook.databinding.ParentAdapterBinding
 import com.example.goodlook.viewmodel.CategoryViewModel
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 
-class CategoryAdapter(private val viewModel: FavorFragmentViewModel,
-                      private val cat_viewmodel : CategoryViewModel
+class CategoryAdapter(private val cat_viewmodel : CategoryViewModel
 
 ) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 

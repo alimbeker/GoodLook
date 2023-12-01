@@ -28,12 +28,6 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
         // Implement viewModel
         val application = requireNotNull(this.activity).application
 
-
-        // Implement viewModel for FavorFragmentViewModel
-        val cardDataSource = CardDatabase.getInstance(application)!!.cardDao()
-        val cardVmFactory = VmFactory(cardDataSource, application, FavorFragmentViewModel::class.java)
-        vm = ViewModelProvider(this, cardVmFactory).get(FavorFragmentViewModel::class.java)
-
 // Implement viewModel for CategoryViewModel
         val categoryDataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
         val categoryVmFactory = VmFactory(categoryDataSource, application, CategoryViewModel::class.java)
@@ -41,7 +35,7 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
 
         // Adapter
         val recyclerView = binding.recyclerView
-        categoryAdapter = CategoryAdapter(vm, cat_viewModel)
+        categoryAdapter = CategoryAdapter(cat_viewModel)
         recyclerView.adapter = categoryAdapter
 
         recyclerView.layoutManager = GridLayoutManager(this.context, 2, GridLayoutManager.VERTICAL, false)
