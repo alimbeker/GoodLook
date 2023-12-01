@@ -11,14 +11,14 @@ import android.os.SystemClock
 import android.text.format.DateFormat
 import android.view.View
 import android.widget.*
-import androidx.lifecycle.ViewModelProvider
+import com.example.goodlook.basefragment.BaseFragment
+import com.example.goodlook.basefragment.createViewModel
 import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.databasecategory.CategoryDatabase
 import com.example.goodlook.databasecategory.CategoryEntity
 import com.example.goodlook.databinding.FragmentRecomBinding
 import com.example.goodlook.viewmodel.CategoryViewModel
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
-import com.example.goodlook.viewmodel.VmFactory
 import java.util.*
 
 
@@ -97,7 +97,7 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
 
         binding.saveCard.setOnClickListener {
             val newCardTask = binding.newCardTask.text.toString()
-            val cardCategory = selected_category.toString()
+            val cardCategory_id = selected_category?.id
             //Calendar
             val c = Calendar.getInstance()
             c.set(year,month,day,hour,minute)
@@ -117,7 +117,9 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
 
                 } else {
                     val requestCode = card_viewModel.generateUniqueRequestId()
-                    card_viewModel.onClickInsert(newCardTask, deadline,cardCategory,requestCode)
+                    if (cardCategory_id != null) {
+                        card_viewModel.onClickInsert(newCardTask, deadline, cardCategory_id,requestCode)
+                    }
 
                     Toast.makeText(context,"Succesfully added new $newCardTask card.", Toast.LENGTH_SHORT).show()
 

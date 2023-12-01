@@ -1,23 +1,16 @@
 package com.example.goodlook
 
 
-import android.app.Application
 import android.os.Bundle
 import android.view.*
-import android.widget.PopupMenu
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.goodlook.database.CardDatabase
-import com.example.goodlook.databasecategory.CategoryDao
+import com.example.goodlook.basefragment.BaseFragment
+import com.example.goodlook.basefragment.createViewModel
 import com.example.goodlook.databasecategory.CategoryDatabase
 import com.example.goodlook.databinding.FragmentFavorBinding
 import com.example.goodlook.view.CategoryAdapter
 import com.example.goodlook.viewmodel.CategoryViewModel
-import com.example.goodlook.viewmodel.FavorFragmentViewModel
-import com.example.goodlook.viewmodel.VmFactory
-
 
 
 class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::inflate) {
@@ -55,7 +48,7 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
         categoryAdapter.itemClick = {
 
             findNavController().navigate(
-                FavorFragmentDirections.actionFavorFragmentToDetailedCategoryFragment(it.categoryName)
+                FavorFragmentDirections.actionFavorFragmentToDetailedCategoryFragment(it.id.toString())
 
             )
 

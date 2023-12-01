@@ -1,20 +1,14 @@
 package com.example.goodlook
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.goodlook.basefragment.BaseFragment
+import com.example.goodlook.basefragment.createViewModel
 import com.example.goodlook.database.CardDatabase
-import com.example.goodlook.databasecategory.CategoryDatabase
 import com.example.goodlook.databinding.FragmentDetailedCategoryBinding
-import com.example.goodlook.databinding.FragmentFavorBinding
 import com.example.goodlook.view.ItemAdapter
-import com.example.goodlook.viewmodel.CategoryViewModel
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
-import com.example.goodlook.viewmodel.VmFactory
 
 class DetailedCategoryFragment : BaseFragment<FragmentDetailedCategoryBinding>(FragmentDetailedCategoryBinding::inflate) {
 
@@ -30,7 +24,7 @@ class DetailedCategoryFragment : BaseFragment<FragmentDetailedCategoryBinding>(F
 
         // Safe args
         val args = DetailedCategoryFragmentArgs.fromBundle(requireArguments())
-        binding.contentTitle.text = args.title
+        binding.contentTitle.text = "List"
 
 
         // Implement viewmodel
@@ -48,7 +42,7 @@ class DetailedCategoryFragment : BaseFragment<FragmentDetailedCategoryBinding>(F
 
         card_viewModel.filteredCards.observeForever { allCards ->
             // Filter favorCards based on the category or any other logic
-            val filteredFavorCards = allCards.filter { it.cardCategory == args.title }
+            val filteredFavorCards = allCards.filter { it.cardCategory_id.toString() == args.id }
             itemAdapter.submitList(filteredFavorCards)
         }
 

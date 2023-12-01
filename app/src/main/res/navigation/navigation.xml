@@ -31,7 +31,7 @@
         android:label="DetailedCategoryFragment"
         tools:layout="@layout/fragment_detailed_category">
         <argument
-            android:name="title"
+            android:name="id"
             app:argType="string" />
 
     </fragment>

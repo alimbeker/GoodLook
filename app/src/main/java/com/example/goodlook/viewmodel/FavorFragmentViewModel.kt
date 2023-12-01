@@ -14,6 +14,7 @@ import com.example.goodlook.database.CardRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.UUID
 
 class FavorFragmentViewModel(val database: CardDao, application: Application) : AndroidViewModel(application) {
 
@@ -55,9 +56,9 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
     }
 
 
-    fun onClickInsert(cardName:String,deadline:Long,cardCategory:String, requestCode: Int) {
+    fun onClickInsert(cardName:String,deadline:Long,cardCategory_id:UUID, requestCode: Int) {
         viewModelScope.launch {
-            insert(cardName,deadline,cardCategory,requestCode)
+            insert(cardName,deadline,cardCategory_id,requestCode)
         }
     }
 
@@ -80,9 +81,9 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
 
 
 
-    suspend fun insert(cardName:String,deadline:Long, cardCategory: String, requestCode: Int) {
+    suspend fun insert(cardName:String,deadline:Long, cardCategory_id: UUID, requestCode: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.insert(CardEntity(cardName,deadline,cardCategory,requestCode))
+            repository.insert(CardEntity(cardName,deadline,cardCategory_id,requestCode))
         }
     }
 
