@@ -24,12 +24,16 @@ import java.util.*
 
 class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::inflate),
     DateClickListener, TimeClickListener,DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+
     private lateinit var alarmIntent: PendingIntent
     private var alarmManager: AlarmManager? = null
-    private var calendar : Calendar = Calendar.getInstance()
-    private lateinit var vm: FavorFragmentViewModel
+
+    private lateinit var card_viewModel: FavorFragmentViewModel
+    private lateinit var cat_viewModel: CategoryViewModel
     private var selected_category: CategoryEntity? = null
-      var year = 0
+
+    private var calendar : Calendar = Calendar.getInstance()
+    var year = 0
       var month = 0
       var day = 0
       var hour = 0
@@ -46,15 +50,12 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
 
 
         // Implement viewModel for FavorFragmentViewModel
-        val cardDataSource = CardDatabase.getInstance(application)!!.cardDao()
-        val cardVmFactory = VmFactory(cardDataSource, application, FavorFragmentViewModel::class.java)
-        vm = ViewModelProvider(this, cardVmFactory).get(FavorFragmentViewModel::class.java)
+        val card_dataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
+        card_viewModel = createViewModel(application, card_dataSource)
 
         //cat viewmodel
-        val categoryDataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
-        val categoryVmFactory = VmFactory(categoryDataSource, application, CategoryViewModel::class.java)
-        val cat_viewModel = ViewModelProvider(this, categoryVmFactory).get(CategoryViewModel::class.java)
-
+        val cat_dataSource = CategoryDatabase.getInstance(application)!!.categoryDao()
+        cat_viewModel = createViewModel(application, cat_dataSource)
 
 
         //Spinner
@@ -116,8 +117,8 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
                     throw DateException("Something went wrong with date")
 
                 } else {
-                    val requestCode = vm.generateUniqueRequestId()
-                    vm.onClickInsert(newCardTask, deadline,cardCategory,requestCode)
+                    val requestCode = card_viewModel.generateUniqueRequestId()
+                    card_viewModel.onClickInsert(newCardTask, deadline,cardCategory,requestCode)
 
                     Toast.makeText(context,"Succesfully added new $newCardTask card.", Toast.LENGTH_SHORT).show()
 
