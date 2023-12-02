@@ -28,4 +28,5 @@
     <color name="recom_frag_button">#D9614C</color>
     <color name="form_background">#FFFDFA</color>
     <color name="form_stroke">#F2E5D5</color>
+    <color name="save_button">#0083A3</color>
 </resources>

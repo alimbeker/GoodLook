@@ -2,6 +2,7 @@ package com.example.goodlook
 
 import android.app.AlarmManager
 import android.app.DatePickerDialog
+import android.app.Dialog
 import android.app.PendingIntent
 import android.app.TimePickerDialog
 import android.content.Context
@@ -10,6 +11,7 @@ import android.os.Bundle
 import android.os.SystemClock
 import android.text.format.DateFormat
 import android.view.View
+import android.view.WindowManager
 import android.widget.*
 import com.example.goodlook.basefragment.BaseDialogFragment
 import com.example.goodlook.basefragment.createViewModel
@@ -20,6 +22,8 @@ import com.example.goodlook.databasecategory.CategoryEntity
 import com.example.goodlook.databinding.FragmentRecomBinding
 import com.example.goodlook.viewmodel.CategoryViewModel
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.util.*
 
 
@@ -228,11 +232,57 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
 
     }
 
+
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        // Create a new BottomSheetDialog with the specified theme.
+        val dialog = BottomSheetDialog(requireContext(), R.style.CustomBottomSheetDialog)
+
+        // Set an OnShowListener for the dialog to perform custom actions when shown.
+        dialog.setOnShowListener { dialogInterface ->
+            // Cast the dialog to a BottomSheetDialog to access its features.
+            val bottomSheetDialog = dialogInterface as BottomSheetDialog
+
+            // Find the root layout of the BottomSheetDialog.
+            val parentLayout = bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+
+            // Make sure the layout is not null before proceeding.
+            parentLayout?.let {
+                // Get the BottomSheetBehavior associated with the layout.
+                val behavior = BottomSheetBehavior.from(it)
+
+                // Set the layout's height to MATCH_PARENT to take up the full screen height.
+                setupFullHeight(it)
+
+                // Set the state of the BottomSheetBehavior to STATE_EXPANDED to fully show the dialog.
+                behavior.state = BottomSheetBehavior.STATE_EXPANDED
+            }
+        }
+
+        // Return the customized BottomSheetDialog.
+        return dialog
+    }
+
+    private fun setupFullHeight(bottomSheet: View) {
+        // Get the layout params of the view.
+        val layoutParams = bottomSheet.layoutParams
+
+        // Set the height to MATCH_PARENT to make the view take up the full height of the screen.
+        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT
+
+        // Apply the updated layout params to the view.
+        bottomSheet.layoutParams = layoutParams
+    }
+
     companion object{
 
         @JvmStatic val TAG = RecomFrag::class.java.simpleName
     }
 }
+
+
+
+
 
 
 

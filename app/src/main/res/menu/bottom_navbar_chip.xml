@@ -6,16 +6,12 @@
         android:id="@+id/favorFragment"
         android:icon="@drawable/ic_baseline_density_small_24"
         android:title="Cards"
-        app:cnb_backgroundColor="@color/white"/>
+        app:cnb_backgroundColor="@color/form_background"/>
 
-    <item
-        android:id="@+id/recomFrag"
-        android:icon="@drawable/ic_baseline_add_comment_24"
-        android:title="Add Card"
-        app:cnb_backgroundColor="@color/white"/>
+
     <item
         android:id="@+id/korzinFrag"
         android:icon="@drawable/ic_baseline_sync_24"
         android:title="Basket"
-        app:cnb_backgroundColor="@color/white"/>
+        app:cnb_backgroundColor="@color/form_background"/>
 </menu>

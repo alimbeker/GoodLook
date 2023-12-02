@@ -31,7 +31,7 @@
         android:id="@+id/btnCancelDelete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/recom_frag_button"
+        android:backgroundTint="@color/save_button"
         android:text="Cancel"
         android:fontFamily="@font/nunito_black"
         android:textColor="@color/white"
