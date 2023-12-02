@@ -11,8 +11,9 @@ import android.os.SystemClock
 import android.text.format.DateFormat
 import android.view.View
 import android.widget.*
-import com.example.goodlook.basefragment.BaseFragment
+import com.example.goodlook.basefragment.BaseDialogFragment
 import com.example.goodlook.basefragment.createViewModel
+
 import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.databasecategory.CategoryDatabase
 import com.example.goodlook.databasecategory.CategoryEntity
@@ -22,7 +23,7 @@ import com.example.goodlook.viewmodel.FavorFragmentViewModel
 import java.util.*
 
 
-class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::inflate),
+class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding::inflate),
     DateClickListener, TimeClickListener,DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     private lateinit var alarmIntent: PendingIntent
@@ -154,6 +155,8 @@ class RecomFrag : BaseFragment<FragmentRecomBinding>(FragmentRecomBinding::infla
 
 
         }
+
+
 
 
 
