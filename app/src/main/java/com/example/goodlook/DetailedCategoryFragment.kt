@@ -57,6 +57,16 @@ class DetailedCategoryFragment : BaseFragment<FragmentDetailedCategoryBinding>(F
         itemRecyclerView.addItemDecoration(offsetDecoration)
 
 
+        binding.included.addTask.setOnClickListener {
+            showBottomSheet()
+        }
+
+
+    }
+
+    private fun showBottomSheet() {
+        val bottomSheetFragment = RecomFrag()
+        bottomSheetFragment.show(childFragmentManager, bottomSheetFragment.tag)
     }
 
 
