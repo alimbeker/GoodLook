@@ -60,6 +60,7 @@ class ItemAdapter(private val card_vm : FavorFragmentViewModel):ListAdapter<Card
             snackbar.addCallback(object : Snackbar.Callback() {
                 override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
                     if (event != DISMISS_EVENT_ACTION) {
+                        binding.listImage.setImageResource(R.drawable.check)
                         card_vm.onDone(card)
                     }
                 }
