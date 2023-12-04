@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.transition.TransitionInflater
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.goodlook.animation.FadeInItemAnimator
 import com.example.goodlook.basefragment.BaseFragment
 import com.example.goodlook.basefragment.createViewModel
 import com.example.goodlook.database.CardDatabase
@@ -52,6 +53,10 @@ class DetailedCategoryFragment : BaseFragment<FragmentDetailedCategoryBinding>(F
             layoutManager = LinearLayoutManager(this.context)
             adapter = itemAdapter
         }
+
+        val fadeInItemAnimator = FadeInItemAnimator()
+        itemRecyclerView.itemAnimator = fadeInItemAnimator
+
 
 
         //OffsetDecoration
