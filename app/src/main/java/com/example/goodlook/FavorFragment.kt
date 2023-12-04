@@ -3,6 +3,7 @@ package com.example.goodlook
 
 import android.os.Bundle
 import android.view.*
+import android.view.animation.AnimationUtils
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.goodlook.basefragment.BaseFragment
@@ -43,6 +44,9 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
        val offsetDecoration = OffsetDecoration(start = 4, top = 20, end = 2, bottom = 16)
 
        recyclerView.addItemDecoration(offsetDecoration)
+
+        val animation = AnimationUtils.loadLayoutAnimation(context, R.anim.animation)
+        recyclerView.layoutAnimation = animation
 
 
         categoryAdapter.itemClick = {
