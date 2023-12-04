@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:transitionName="title"
         android:fontFamily="@font/nunito_black"
         android:layout_gravity="center"
         android:includeFontPadding="false"

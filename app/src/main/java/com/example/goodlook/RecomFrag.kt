@@ -65,7 +65,7 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
         //Spinner
         val spinner = binding.spinner
 
-        cat_viewModel.allCards.observe(viewLifecycleOwner) { categories ->
+        cat_viewModel.allCategories.observe(viewLifecycleOwner) { categories ->
             // Update the Spinner with the list of categories
             val adapter = ArrayAdapter(requireContext(), android.R.layout.preference_category, categories)
             spinner.adapter = adapter

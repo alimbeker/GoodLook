@@ -1,6 +1,7 @@
 package com.example.goodlook
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.goodlook.basefragment.BaseFragment
@@ -21,6 +22,7 @@ class DetailedCategoryFragment : BaseFragment<FragmentDetailedCategoryBinding>(F
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        sharedElementEnterTransition = TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
 
         // Safe args
         val args = DetailedCategoryFragmentArgs.fromBundle(requireArguments())

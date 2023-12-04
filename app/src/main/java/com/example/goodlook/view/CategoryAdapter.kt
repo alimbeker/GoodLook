@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.example.goodlook.databasecategory.CategoryEntity
 import com.example.goodlook.databinding.DialogDeleteConfirmationBinding
@@ -15,12 +17,12 @@ class CategoryAdapter(private val cat_viewmodel : CategoryViewModel
 
 ) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
-    var itemClick: ((CategoryEntity) -> Unit)? = null
+    var itemClick: ((CategoryEntity, FragmentNavigator.Extras) -> Unit)? = null
 
     private var sections: List<CategoryEntity> = emptyList()
 
     init {
-        cat_viewmodel.allCards.observeForever { categories ->
+        cat_viewmodel.allCategories.observeForever { categories ->
             sections = categories
             notifyDataSetChanged()
         }
@@ -44,18 +46,22 @@ class CategoryAdapter(private val cat_viewmodel : CategoryViewModel
 
 
 
-    inner class ViewHolder(private val binding: ParentAdapterBinding, val itemClick: ((CategoryEntity) -> Unit)?) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ParentAdapterBinding, val itemClick: ((CategoryEntity, FragmentNavigator.Extras) -> Unit)?) : RecyclerView.ViewHolder(binding.root) {
         private val sectionTitleTextView = binding.contentTitle
 
 
         fun bind(category: CategoryEntity) {
             sectionTitleTextView.text = category.categoryName
 
+            binding.contentTitle.transitionName = category.categoryName
 
 
             itemView.setOnClickListener {
+                val extras = FragmentNavigatorExtras(
 
-                itemClick?.invoke(category)
+                    binding.contentTitle to "title"
+                )
+                itemClick?.invoke(category,extras)
             }
 
             itemView.setOnLongClickListener {
