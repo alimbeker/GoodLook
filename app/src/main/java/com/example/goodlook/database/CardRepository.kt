@@ -5,6 +5,7 @@ import androidx.room.Insert
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import java.util.UUID
 
 class CardRepository(private val cardDao: CardDao) {
 
@@ -38,7 +39,7 @@ class CardRepository(private val cardDao: CardDao) {
         cardDao.deleteByDeadline(currentTime)
     }
 
-    suspend fun deleteByCategoryId(category_id: String) {
+    suspend fun deleteByCategoryId(category_id: UUID) {
         cardDao.deleteByCategoryId(category_id)
     }
 

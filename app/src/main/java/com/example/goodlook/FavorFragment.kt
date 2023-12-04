@@ -8,10 +8,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.goodlook.basefragment.BaseFragment
 import com.example.goodlook.basefragment.createViewModel
+import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.databasecategory.CategoryDatabase
 import com.example.goodlook.databinding.FragmentFavorBinding
 import com.example.goodlook.view.CategoryAdapter
 import com.example.goodlook.viewmodel.CategoryViewModel
+import com.example.goodlook.viewmodel.FavorFragmentViewModel
 
 
 class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::inflate) {
@@ -19,6 +21,7 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
 
     private lateinit var cat_viewModel: CategoryViewModel
 
+    private lateinit var card_viewModel: FavorFragmentViewModel
 
     private lateinit var categoryAdapter: CategoryAdapter
 
@@ -32,9 +35,15 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
 
         cat_viewModel = createViewModel(application, dataSource)
 
+
+        //viewmodel
+        val card_dataSource = CardDatabase.getInstance(application)!!.cardDao()
+
+        card_viewModel = createViewModel(application, card_dataSource)
+
         // Adapter
         val recyclerView = binding.recyclerView
-        categoryAdapter = CategoryAdapter(cat_viewModel)
+        categoryAdapter = CategoryAdapter(cat_viewModel,card_viewModel)
         recyclerView.adapter = categoryAdapter
 
 

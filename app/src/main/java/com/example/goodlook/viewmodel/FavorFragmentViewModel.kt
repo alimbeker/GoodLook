@@ -144,12 +144,12 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
         }
     }
 
-    fun onDeleteByCategoryId(category_id: String) {
+    fun onDeleteByCategoryId(category_id: UUID) {
         viewModelScope.launch() {
             deleteByCategoryId(category_id)
         }
     }
-   suspend fun deleteByCategoryId(category_id: String) {
+   suspend fun deleteByCategoryId(category_id: UUID) {
        viewModelScope.launch(Dispatchers.IO) {
            repository.deleteByCategoryId(category_id)
        }

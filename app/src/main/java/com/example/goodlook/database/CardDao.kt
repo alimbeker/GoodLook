@@ -3,6 +3,7 @@ package com.example.goodlook.database
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.room.*
+import java.util.UUID
 
 @Dao
 interface CardDao {
@@ -27,7 +28,7 @@ interface CardDao {
     @Query("DELETE FROM cardTable WHERE deadline < :currentTime")
     suspend fun deleteByDeadline(currentTime: Long)
 
-    @Query("DELETE FROM cardTable WHERE id = :category_id")
-    suspend fun deleteByCategoryId(category_id: String)
+    @Query("DELETE FROM cardTable WHERE category = :category_id")
+    suspend fun deleteByCategoryId(category_id:UUID)
 
 }

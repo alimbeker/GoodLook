@@ -13,7 +13,7 @@ import com.example.goodlook.databinding.ParentAdapterBinding
 import com.example.goodlook.viewmodel.CategoryViewModel
 import com.example.goodlook.viewmodel.FavorFragmentViewModel
 
-class CategoryAdapter(private val cat_viewmodel : CategoryViewModel
+class CategoryAdapter(private val cat_viewmodel : CategoryViewModel, private val card_viewmodel: FavorFragmentViewModel
 
 ) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
@@ -84,6 +84,7 @@ class CategoryAdapter(private val cat_viewmodel : CategoryViewModel
 
             binding.btnConfirmDelete.setOnClickListener {
                 cat_viewmodel.onDeleteCategory(sections[position])
+                card_viewmodel.onDeleteByCategoryId(sections[position].id)
                 notifyItemChanged(position)
                 alertDialog.dismiss()
             }
