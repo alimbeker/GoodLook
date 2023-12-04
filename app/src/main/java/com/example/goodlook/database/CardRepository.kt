@@ -38,6 +38,10 @@ class CardRepository(private val cardDao: CardDao) {
         cardDao.deleteByDeadline(currentTime)
     }
 
+    suspend fun deleteByCategoryId(category_id: String) {
+        cardDao.deleteByCategoryId(category_id)
+    }
+
 
 
 
