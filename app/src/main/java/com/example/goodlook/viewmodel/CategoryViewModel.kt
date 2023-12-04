@@ -19,7 +19,6 @@ class CategoryViewModel(val database: CategoryDao, application: Application) : A
 
 
    init {
-       val dao = CategoryDatabase.getInstance(application)!!.categoryDao()
        allCategories =  repository.allCategories
    }
 
