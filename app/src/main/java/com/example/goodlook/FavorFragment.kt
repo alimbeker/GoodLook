@@ -45,8 +45,7 @@ class FavorFragment : BaseFragment<FragmentFavorBinding>(FragmentFavorBinding::i
 
        recyclerView.addItemDecoration(offsetDecoration)
 
-        val animation = AnimationUtils.loadLayoutAnimation(context, R.anim.animation)
-        recyclerView.layoutAnimation = animation
+
 
 
         categoryAdapter.itemClick = {
