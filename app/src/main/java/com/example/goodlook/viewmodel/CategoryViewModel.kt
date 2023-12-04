@@ -2,6 +2,7 @@ package com.example.goodlook.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.*
+import com.example.goodlook.database.CardDatabase
 import com.example.goodlook.database.CardEntity
 import com.example.goodlook.database.CardRepository
 import com.example.goodlook.databasecategory.CategoryDao
@@ -14,10 +15,13 @@ import kotlinx.coroutines.launch
 class CategoryViewModel(val database: CategoryDao, application: Application) : AndroidViewModel(application) {
     private val dao = CategoryDatabase.getInstance(application)!!.categoryDao()
     private val repository = CategoryRepository(dao)
-    val allCards : LiveData<MutableList<CategoryEntity>> =  repository.allCategories
+    var allCategories : LiveData<MutableList<CategoryEntity>> =  repository.allCategories
 
 
-
+   init {
+       val dao = CategoryDatabase.getInstance(application)!!.categoryDao()
+       allCategories =  repository.allCategories
+   }
 
 
     fun onInsertCategory(categoryName:String) {
