@@ -39,7 +39,9 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
     private var interval: String ?= null
 
     private var calendar : Calendar = Calendar.getInstance()
-      var year = 0
+    private var startTime : Long ?= null
+
+    var year = 0
       var month = 0
       var day = 0
       var hour = 0
@@ -175,12 +177,14 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
 
 
 
-                    alarmManager?.setInexactRepeating(
-                        AlarmManager.RTC_WAKEUP,
-                        calendar.timeInMillis,
-                        interval_time,
-                        alarmIntent
-                    )
+                    startTime?.let { time ->
+                        alarmManager?.setInexactRepeating(
+                            AlarmManager.RTC_WAKEUP,
+                            time,
+                            interval_time,
+                            alarmIntent
+                        )
+                    }
 
 
                 }
@@ -240,6 +244,7 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
 
 
 
+
         TimePickerDialog(activity,this,hour,minute,DateFormat.is24HourFormat(activity)).show()
 
     }
@@ -267,7 +272,21 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
         this.minute = minute
 
 
+        startTime = calculateStartTime(year, month, day, hourOfDay, minute)
 
+
+    }
+
+    fun calculateStartTime(year: Int, month: Int, day: Int, hour: Int, minute: Int): Long {
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.YEAR, year)
+        calendar.set(Calendar.MONTH, month)
+        calendar.set(Calendar.DAY_OF_MONTH, day)
+        calendar.set(Calendar.HOUR_OF_DAY, hour)
+        calendar.set(Calendar.MINUTE, minute)
+        calendar.set(Calendar.SECOND, 0) // Set seconds to zero for precision
+
+        return calendar.timeInMillis
     }
 
 
