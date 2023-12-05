@@ -88,19 +88,8 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
     }
 
 
-    private val usedRequestIds = mutableSetOf<Int>()
 
-    fun generateUniqueRequestId(): Int {
-        var requestId: Int
-        do {
-            requestId = (0..Int.MAX_VALUE).random() // Generate a random request ID
-        } while (usedRequestIds.contains(requestId))
 
-        // Add the generated ID to the set of used IDs
-        usedRequestIds.add(requestId)
-
-        return requestId
-    }
 
     fun onDone(card: CardEntity?){
         viewModelScope.launch(Dispatchers.IO) {
@@ -108,7 +97,7 @@ class FavorFragmentViewModel(val database: CardDao, application: Application) : 
             if (card != null) {
                 repository.delete(card)
                 cancelNotificationForCard(card)
-                usedRequestIds.remove(card.requestCode)
+
             }
 
         }
