@@ -167,13 +167,12 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
 
 
                     val interval_time: Long = when {
-                        interval.equals("Monthly") -> AlarmManager.INTERVAL_DAY * 30 // Monthly
-                        interval.equals("Weekly") -> AlarmManager.INTERVAL_DAY * 7   // Weekly
+                        interval.equals(getString(R.string.monthly)) -> AlarmManager.INTERVAL_DAY * 30 // Monthly
+                        interval.equals(getString(R.string.weekly)) -> AlarmManager.INTERVAL_DAY * 7   // Weekly
                         else -> AlarmManager.INTERVAL_DAY                                  // Daily
 
                     }
 
-                    println("Set time:" + calendar.timeInMillis)
 
 
                     alarmManager?.setInexactRepeating(
