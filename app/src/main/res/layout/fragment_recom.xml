@@ -33,12 +33,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.75" />
 
+
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/shapeemail"
         android:fontFamily="@font/nunito_bold"
 
@@ -46,9 +48,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTime" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/txtTime"
+        />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/saveCard"
@@ -115,6 +116,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDate"
         app:layout_constraintVertical_bias="0.085" />
+
+    <Spinner
+        android:id="@+id/repeating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/shapeemail"
+        android:fontFamily="@font/nunito_bold"
+
+        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTime"
+         />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

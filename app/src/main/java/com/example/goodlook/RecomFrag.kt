@@ -36,6 +36,7 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
     private lateinit var card_viewModel: FavorFragmentViewModel
     private lateinit var cat_viewModel: CategoryViewModel
     private var selected_category: CategoryEntity? = null
+    private var interval: String ?= null
 
     private var calendar : Calendar = Calendar.getInstance()
     var year = 0
@@ -88,6 +89,31 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
 
             }
         }
+
+
+
+        val repeating = binding.repeating
+        val intervals = arrayListOf("Daily", "Weekly", "Monthly")
+
+        val repeating_adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, intervals)
+
+
+        repeating_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        repeating.adapter = repeating_adapter
+
+        repeating.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                // You can define your actions as you want
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                interval = intervals[position]
+            }
+        }
+
+
+
         // SET VALUE TO ALARMMANAGER
         alarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
@@ -135,16 +161,17 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
                     }
 
 
-                          val interval: Long = when {
-                          diffDays > 30 -> AlarmManager.INTERVAL_DAY * 30 // Monthly
-                          diffDays > 7 -> AlarmManager.INTERVAL_DAY * 7   // Weekly
-                          else -> 60*1000              // Daily
+                          val interval_time: Long = when {
+                              interval.equals("Monthly") -> AlarmManager.INTERVAL_DAY * 30 // Monthly
+                              interval.equals("Weekly") -> AlarmManager.INTERVAL_DAY * 7   // Weekly
+                              else -> AlarmManager.INTERVAL_DAY              // Daily
+
                          }
 
                     alarmManager?.setInexactRepeating(
                         AlarmManager.RTC_WAKEUP,
-                        calendar.timeInMillis + interval,
-                        interval,
+                        System.currentTimeMillis()+(3*1000),
+                        interval_time,
                         alarmIntent
                     )
 
