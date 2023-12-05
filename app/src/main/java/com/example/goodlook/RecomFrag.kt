@@ -121,7 +121,8 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
                     throw DateException("Something went wrong with date")
 
                 } else {
-                    val requestCode = card_viewModel.generateUniqueRequestId()
+                    val uuid = UUID.randomUUID()
+                    val requestCode = uuidToInt(uuid)
                     if (cardCategory_id != null) {
                         card_viewModel.onClickInsert(newCardTask, deadline, cardCategory_id,requestCode)
                     }
@@ -170,7 +171,9 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
 
 
 
-
+    fun uuidToInt(uuid: UUID): Int {
+        return uuid.hashCode()
+    }
 
     //To catch the error
     class DateException(message: String) : Exception(message)
