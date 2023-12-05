@@ -177,7 +177,7 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
 
                     alarmManager?.setInexactRepeating(
                         AlarmManager.RTC_WAKEUP,
-                        calendar.timeInMillis + interval_time,
+                        calendar.timeInMillis,
                         interval_time,
                         alarmIntent
                     )
@@ -215,10 +215,10 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
 
 
     override fun onDateClick(v: View) {
-        val c = Calendar.getInstance()
-        var year = c.get(Calendar.YEAR)
-        var month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        var year = calendar.get(Calendar.YEAR)
+        var month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
 
 
 
