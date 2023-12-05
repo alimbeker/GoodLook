@@ -28,7 +28,9 @@ interface CardDao {
     @Query("DELETE FROM cardTable WHERE deadline < :currentTime")
     suspend fun deleteByDeadline(currentTime: Long)
 
-    @Query("DELETE FROM cardTable WHERE category = :category_id")
-    suspend fun deleteByCategoryId(category_id:UUID)
+
+    @Query("SELECT * FROM cardTable WHERE category = :category_id")
+    suspend fun getByCategoryId(category_id: UUID): List<CardEntity>
+
 
 }

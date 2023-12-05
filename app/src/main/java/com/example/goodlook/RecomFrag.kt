@@ -39,7 +39,7 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
     private var interval: String ?= null
 
     private var calendar : Calendar = Calendar.getInstance()
-    var year = 0
+      var year = 0
       var month = 0
       var day = 0
       var hour = 0
@@ -161,16 +161,19 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
                     }
 
 
-                          val interval_time: Long = when {
-                              interval.equals("Monthly") -> AlarmManager.INTERVAL_DAY * 30 // Monthly
-                              interval.equals("Weekly") -> AlarmManager.INTERVAL_DAY * 7   // Weekly
-                              else -> AlarmManager.INTERVAL_DAY              // Daily
+                    val interval_time: Long = when {
+                        interval.equals("Monthly") -> AlarmManager.INTERVAL_DAY * 30 // Monthly
+                        interval.equals("Weekly") -> AlarmManager.INTERVAL_DAY * 7   // Weekly
+                        else -> AlarmManager.INTERVAL_DAY                                  // Daily
 
-                         }
+                    }
+
+                    println("Set time:" + calendar.timeInMillis)
+
 
                     alarmManager?.setInexactRepeating(
                         AlarmManager.RTC_WAKEUP,
-                        System.currentTimeMillis()+(3*1000),
+                        calendar.timeInMillis + interval_time,
                         interval_time,
                         alarmIntent
                     )
@@ -229,6 +232,7 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
 
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minute = calendar.get(Calendar.MINUTE)
+
 
 
 

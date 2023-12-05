@@ -39,9 +39,11 @@ class CardRepository(private val cardDao: CardDao) {
         cardDao.deleteByDeadline(currentTime)
     }
 
-    suspend fun deleteByCategoryId(category_id: UUID) {
-        cardDao.deleteByCategoryId(category_id)
+    suspend fun getByCategoryId(category_id: UUID): List<CardEntity> {
+        return cardDao.getByCategoryId(category_id)
     }
+
+
 
 
 

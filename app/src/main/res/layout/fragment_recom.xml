@@ -39,8 +39,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/shapeemail"
         android:fontFamily="@font/nunito_bold"
 
@@ -49,7 +49,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTime"
-        />
+        app:layout_constraintVertical_bias="0.5" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/saveCard"
@@ -104,35 +104,34 @@
         android:layout_marginBottom="120dp"
         android:background="@drawable/shapeemail"
         android:drawableLeft="@drawable/ic_baseline_access_time_24"
-        android:inputType="textPersonName|textCapWords"
-        android:fontFamily="@font/nunito_bold"
         android:drawablePadding="10dp"
         android:enabled="true"
         android:focusable="false"
+        android:fontFamily="@font/nunito_bold"
         android:hint="@string/pickatime"
+        android:inputType="textPersonName|textCapWords"
         app:layout_constraintBottom_toTopOf="@+id/saveCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDate"
-        app:layout_constraintVertical_bias="0.085" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Spinner
         android:id="@+id/repeating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/shapeemail"
         android:fontFamily="@font/nunito_bold"
-
         app:layout_constraintBottom_toTopOf="@+id/spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTime"
-         />
+        app:layout_constraintVertical_bias="0.4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
