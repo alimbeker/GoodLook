@@ -177,10 +177,10 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
 
 
 
-                    startTime?.let { time ->
+                    startTime?.let {
                         alarmManager?.setInexactRepeating(
                             AlarmManager.RTC_WAKEUP,
-                            time,
+                            it,
                             interval_time,
                             alarmIntent
                         )
