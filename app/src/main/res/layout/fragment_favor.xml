@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="15dp"
-            android:text="Lists"
+            android:text="@string/lists"
             android:textSize="18sp"
             android:textColor="@color/lists"
             android:fontFamily="@font/nunito_black"

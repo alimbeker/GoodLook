@@ -36,7 +36,7 @@
             android:drawableLeft="@drawable/ic_baseline_add_task_24"
             android:drawablePadding="15dp"
             android:fontFamily="@font/nunito_bold"
-            android:hint="New List"
+            android:hint="@string/new_list"
             android:inputType="textPersonName|textCapWords"
             android:minHeight="48dp"
             android:textAlignment="gravity"
@@ -53,11 +53,11 @@
             >
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/backCard"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/recom_frag_button"
                 android:layout_marginStart="20dp"
-                android:text="back"
+                android:text="@string/back"
                 app:cornerRadius="12dp"
                 android:fontFamily="@font/nunito_black"
                 android:textColor="@color/white"
@@ -66,11 +66,11 @@
                 app:layout_constraintTop_toTopOf="parent" />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/saveCard"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:backgroundTint="@color/save_button"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                android:text="save"
+                android:text="@string/save"
                 android:fontFamily="@font/nunito_black"
                 android:textColor="@color/white"
                 app:cornerRadius="12dp"

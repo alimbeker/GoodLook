@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:fontFamily="@font/nunito_bold"
-            android:text="Add a task"
+            android:text="@string/add_a_task"
             android:paddingTop="5dp"
             android:textColor="@color/white"
             android:textSize="18sp"

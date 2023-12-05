@@ -93,7 +93,12 @@ class RecomFrag : BaseDialogFragment<FragmentRecomBinding>(FragmentRecomBinding:
 
 
         val repeating = binding.repeating
-        val intervals = arrayListOf("Daily", "Weekly", "Monthly")
+        val intervals =
+            arrayListOf(
+                getString(R.string.daily),
+                getString(R.string.weekly),
+                getString(R.string.monthly)
+            )
 
         val repeating_adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, intervals)
 

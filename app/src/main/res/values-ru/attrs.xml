@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <declare-styleable name="ToolbarView">
+        <attr name="temp" format="integer"/>
+        <attr name="country" format="string"/>
+        <attr name="daytime" format="enum">
+            <enum name="day" value="0" />
+            <enum name="night" value="1" />
+        </attr>
+        <attr name="fallout" format="enum">
+            <enum name="weak_rain" value="0" />
+            <enum name="weak_snow" value="1" />
+            <enum name="heavy_rain" value="2" />
+            <enum name="heavy_snow" value="3" />
+
+
+        </attr>
+        <attr name="windy" format="boolean"/>
+
+    </declare-styleable>
+
+</resources>

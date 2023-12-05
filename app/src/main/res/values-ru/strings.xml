@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Гудлук</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pickadate">Выбрать дату</string>
+    <string name="pickatime">Выбрать время</string>
+    <string name="alert_text">Вы уверены что хотите удалить ?</string>
+    <string name="lists">Листы</string>
+    <string name="new_task">Новый таск</string>
+    <string name="add_card">Добавить карту</string>
+    <string name="daily">Ежедневный</string>
+    <string name="weekly">Еженедельный</string>
+    <string name="monthly">Ежемесячный</string>
+    <string name="new_list">Новый лист</string>
+    <string name="back">назад</string>
+    <string name="save">добавить</string>
+    <string name="add_a_task">Добавить таск</string>
+    <string name="basket">Корзина</string>
+    <string name="cards">Карты</string>
+    <string name="delete">Удалить</string>
+    <string name="cancel">Назад</string>
+
+
+</resources>

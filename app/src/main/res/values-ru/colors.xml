@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+
+
+    <color name="bottomcolor">#F0E68C</color>
+    <color name="bottom_nav_item">#8C706D</color>
+    <color name="bottom_nav_selected_item">#220006</color>
+    <color name="fragment_bg_color">#FDF8F4</color>
+    <color name="lavender">#f1cbff</color>
+    <color name="turkish_rose">#e17888</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="signupColor">#066e8a</color>
+    <color name="blue">#0036d8</color>
+    <color name="main_background">#F8EEE2</color>
+    <color name="lists">#403B36</color>
+    <color name="category_item_background">#FFFDFA</color>
+    <color name="cardview_stroke_color">#595550</color>
+    <color name="category_item_text_color">#595550</color>
+    <color name="recom_frag_button">#D9614C</color>
+    <color name="form_background">#FFFDFA</color>
+    <color name="form_stroke">#F2E5D5</color>
+    <color name="save_button">#0083A3</color>
+</resources>

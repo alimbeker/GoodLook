@@ -5,6 +5,20 @@
     <string name="pickadate">Pick a Date</string>
     <string name="pickatime">Pick a Time</string>
     <string name="alert_text">Are you sure you want to delete list ?</string>
+    <string name="lists">Lists</string>
+    <string name="new_task">New Task</string>
+    <string name="add_card">Add Card</string>
+    <string name="daily">Daily</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
+    <string name="new_list">New List</string>
+    <string name="back">back</string>
+    <string name="save">save</string>
+    <string name="add_a_task">Add a task</string>
+    <string name="basket">Basket</string>
+    <string name="cards">Cards</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
 
 
 </resources>

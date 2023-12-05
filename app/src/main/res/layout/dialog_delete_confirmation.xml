@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/recom_frag_button"
-        android:text="Delete"
+        android:text="@string/delete"
         android:fontFamily="@font/nunito_black"
         android:textColor="@color/white"
         app:cornerRadius="12dp"/>
@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/save_button"
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:fontFamily="@font/nunito_black"
         android:textColor="@color/white"
         app:cornerRadius="12dp"/>
