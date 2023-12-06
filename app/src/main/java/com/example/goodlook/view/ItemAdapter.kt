@@ -47,7 +47,7 @@ class ItemAdapter(private val card_vm : FavorFragmentViewModel):ListAdapter<Card
         private fun showDeleteSnackbar(card: CardEntity, card_vm: FavorFragmentViewModel) {
             val snackbar = Snackbar.make(
                 binding.root,
-                "${card.cardName} is deleted",
+                "${card.cardName} is done",
                 Snackbar.LENGTH_LONG
             )
 
