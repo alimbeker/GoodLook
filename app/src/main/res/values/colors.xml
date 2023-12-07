@@ -29,4 +29,7 @@
     <color name="form_background">#FFFDFA</color>
     <color name="form_stroke">#F2E5D5</color>
     <color name="save_button">#0083A3</color>
+    <color name="settings_appname">#403B36</color>
+    <color name="parameters">#595555</color>
+
 </resources>
