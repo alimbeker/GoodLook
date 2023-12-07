@@ -50,25 +50,26 @@
        >
 
 
-       <androidx.appcompat.widget.SwitchCompat
+       <ImageView
            android:id="@+id/switchcompat"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginEnd="25dp"
+           android:layout_width="25dp"
+           android:layout_height="25dp"
+           android:layout_marginEnd="60dp"
+           android:src="@drawable/baseline_nightlight_round_24"
            app:layout_constraintBottom_toBottomOf="parent"
            app:layout_constraintEnd_toEndOf="parent"
            app:layout_constraintTop_toTopOf="parent"
            app:layout_constraintVertical_bias="0.0" />
 
        <com.google.android.material.textview.MaterialTextView
-           android:id="@+id/txtDate"
+           android:id="@+id/dark_theme"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:layout_marginStart="20dp"
+           android:layout_marginStart="40dp"
            android:fontFamily="@font/nunito_bold"
            android:text="@string/change_theme"
            android:textColor="@color/parameters"
-           android:textSize="16sp"
+           android:textSize="20sp"
            app:layout_constraintBottom_toBottomOf="parent"
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintTop_toTopOf="parent"
