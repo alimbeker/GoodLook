@@ -26,29 +26,7 @@ class KorzinFrag : Fragment() {
         val binding = FragmentKorzinBinding.inflate(inflater, container, false)
 
 
-        // Implement viewModel
-        val application = requireNotNull(this.activity).application
 
-
-        // Implement viewModel for FavorFragmentViewModel
-        val cardDataSource = CardDatabase.getInstance(application)!!.cardDao()
-        val cardVmFactory = VmFactory(cardDataSource, application, FavorFragmentViewModel::class.java)
-        val vm = ViewModelProvider(this, cardVmFactory).get(FavorFragmentViewModel::class.java)
-
-        //Adapter
-        val recyclerView = binding.korzinRecyclerView
-        val itemAdapter = ItemAdapter(vm)
-        recyclerView.adapter = itemAdapter
-
-//        vm.filteredCards.observeForever {
-//            // Filter favorCards based on the category or any other logic
-//            val filteredFavorCards = it.filter { it.cardCategory == true }
-//            itemAdapter.submitList(filteredFavorCards)
-//        }
-
-        recyclerView.layoutManager = LinearLayoutManager(this.context)
-        itemAdapter.notifyDataSetChanged()
-        recyclerView.setHasFixedSize(true)
 
         return binding.root
 
