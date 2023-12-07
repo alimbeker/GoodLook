@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.mainContainer) as NavHostFragment
         navController = navHostFragment.navController
 
-        binding.switchThemeButton.setOnClickListener {
-            toggleTheme()
-        }
+//        binding.switchThemeButton.setOnClickListener {
+//            toggleTheme()
+//        }
 
 
         setupBottomNavigation()
