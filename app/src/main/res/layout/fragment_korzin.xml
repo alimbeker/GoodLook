@@ -1,16 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".KorzinFrag">
 
-    <!-- TODO: Update blank fragment layout -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/korzinRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/app_name"
+        android:textSize="20sp"
+        android:fontFamily="@font/titanone_regular"
+        android:textColor="@color/settings_appname"
+        android:layout_gravity="center"
+        android:textAllCaps="true"
+
+    />
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="44dp"
+        android:src="@drawable/settings"
+        android:layout_gravity="center"
+
         />
 
 
-</FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/paremeters"
+        android:layout_marginTop="20dp"
+        android:textSize="28sp"
+        android:fontFamily="@font/nunito_black"
+        android:textColor="@color/settings_appname"
+        android:layout_gravity="center"
+        android:textAllCaps="true"
+
+        />
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="30dp"
+       >
+
+
+       <androidx.appcompat.widget.SwitchCompat
+           android:id="@+id/switchcompat"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginEnd="25dp"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintVertical_bias="0.0" />
+
+       <com.google.android.material.textview.MaterialTextView
+           android:id="@+id/txtDate"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="20dp"
+           android:fontFamily="@font/nunito_bold"
+           android:text="@string/change_theme"
+           android:textColor="@color/parameters"
+           android:textSize="16sp"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintVertical_bias="0.52" />
+       " />
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

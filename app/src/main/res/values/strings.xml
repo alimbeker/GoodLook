@@ -19,6 +19,8 @@
     <string name="cards">Cards</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
+    <string name="paremeters">Paremeters</string>
+    <string name="change_theme">Dark theme</string>
 
 
 </resources>
